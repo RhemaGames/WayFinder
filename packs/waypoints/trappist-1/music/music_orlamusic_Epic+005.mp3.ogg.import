@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/music_orlamusic_Epic+005.mp3.ogg-acf1cb54c5e43d1b49d42a99769f8b4c.oggstr"
+
+[deps]
+
+source_file="res://packs/waypoints/trappist-1/music/music_orlamusic_Epic+005.mp3.ogg"
+dest_files=[ "res://.import/music_orlamusic_Epic+005.mp3.ogg-acf1cb54c5e43d1b49d42a99769f8b4c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

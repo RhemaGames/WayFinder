@@ -1,0 +1,170 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/Circles_button.svg" type="Texture" id=1]
+[ext_resource path="res://packs/waypoints/trappist-1/sfx/zapsplat_science_fiction_console_error_feedback_tone_003_28903.mp3.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/sfx/zapsplat_multimedia_notification_short_digital_futuristic_beep_generic_008_53944.mp3.ogg" type="AudioStream" id=3]
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/repairPuzzle.glb" type="PackedScene" id=4]
+[ext_resource path="res://packs/waypoints/trappist-1/scenes/Activities/Repair.gd" type="Script" id=5]
+[ext_resource path="res://packs/waypoints/trappist-1/sfx/zapsplat_household_plastic_pressure_spray_bottle_air_pressure_release_hiss_short_001_53486.mp3.ogg" type="AudioStream" id=6]
+[ext_resource path="res://packs/waypoints/trappist-1/sfx/zapsplat_household_plastic_pressure_spray_bottle_air_pressure_release_hiss_reversed_short_001_53486.mp3.ogg" type="AudioStream" id=7]
+
+[sub_resource type="Environment" id=1]
+glow_strength = 0.44
+glow_blend_mode = 0
+
+[sub_resource type="CylinderShape" id=2]
+radius = 2.20762
+
+[sub_resource type="Animation" id=3]
+resource_name = "Success"
+length = 1.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("OmniLight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 0.9, 0.95, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true ]
+}
+
+[node name="Repair" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.463041, -0.0394897, 7.06853 )
+cull_mask = 787200
+environment = SubResource( 1 )
+size = 0.4
+
+[node name="repairPuzzle" parent="." instance=ExtResource( 4 )]
+
+[node name="Backing" parent="repairPuzzle" index="0"]
+layers = 787200
+
+[node name="PathRotatorBase" parent="repairPuzzle" index="1"]
+layers = 787200
+
+[node name="Indicator1" parent="repairPuzzle/IndicatorPath" index="0"]
+layers = 787200
+
+[node name="Display" type="Sprite3D" parent="repairPuzzle/IndicatorPath/Indicator1" index="0"]
+transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 1, 0, 3.03258, 0.340464 )
+layers = 787200
+texture = ExtResource( 1 )
+
+[node name="Indicator2" parent="repairPuzzle/IndicatorPath" index="1"]
+layers = 787200
+
+[node name="Display" type="Sprite3D" parent="repairPuzzle/IndicatorPath/Indicator2" index="0"]
+transform = Transform( -1.5299e-08, 0.35, 5.96046e-08, -0.35, -1.5299e-08, -5.96046e-08, -2.08616e-08, -2.08616e-08, 1, 3.08175, 0.0166327, 0.340464 )
+layers = 787200
+texture = ExtResource( 1 )
+
+[node name="Indicator3" parent="repairPuzzle/IndicatorPath" index="2"]
+layers = 787200
+
+[node name="Display" type="Sprite3D" parent="repairPuzzle/IndicatorPath/Indicator3" index="0"]
+transform = Transform( -0.35, -3.0598e-08, -2.6054e-15, 3.0598e-08, -0.35, -1.19209e-07, 1.82378e-15, -4.17233e-08, 1, 0.0109671, -3.08705, 0.340464 )
+layers = 787200
+modulate = Color( 1, 1, 1, 0.486275 )
+texture = ExtResource( 1 )
+
+[node name="Indicator4" parent="repairPuzzle/IndicatorPath" index="3"]
+layers = 787200
+
+[node name="Display" type="Sprite3D" parent="repairPuzzle/IndicatorPath/Indicator4" index="0"]
+transform = Transform( 4.5897e-08, -0.35, -5.96046e-08, 0.35, 4.5897e-08, -5.96046e-08, 2.08616e-08, -2.08616e-08, 1, -3.03788, -0.00530078, 0.340464 )
+layers = 787200
+modulate = Color( 1, 1, 1, 0.486275 )
+texture = ExtResource( 1 )
+
+[node name="Handle" parent="repairPuzzle" index="3"]
+layers = 787200
+
+[node name="serviceTubes" parent="repairPuzzle" index="4"]
+layers = 2148270848
+
+[node name="wireGroup1" parent="repairPuzzle" index="5"]
+layers = 787200
+
+[node name="wireGroup4" parent="repairPuzzle" index="6"]
+layers = 787200
+
+[node name="wireGroup3" parent="repairPuzzle" index="7"]
+layers = 787200
+
+[node name="wireGroup2" parent="repairPuzzle" index="8"]
+layers = 787200
+
+[node name="Cube" parent="repairPuzzle" index="15"]
+layers = 787200
+
+[node name="Cube001" parent="repairPuzzle" index="16"]
+layers = 787200
+
+[node name="Cube002" parent="repairPuzzle" index="17"]
+layers = 787200
+
+[node name="Cube003" parent="repairPuzzle" index="18"]
+layers = 787200
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.13244, 13.4781, 15.0085 )
+visible = false
+layers = 2148270848
+shadow_enabled = true
+shadow_bias = 0.65
+omni_range = 54.026
+
+[node name="OmniLight2" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46.3093, 13.4781, 15.0085 )
+light_cull_mask = 4294705920
+shadow_bias = 0.95
+omni_range = 54.026
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 0.970127, 0, 0.242599, 0, 1, 0, -0.242599, 0, 0.970127, 3.5995, 0, 7.93512 )
+layers = 2148270848
+spot_range = 9.9906
+
+[node name="MainDial" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17023, -0.0520105, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MainDial"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0606885, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Success = SubResource( 3 )
+
+[node name="Enter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "sfx"
+
+[node name="Error" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="Success" type="AudioStreamPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Open" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+pitch_scale = 1.26
+bus = "sfx"
+
+[node name="Closed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+pitch_scale = 1.26
+bus = "sfx"
+[connection signal="input_event" from="MainDial" to="." method="_on_MainDial_input_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="repairPuzzle"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Ambient 80 D Uplifting Pads.ogg-6822b129fe0c21d894a880c06a51cc46.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/Loops/Ambient 80 D Uplifting Pads.ogg"
+dest_files=[ "res://.import/Ambient 80 D Uplifting Pads.ogg-6822b129fe0c21d894a880c06a51cc46.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

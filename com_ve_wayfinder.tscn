@@ -1,0 +1,200 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://com_ve_wayfinder.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Combat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/logo2.png" type="Texture" id=3]
+[ext_resource path="res://assets/Title.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/default_theme.tres" type="Theme" id=5]
+[ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Settings.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/teaser1.4-smaller.png" type="Texture" id=10]
+[ext_resource path="res://scenes/Extras.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/MapView.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/button.svg" type="Texture" id=13]
+[ext_resource path="res://scenes/shipBridge.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/Preface.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/PlayerSelect.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/sfx/Loops/SL Piano 120bpm Am Acoustic Natural 02.ogg" type="AudioStream" id=17]
+
+[node name="com_ve_wayfinder" type="Node"]
+script = ExtResource( 1 )
+
+[node name="BG" type="TextureRect" parent="."]
+visible = false
+light_mask = 1024
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+light_mask = 0
+position = Vector2( 645.079, 385.536 )
+scale = Vector2( 1.29421, 0.974579 )
+texture = ExtResource( 13 )
+range_item_cull_mask = 1024
+
+[node name="View" type="Node" parent="."]
+
+[node name="Combat" parent="." instance=ExtResource( 2 )]
+
+[node name="Controls" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" parent="." instance=ExtResource( 6 )]
+
+[node name="FirstLoad" type="PanelContainer" parent="."]
+visible = false
+modulate = Color( 0.188235, 0.184314, 0.184314, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="FirstLoad"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1359.0
+margin_bottom = 761.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="AutoSaveLoad" type="PanelContainer" parent="."]
+visible = false
+anchor_left = 0.832867
+anchor_top = 0.893097
+anchor_right = 0.985868
+anchor_bottom = 0.975779
+margin_right = 209.0
+margin_bottom = 63.5
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoSaveLoad"]
+margin_left = 6.0
+margin_top = 10.0
+margin_right = 412.0
+margin_bottom = 117.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="AutoSaveLoad/HBoxContainer"]
+margin_right = 92.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 92, 92 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoSaveLoad/HBoxContainer"]
+modulate = Color( 0.796078, 0.662745, 0.168627, 1 )
+margin_left = 96.0
+margin_right = 406.0
+margin_bottom = 107.0
+alignment = 1
+
+[node name="Type" type="Label" parent="AutoSaveLoad/HBoxContainer/VBoxContainer"]
+margin_right = 310.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 4 )
+text = "Loading"
+
+[node name="HSeparator" type="HSeparator" parent="AutoSaveLoad/HBoxContainer/VBoxContainer"]
+margin_top = 65.0
+margin_right = 310.0
+margin_bottom = 69.0
+
+[node name="About" type="Label" parent="AutoSaveLoad/HBoxContainer/VBoxContainer"]
+margin_top = 73.0
+margin_right = 310.0
+margin_bottom = 107.0
+text = "Please wait."
+align = 2
+
+[node name="Settings" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="Extras" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[node name="MapView" parent="." instance=ExtResource( 12 )]
+visible = false
+
+[node name="shipBridge" parent="." instance=ExtResource( 14 )]
+
+[node name="Title" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Title"]
+margin_right = 461.0
+margin_bottom = 53.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Title/HBoxContainer"]
+margin_right = 53.0
+margin_bottom = 53.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 53, 53 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Title/HBoxContainer"]
+modulate = Color( 0.788235, 0.662745, 0.156863, 1 )
+margin_left = 57.0
+margin_right = 461.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 4 )
+text = "WayFinder"
+
+[node name="build" type="Label" parent="Title"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0.2 MVP"
+
+[node name="Preface" parent="." instance=ExtResource( 15 )]
+visible = false
+
+[node name="PlayerSelect" parent="." instance=ExtResource( 16 )]
+visible = false
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="BGM" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 17 )
+bus = "bgm"
+
+[node name="VoiceOver" type="AudioStreamPlayer" parent="Audio"]

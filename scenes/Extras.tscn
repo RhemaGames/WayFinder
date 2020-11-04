@@ -1,0 +1,874 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://assets/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/menuFontMedium.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/WFpanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/teaser1.4-smaller.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Extras.gd" type="Script" id=5]
+[ext_resource path="res://assets/Title.tres" type="DynamicFont" id=6]
+[ext_resource path="res://scenes/Credits.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/ExtrasPanelContainer.tres" type="StyleBox" id=8]
+[ext_resource path="res://scenes/Command.tscn" type="PackedScene" id=9]
+[ext_resource path="res://packs/characters/Commander/Commander.glb" type="PackedScene" id=10]
+[ext_resource path="res://assets/logo2.png" type="Texture" id=11]
+[ext_resource path="res://scenes/Crew.gd" type="Script" id=13]
+
+[sub_resource type="Environment" id=1]
+ambient_light_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+
+[sub_resource type="World" id=2]
+environment = SubResource( 1 )
+
+[sub_resource type="Environment" id=3]
+
+[sub_resource type="World" id=4]
+environment = SubResource( 3 )
+
+[sub_resource type="World" id=5]
+
+[sub_resource type="Environment" id=6]
+
+[sub_resource type="World" id=7]
+environment = SubResource( 6 )
+
+[node name="Extras" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" parent="." instance=ExtResource( 3 )]
+margin_left = 344.0
+margin_bottom = -93.0
+
+[node name="Credits" parent="Main" instance=ExtResource( 7 )]
+modulate = Color( 1, 1, 1, 1 )
+margin_left = 0.0
+margin_right = 1022.0
+
+[node name="Crew" type="MarginContainer" parent="Main"]
+visible = false
+margin_right = 1022.0
+margin_bottom = 675.0
+custom_constants/margin_right = 35
+custom_constants/margin_top = 28
+custom_constants/margin_left = 35
+custom_constants/margin_bottom = 46
+script = ExtResource( 13 )
+
+[node name="TabContainer" type="TabContainer" parent="Main/Crew"]
+self_modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_left = 35.0
+margin_top = 28.0
+margin_right = 987.0
+margin_bottom = 629.0
+custom_constants/side_margin = 10
+tab_align = 0
+
+[node name="Commander" type="Tabs" parent="Main/Crew/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 41.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Main/Crew/TabContainer/Commander"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Crew/TabContainer/Commander/PanelContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 934.0
+margin_bottom = 559.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_right = 200.0
+margin_bottom = 549.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Button" type="Button" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 58.0
+text = "Commanders"
+align = 0
+
+[node name="VSeparator" type="VSeparator" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer"]
+margin_left = 210.0
+margin_right = 214.0
+margin_bottom = 549.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer"]
+margin_left = 224.0
+margin_right = 924.0
+margin_bottom = 549.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 700.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 0, 200 )
+custom_constants/separation = 20
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_left = 20.0
+margin_right = 480.0
+margin_bottom = 207.0
+grow_vertical = 2
+rect_min_size = Vector2( 460, 0 )
+custom_constants/separation = 10
+
+[node name="Name" type="Label" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_right = 460.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 2 )
+text = "Character Name"
+
+[node name="HSeparator" type="HSeparator" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 49.0
+margin_right = 460.0
+margin_bottom = 53.0
+
+[node name="About" type="RichTextLabel" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 63.0
+margin_right = 460.0
+margin_bottom = 163.0
+rect_min_size = Vector2( 0, 100 )
+bbcode_enabled = true
+bbcode_text = "About: Test data "
+text = "About: Test data "
+
+[node name="Level" type="HBoxContainer" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 173.0
+margin_right = 460.0
+margin_bottom = 207.0
+
+[node name="Label" type="Label" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Level"]
+margin_right = 86.0
+margin_bottom = 34.0
+text = "Level:"
+
+[node name="levelMarker" type="HBoxContainer" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Level"]
+margin_left = 90.0
+margin_right = 122.0
+margin_bottom = 34.0
+custom_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Level/levelMarker"]
+margin_right = 32.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 500.0
+margin_right = 700.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 200, 200 )
+
+[node name="Viewport" type="Viewport" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ViewportContainer"]
+size = Vector2( 200, 200 )
+own_world = true
+world = SubResource( 2 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Camera" type="Camera" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.47583, 7.53811 )
+projection = 1
+size = 7.59
+
+[node name="Commander" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ViewportContainer/Viewport" instance=ExtResource( 10 )]
+transform = Transform( 0.761538, 0, -0.64812, 0, 1, 0, 0.64812, 0, 0.761538, 0, 0.688123, 0 )
+
+[node name="HSeparator" type="HSeparator" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 211.0
+margin_right = 700.0
+margin_bottom = 215.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_top = 219.0
+margin_right = 700.0
+margin_bottom = 549.0
+rect_min_size = Vector2( 700, 330 )
+
+[node name="Control" type="VBoxContainer" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
+margin_right = 700.0
+margin_bottom = 530.0
+rect_min_size = Vector2( 700, 530 )
+
+[node name="Command" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_right = 700.0
+margin_bottom = 239.0
+
+[node name="Command2" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_top = 243.0
+margin_right = 700.0
+margin_bottom = 482.0
+
+[node name="Command3" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_top = 486.0
+margin_right = 700.0
+margin_bottom = 725.0
+
+[node name="Command4" parent="Main/Crew/TabContainer/Commander/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_top = 729.0
+margin_right = 700.0
+margin_bottom = 968.0
+
+[node name="Security" type="Tabs" parent="Main/Crew/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 41.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Main/Crew/TabContainer/Security"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Crew/TabContainer/Security/PanelContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 934.0
+margin_bottom = 559.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_right = 200.0
+margin_bottom = 549.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Button" type="Button" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 58.0
+text = "Security"
+align = 0
+
+[node name="VSeparator" type="VSeparator" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer"]
+margin_left = 210.0
+margin_right = 214.0
+margin_bottom = 549.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer"]
+margin_left = 224.0
+margin_right = 924.0
+margin_bottom = 549.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 700.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 0, 200 )
+custom_constants/separation = 20
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_left = 20.0
+margin_right = 480.0
+margin_bottom = 207.0
+grow_vertical = 2
+rect_min_size = Vector2( 460, 0 )
+custom_constants/separation = 10
+
+[node name="Name" type="Label" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_right = 460.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 2 )
+text = "Character Name"
+
+[node name="HSeparator" type="HSeparator" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 49.0
+margin_right = 460.0
+margin_bottom = 53.0
+
+[node name="About" type="RichTextLabel" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 63.0
+margin_right = 460.0
+margin_bottom = 163.0
+rect_min_size = Vector2( 0, 100 )
+bbcode_enabled = true
+bbcode_text = "About: Test data "
+text = "About: Test data "
+
+[node name="Level" type="HBoxContainer" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 173.0
+margin_right = 460.0
+margin_bottom = 207.0
+
+[node name="Label" type="Label" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Level"]
+margin_right = 86.0
+margin_bottom = 34.0
+text = "Level:"
+
+[node name="levelMarker" type="HBoxContainer" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Level"]
+margin_left = 90.0
+margin_right = 122.0
+margin_bottom = 34.0
+custom_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Level/levelMarker"]
+margin_right = 32.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 500.0
+margin_right = 700.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 200, 200 )
+
+[node name="Viewport" type="Viewport" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ViewportContainer"]
+size = Vector2( 200, 200 )
+own_world = true
+world = SubResource( 4 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Camera" type="Camera" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.47583, 7.53811 )
+projection = 1
+size = 7.59
+
+[node name="HSeparator" type="HSeparator" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 211.0
+margin_right = 700.0
+margin_bottom = 215.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_top = 219.0
+margin_right = 700.0
+margin_bottom = 549.0
+rect_min_size = Vector2( 700, 330 )
+
+[node name="Control" type="VBoxContainer" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
+margin_right = 700.0
+margin_bottom = 530.0
+rect_min_size = Vector2( 700, 530 )
+
+[node name="Command" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_right = 700.0
+margin_bottom = 100.0
+
+[node name="Command2" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_top = 104.0
+margin_right = 700.0
+margin_bottom = 204.0
+
+[node name="Command3" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_top = 208.0
+margin_right = 700.0
+margin_bottom = 308.0
+
+[node name="Command4" parent="Main/Crew/TabContainer/Security/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_top = 312.0
+margin_right = 700.0
+margin_bottom = 412.0
+
+[node name="Engineer" type="Tabs" parent="Main/Crew/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 41.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Main/Crew/TabContainer/Engineer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Crew/TabContainer/Engineer/PanelContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 934.0
+margin_bottom = 559.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_right = 200.0
+margin_bottom = 549.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Button" type="Button" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 58.0
+text = "Engineers"
+align = 0
+
+[node name="VSeparator" type="VSeparator" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer"]
+margin_left = 210.0
+margin_right = 214.0
+margin_bottom = 549.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer"]
+margin_left = 224.0
+margin_right = 924.0
+margin_bottom = 549.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 700.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 0, 200 )
+custom_constants/separation = 20
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_left = 20.0
+margin_right = 480.0
+margin_bottom = 207.0
+grow_vertical = 2
+rect_min_size = Vector2( 460, 0 )
+custom_constants/separation = 10
+
+[node name="Name" type="Label" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_right = 460.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 2 )
+text = "Character Name"
+
+[node name="HSeparator" type="HSeparator" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 49.0
+margin_right = 460.0
+margin_bottom = 53.0
+
+[node name="About" type="RichTextLabel" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 63.0
+margin_right = 460.0
+margin_bottom = 163.0
+rect_min_size = Vector2( 0, 100 )
+bbcode_enabled = true
+bbcode_text = "About: Test data "
+text = "About: Test data "
+
+[node name="Level" type="HBoxContainer" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 173.0
+margin_right = 460.0
+margin_bottom = 207.0
+
+[node name="Label" type="Label" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Level"]
+margin_right = 86.0
+margin_bottom = 34.0
+text = "Level:"
+
+[node name="levelMarker" type="HBoxContainer" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Level"]
+margin_left = 90.0
+margin_right = 122.0
+margin_bottom = 34.0
+custom_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Level/levelMarker"]
+margin_right = 32.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 500.0
+margin_right = 700.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 200, 200 )
+
+[node name="Viewport" type="Viewport" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ViewportContainer"]
+size = Vector2( 200, 200 )
+own_world = true
+world = SubResource( 5 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Camera" type="Camera" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.47583, 7.53811 )
+projection = 1
+size = 7.59
+
+[node name="HSeparator" type="HSeparator" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 211.0
+margin_right = 700.0
+margin_bottom = 215.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_top = 219.0
+margin_right = 700.0
+margin_bottom = 549.0
+rect_min_size = Vector2( 700, 330 )
+
+[node name="Control" type="VBoxContainer" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
+margin_right = 700.0
+margin_bottom = 530.0
+rect_min_size = Vector2( 700, 530 )
+
+[node name="Command" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_right = 700.0
+margin_bottom = 100.0
+
+[node name="Command2" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_top = 104.0
+margin_right = 700.0
+margin_bottom = 204.0
+
+[node name="Command3" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_top = 208.0
+margin_right = 700.0
+margin_bottom = 308.0
+
+[node name="Command4" parent="Main/Crew/TabContainer/Engineer/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_top = 312.0
+margin_right = 700.0
+margin_bottom = 412.0
+
+[node name="Medic" type="Tabs" parent="Main/Crew/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 41.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Main/Crew/TabContainer/Medic"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Crew/TabContainer/Medic/PanelContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 934.0
+margin_bottom = 559.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_right = 200.0
+margin_bottom = 549.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Button" type="Button" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 58.0
+text = "Medics"
+align = 0
+
+[node name="VSeparator" type="VSeparator" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer"]
+margin_left = 210.0
+margin_right = 214.0
+margin_bottom = 549.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer"]
+margin_left = 224.0
+margin_right = 924.0
+margin_bottom = 549.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 700.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 0, 200 )
+custom_constants/separation = 20
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_left = 20.0
+margin_right = 480.0
+margin_bottom = 207.0
+grow_vertical = 2
+rect_min_size = Vector2( 460, 0 )
+custom_constants/separation = 10
+
+[node name="Name" type="Label" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_right = 460.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 2 )
+text = "Character Name"
+
+[node name="HSeparator" type="HSeparator" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 49.0
+margin_right = 460.0
+margin_bottom = 53.0
+
+[node name="About" type="RichTextLabel" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 63.0
+margin_right = 460.0
+margin_bottom = 163.0
+rect_min_size = Vector2( 0, 100 )
+bbcode_enabled = true
+bbcode_text = "About: Test data "
+text = "About: Test data "
+
+[node name="Level" type="HBoxContainer" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 173.0
+margin_right = 460.0
+margin_bottom = 207.0
+
+[node name="Label" type="Label" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Level"]
+margin_right = 86.0
+margin_bottom = 34.0
+text = "Level:"
+
+[node name="levelMarker" type="HBoxContainer" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Level"]
+margin_left = 90.0
+margin_right = 122.0
+margin_bottom = 34.0
+custom_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/Level/levelMarker"]
+margin_right = 32.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 500.0
+margin_right = 700.0
+margin_bottom = 207.0
+rect_min_size = Vector2( 200, 200 )
+
+[node name="Viewport" type="Viewport" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ViewportContainer"]
+size = Vector2( 200, 200 )
+own_world = true
+world = SubResource( 7 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Camera" type="Camera" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.47583, 7.53811 )
+projection = 1
+size = 7.59
+
+[node name="HSeparator" type="HSeparator" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 211.0
+margin_right = 700.0
+margin_bottom = 215.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_top = 219.0
+margin_right = 700.0
+margin_bottom = 549.0
+rect_min_size = Vector2( 700, 330 )
+
+[node name="Control" type="VBoxContainer" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
+margin_right = 700.0
+margin_bottom = 530.0
+rect_min_size = Vector2( 700, 530 )
+
+[node name="Command" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_right = 700.0
+margin_bottom = 100.0
+
+[node name="Command2" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_top = 104.0
+margin_right = 700.0
+margin_bottom = 204.0
+
+[node name="Command3" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_top = 208.0
+margin_right = 700.0
+margin_bottom = 308.0
+
+[node name="Command4" parent="Main/Crew/TabContainer/Medic/PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/Control" instance=ExtResource( 9 )]
+margin_top = 312.0
+margin_right = 700.0
+margin_bottom = 412.0
+
+[node name="Menu" parent="." instance=ExtResource( 3 )]
+margin_right = -1014.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+margin_right = 352.0
+margin_bottom = 768.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 30
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Menu/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 342.0
+margin_bottom = 738.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer/ScrollContainer"]
+margin_right = 320.0
+margin_bottom = 675.0
+rect_min_size = Vector2( 320, 0 )
+custom_constants/separation = 15
+
+[node name="Label" type="Label" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 6 )
+text = "Extras"
+align = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 320.0
+margin_bottom = 80.0
+
+[node name="Label2" type="Label" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 95.0
+margin_right = 320.0
+margin_bottom = 134.0
+custom_fonts/font = ExtResource( 2 )
+text = "USC"
+align = 1
+
+[node name="Crew" type="Button" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 149.0
+margin_right = 320.0
+margin_bottom = 207.0
+text = "Crew"
+
+[node name="Equip" type="Button" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 222.0
+margin_right = 320.0
+margin_bottom = 280.0
+text = "Equipment"
+
+[node name="Vechiles" type="Button" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 295.0
+margin_right = 320.0
+margin_bottom = 353.0
+text = "Vechiles"
+
+[node name="Label3" type="Label" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 368.0
+margin_right = 320.0
+margin_bottom = 407.0
+custom_fonts/font = ExtResource( 2 )
+text = "Way Points"
+align = 1
+
+[node name="Systems" type="Button" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 422.0
+margin_right = 320.0
+margin_bottom = 480.0
+text = "Systems"
+
+[node name="Species" type="Button" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 495.0
+margin_right = 320.0
+margin_bottom = 553.0
+text = "Species"
+
+[node name="Control2" type="Control" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 568.0
+margin_right = 320.0
+margin_bottom = 568.0
+
+[node name="HSeparator" type="HSeparator" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 583.0
+margin_right = 320.0
+margin_bottom = 587.0
+
+[node name="Control" type="Control" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 602.0
+margin_right = 320.0
+margin_bottom = 602.0
+
+[node name="Credits" type="Button" parent="Menu/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_top = 617.0
+margin_right = 320.0
+margin_bottom = 675.0
+text = "Credits"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 359.0
+margin_top = -94.2668
+margin_right = -17.0
+margin_bottom = -17.2668
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="HBoxContainer"]
+margin_left = 863.0
+margin_right = 990.0
+margin_bottom = 77.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="tab_selected" from="Main/Crew/TabContainer" to="Main/Crew" method="_on_TabContainer_tab_selected"]
+[connection signal="pressed" from="Menu/MarginContainer/ScrollContainer/VBoxContainer/Crew" to="." method="_on_Crew_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/ScrollContainer/VBoxContainer/Equip" to="." method="_on_Equip_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/ScrollContainer/VBoxContainer/Vechiles" to="." method="_on_Vechiles_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/ScrollContainer/VBoxContainer/Systems" to="." method="_on_Systems_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/ScrollContainer/VBoxContainer/Species" to="." method="_on_Species_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/ScrollContainer/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="HBoxContainer/Back" to="." method="_on_Back_pressed"]

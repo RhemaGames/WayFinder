@@ -1,0 +1,163 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/shipBridge.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/sfx/zapsplat_science_fiction_door_open_hiss_air_release_then_auto_motor_drome_44436.mp3.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/onlystars.png" type="Texture" id=3]
+[ext_resource path="res://scenes/shipBridge.gd" type="Script" id=4]
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/ContainerGlass.material" type="Material" id=5]
+[ext_resource path="res://scenes/gui_panel_3d.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sfx/Loops/Ambient 70 D Atmospheric Noise.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/sfx/Loops/Ambient 70 A# Machines Alive Drone.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/sfx/Loops/Ambient 80 D Uplifting Pads.ogg" type="AudioStream" id=9]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 3 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 5.99
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector3( 0, 0, 5 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.137255 )
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
+size = Vector3( 0.05, 0.05, 1 )
+
+[node name="shipBridge" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+
+[node name="Camera" parent="." index="0"]
+transform = Transform( -0.660209, -0.739594, -0.130858, -5.99623e-05, 0.174278, -0.984697, 0.751082, -0.650098, -0.115104, -39.443, 8.482, -29.097 )
+
+[node name="Light" parent="." index="2"]
+visible = false
+
+[node name="Light_Orientation" parent="Light" index="0"]
+visible = false
+
+[node name="Light001" parent="." index="9"]
+visible = false
+
+[node name="Light001_Orientation" parent="Light001" index="0"]
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="Light002" parent="." index="10"]
+visible = false
+
+[node name="Light002_Orientation" parent="Light002" index="0"]
+light_energy = 0.5
+
+[node name="Light004" parent="." index="12"]
+visible = false
+
+[node name="Light006" parent="." index="14"]
+visible = false
+
+[node name="Pilot" parent="." index="27"]
+transform = Transform( 1, 0, 0, 0, 1, 1.03316e-07, 0, -1.03316e-07, 1, -0.00121964, 0.445343, 1.99627 )
+
+[node name="Camera" type="Camera" parent="Pilot" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.63 )
+doppler_tracking = 1
+current = true
+fov = 65.0
+size = 2.0
+near = 0.04
+
+[node name="LeftHullMonitor" parent="." index="29"]
+material/1 = ExtResource( 5 )
+
+[node name="GUIPanel3D" parent="LeftHullMonitor" index="0" instance=ExtResource( 6 )]
+transform = Transform( 0.676, -5.2132e-08, 7.27423e-07, 8.19563e-08, 0.43, 1.79965e-08, -4.91738e-07, -7.73847e-09, 1, 0.099, 0.345, 0 )
+resolution = Vector2( 1024, 768 )
+
+[node name="RightHullMonitor" parent="." index="30"]
+material/1 = ExtResource( 5 )
+
+[node name="GUIPanel3D" parent="RightHullMonitor" index="0" instance=ExtResource( 6 )]
+transform = Transform( 0.656, -1.11759e-08, 0, 7.45058e-09, 0.429, -5.96046e-08, 5.96046e-08, -5.96046e-08, 1, -0.173999, 0.359, -9.53674e-07 )
+resolution = Vector2( 1024, 768 )
+
+[node name="MainScreen" parent="." index="35"]
+material/1 = ExtResource( 5 )
+
+[node name="GUIPanel3D" parent="MainScreen" index="0" instance=ExtResource( 6 )]
+transform = Transform( 0.4, 0, 0, 0, 0.45, 0, 0, 0, 0.091, -0.0158043, 0.371639, 0.00673938 )
+UI = "res://scenes/2DUI/Start.tscn"
+resolution = Vector2( 1024, 768 )
+
+[node name="LeftScreen" parent="." index="36"]
+transform = Transform( 0.675893, 0, 0.528209, 0, 1, 0, -0.987916, 0, 0.36138, -1.00979, -0.0465913, 0.143927 )
+material/1 = ExtResource( 5 )
+
+[node name="GUIPanel3D" parent="LeftScreen" index="0" instance=ExtResource( 6 )]
+transform = Transform( 0.203, 0, 3.40598e-08, 0, 0.339, 0, -4.32134e-08, 0, 0.16, -0.008, 0.341, -0.006 )
+resolution = Vector2( 1024, 768 )
+
+[node name="RightScreen" parent="." index="37"]
+material/1 = ExtResource( 5 )
+
+[node name="GUIPanel3D" parent="RightScreen" index="0" instance=ExtResource( 6 )]
+transform = Transform( -0.0778444, 0, -0.100938, 0, 0.339999, 0, 0.383173, 0, -0.0205063, -0.0157984, 0.341992, 0.0324661 )
+resolution = Vector2( 1024, 768 )
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="46"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -42.5035 )
+visible = false
+texture = ExtResource( 3 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="52"]
+environment = SubResource( 2 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="53"]
+transform = Transform( 1, 0, 0, 0, -0.981557, -0.191169, 0, 0.191169, -0.981557, 0, 0, 0 )
+stream = ExtResource( 2 )
+max_distance = 400.0
+bus = "sfx"
+emission_angle_enabled = true
+emission_angle_degrees = 41.0
+
+[node name="Cylinder" parent="." index="59"]
+transform = Transform( 1.43105, 0, 0, 0, 1.43105, 0, 0, 0, 1.43105, -0.02527, 0.365723, 11.2346 )
+
+[node name="Audio" type="Node" parent="." index="62"]
+
+[node name="EngineSound" type="AudioStreamPlayer" parent="Audio" index="0"]
+stream = ExtResource( 7 )
+volume_db = -10.0
+bus = "bgm"
+
+[node name="ComputersRunning" type="AudioStreamPlayer" parent="Audio" index="1"]
+stream = ExtResource( 8 )
+bus = "bgm"
+
+[node name="Overlay1" type="AudioStreamPlayer" parent="Audio" index="2"]
+stream = ExtResource( 9 )
+volume_db = -5.0
+bus = "bgm"
+
+[node name="Particles" type="Particles" parent="." index="63"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26325, -20.437 )
+emitting = false
+amount = 10
+preprocess = 10.0
+visibility_aabb = AABB( -8.28948, -6.81488, -4, 16.579, 14.1923, 8 )
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 5 )
+[connection signal="finished" from="MainScreen/GUIPanel3D" to="." method="_on_GUIPanel3D_finished"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_AudioStreamPlayer3D_finished"]

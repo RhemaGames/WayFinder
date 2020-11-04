@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Ambient_80_A#_Pads_2.ogg-d6433c16d08e2997b80ebf670ae95899.oggstr"
+
+[deps]
+
+source_file="res://packs/waypoints/trappist-1/music/Ambient_80_A#_Pads_2.ogg"
+dest_files=[ "res://.import/Ambient_80_A#_Pads_2.ogg-d6433c16d08e2997b80ebf670ae95899.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

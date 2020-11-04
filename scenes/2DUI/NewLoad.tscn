@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/WFpanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/2DUI/NewLoad.gd" type="Script" id=3]
+[ext_resource path="res://assets/button.svg" type="Texture" id=4]
+[ext_resource path="res://assets/Title.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/sfx/zapsplat_multimedia_notification_short_digital_futuristic_beep_generic_008_53944.mp3.ogg" type="AudioStream" id=6]
+
+[node name="NewLoad" type="Control"]
+modulate = Color( 0.109804, 0.780392, 0.780392, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WFpanel" parent="." instance=ExtResource( 2 )]
+margin_top = 54.6504
+margin_bottom = 22.6504
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -191.5
+margin_top = -79.8394
+margin_right = 191.5
+margin_bottom = 140.161
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="New" type="Button" parent="VBoxContainer"]
+margin_right = 383.0
+margin_bottom = 85.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "New Game"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/New"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_right = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" type="Button" parent="VBoxContainer"]
+margin_top = 135.0
+margin_right = 383.0
+margin_bottom = 220.0
+rect_pivot_offset = Vector2( 946.008, -526.413 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+disabled = true
+text = "Continue"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Continue"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_right = 10.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 493.681
+margin_top = -6.34961
+margin_right = 789.681
+margin_bottom = 54.6504
+custom_fonts/font = ExtResource( 5 )
+text = "Data"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "sfx"
+[connection signal="finished" from="." to="." method="_on_NewLoad_finished"]
+[connection signal="pressed" from="VBoxContainer/New" to="." method="_on_New_pressed"]
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_Continue_pressed"]

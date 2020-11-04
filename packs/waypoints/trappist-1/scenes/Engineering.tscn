@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/Rooms/Engineering/Engineering.glb" type="PackedScene" id=1]
+[ext_resource path="res://packs/waypoints/trappist-1/scenes/Engineering.gd" type="Script" id=2]
+[ext_resource path="res://scenes/marker.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sfx/zapsplat_multimedia_notification_short_digital_futuristic_beep_generic_008_53944.mp3.ogg" type="AudioStream" id=4]
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/card_placement.glb" type="PackedScene" id=5]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 5.07185, 2.12416, 3.0875 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "lightsOn"
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 2.11859, 0.702291, 1.57436 )
+
+[node name="Engineering" groups=[
+"card",
+"engineering",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.780154 )
+script = ExtResource( 2 )
+
+[node name="Marker" type="Position3D" parent="." index="47"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60421, 0.651337, 0 )
+
+[node name="Area" type="Area" parent="." index="48" groups=[
+"card",
+"engineering",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02158, 0.578621, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05786, 1.52851, 0 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="49"]
+anims/lightsOn = SubResource( 2 )
+
+[node name="path_marker" parent="." index="50" instance=ExtResource( 3 )]
+
+[node name="Audio" type="Node" parent="." index="51"]
+
+[node name="confirm" type="AudioStreamPlayer" parent="Audio" index="0"]
+stream = ExtResource( 4 )
+
+[node name="Connectors" type="Spatial" parent="." index="52"]
+
+[node name="Connector1" type="Area" parent="Connectors" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.02908 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Connectors/Connector1" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.34083 )
+shape = SubResource( 3 )
+
+[node name="card_placement" parent="Connectors/Connector1" index="1" instance=ExtResource( 5 )]
+visible = false
+[connection signal="place" from="." to="." method="_on_Engineering_place"]
+[connection signal="placed" from="." to="." method="_on_Engineering_placed"]
+[connection signal="input_event" from="Area" to="." method="_on_Area_input_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

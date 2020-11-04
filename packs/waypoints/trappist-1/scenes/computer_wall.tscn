@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/computer_wall.glb" type="PackedScene" id=1]
+[ext_resource path="res://packs/waypoints/trappist-1/scenes/computer_wall.gd" type="Script" id=2]
+[ext_resource path="res://assets/teaser1.4-smaller.png" type="Texture" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 0.7, 1.031, 1 )
+uv1_offset = Vector3( 0.148, -0.001, 0 )
+
+[node name="computer_wall" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Screen" parent="." index="0"]
+transform = Transform( 0.23685, 0, 0, 0, 0.61525, 0, 0, 0, 0.842156, -0.435768, 0.374209, -0.133635 )
+material/1 = SubResource( 1 )

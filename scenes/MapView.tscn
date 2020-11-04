@@ -1,0 +1,424 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/button.svg" type="Texture" id=2]
+[ext_resource path="res://scenes/MapView.gd" type="Script" id=3]
+[ext_resource path="res://scenes/WFpanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/menuFontMedium.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scenes/Notification.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/Tex_skill_71.PNG" type="Texture" id=7]
+[ext_resource path="res://assets/Tex_skill_21.PNG" type="Texture" id=8]
+[ext_resource path="res://scenes/mapInfoMaker.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/logo.png" type="Texture" id=10]
+[ext_resource path="res://assets/Tex_skill_13.PNG" type="Texture" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("ViewportContainer/Viewport")
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.184314, 0.184314, 0.184314, 1 )
+
+[sub_resource type="Animation" id=4]
+length = 0.6
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.56, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.36, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.02 ), Vector2( 1, 0.02 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.36, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.6
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.36, 0.52 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 0.02 ), Vector2( 1, 0.02 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.24 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="MapView" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 666.761, 383.329 )
+rect_clip_content = true
+mouse_filter = 2
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+light_mask = -2147483647
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 692.737, 377.177 )
+mouse_filter = 2
+mouse_default_cursor_shape = 3
+stretch = true
+stretch_shrink = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1366, 768 )
+handle_input_locally = false
+hdr = false
+debug_draw = 2
+render_target_update_mode = 3
+gui_snap_controls_to_pixels = false
+
+[node name="InterpolatedCamera" type="Camera" parent="ViewportContainer/Viewport"]
+h_offset = -0.75
+v_offset = 1.0
+projection = 1
+size = 55.0
+
+[node name="WFpanel" parent="." instance=ExtResource( 4 )]
+margin_left = -23.0
+margin_top = -15.0
+margin_right = 23.0
+margin_bottom = 24.0
+bg_opacity = 0.5
+border_color = Color( 0.0392157, 0.419608, 0.564706, 1 )
+cover = true
+
+[node name="MapControls" type="Control" parent="WFpanel"]
+margin_right = 2778.0
+margin_bottom = 1575.0
+mouse_filter = 2
+
+[node name="Key" parent="WFpanel/MapControls" instance=ExtResource( 4 )]
+anchor_left = 1.0
+anchor_bottom = 0.0
+margin_left = -315.479
+margin_top = 35.328
+margin_right = -43.4783
+margin_bottom = 421.328
+border = false
+bg_opacity = 0.1
+
+[node name="MarginContainer" type="MarginContainer" parent="WFpanel/MapControls/Key"]
+margin_right = 272.0
+margin_bottom = 386.0
+mouse_filter = 2
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WFpanel/MapControls/Key/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 262.0
+margin_bottom = 376.0
+mouse_filter = 2
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer"]
+margin_right = 252.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 5 )
+text = "Key"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer"]
+margin_top = 49.0
+margin_right = 252.0
+margin_bottom = 53.0
+
+[node name="Key1" type="HBoxContainer" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer"]
+margin_top = 63.0
+margin_right = 252.0
+margin_bottom = 97.0
+
+[node name="TextureRect" type="TextureRect" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer/Key1"]
+margin_right = 34.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 34, 34 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer/Key1"]
+margin_left = 38.0
+margin_right = 215.0
+margin_bottom = 34.0
+text = "Your Location"
+align = 3
+
+[node name="Key2" type="HBoxContainer" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer"]
+margin_top = 107.0
+margin_right = 252.0
+margin_bottom = 141.0
+
+[node name="TextureRect" type="TextureRect" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer/Key2"]
+margin_right = 34.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 34, 34 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer/Key2"]
+margin_left = 38.0
+margin_right = 202.0
+margin_bottom = 34.0
+text = "Power Outage"
+align = 3
+
+[node name="Key3" type="HBoxContainer" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer"]
+margin_top = 151.0
+margin_right = 252.0
+margin_bottom = 185.0
+
+[node name="TextureRect" type="TextureRect" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer/Key3"]
+margin_right = 34.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 34, 34 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer/Key3"]
+margin_left = 38.0
+margin_right = 85.0
+margin_bottom = 34.0
+text = "POI"
+align = 3
+
+[node name="Key4" type="HBoxContainer" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer"]
+margin_top = 195.0
+margin_right = 252.0
+margin_bottom = 229.0
+
+[node name="TextureRect" type="TextureRect" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer/Key4"]
+margin_right = 34.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 34, 34 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="WFpanel/MapControls/Key/MarginContainer/VBoxContainer/Key4"]
+margin_left = 38.0
+margin_right = 111.0
+margin_bottom = 34.0
+text = "Event"
+align = 3
+
+[node name="MapControlsButton" type="Button" parent="WFpanel/MapControls"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -109.475
+margin_top = -104.475
+margin_right = -45.4746
+margin_bottom = -46.4746
+grow_horizontal = 0
+grow_vertical = 0
+text = "Skip"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="WFpanel/MapControls/MapControlsButton"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="Label" parent="WFpanel/MapControls"]
+margin_left = 37.4577
+margin_top = 32.9628
+margin_right = 329.458
+margin_bottom = 71.9628
+custom_fonts/font = ExtResource( 5 )
+text = "Ship Layout	"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WFpanel/MapControls/Info"]
+anchor_left = 0.47001
+anchor_top = 1.0
+anchor_right = 1.03165
+anchor_bottom = 1.92308
+margin_right = -156.0
+rect_min_size = Vector2( 200, 0 )
+rect_pivot_offset = Vector2( 4.48022, 20.1721 )
+text = "Player Class"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HSeparator" type="HSeparator" parent="WFpanel/MapControls/Info"]
+margin_left = 1.0
+margin_top = 32.0
+margin_right = 336.0
+margin_bottom = 41.0
+
+[node name="Hint" type="Label" parent="WFpanel/MapControls"]
+anchor_left = 0.44653
+anchor_top = 0.905883
+anchor_right = 0.55347
+anchor_bottom = 0.948014
+margin_right = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 0
+text = "Place cards"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="WFpanel"]
+show_behind_parent = true
+margin_right = 2778.0
+margin_bottom = 1575.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+custom_constants/margin_right = 29
+custom_constants/margin_top = 17
+custom_constants/margin_left = 28
+custom_constants/margin_bottom = 30
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="WFpanel/MarginContainer"]
+light_mask = 9
+margin_left = 28.0
+margin_top = 17.0
+margin_right = 2749.0
+margin_bottom = 1545.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource( 2 )
+expand = true
+stretch_mode = 1
+flip_v = true
+
+[node name="PlayerMarker" parent="." instance=ExtResource( 9 )]
+margin_top = -0.5
+margin_bottom = 24.5
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+light_mask = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hide = SubResource( 4 )
+anims/Show = SubResource( 5 )
+
+[node name="Notification" parent="." instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 1 )
+
+[node name="markers" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+[connection signal="visibility_changed" from="." to="." method="_on_MapView_visibility_changed"]
+[connection signal="pressed" from="WFpanel/MapControls/MapControlsButton" to="." method="_on_MapControlsButton_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/Enemy1.glb" type="PackedScene" id=1]
+[ext_resource path="res://packs/waypoints/trappist-1/sfx/zapsplat_science_fiction_alien_chatter_over_radio_002_24693.mp3.ogg" type="AudioStream" id=2]
+[ext_resource path="res://packs/waypoints/trappist-1/scenes/Enemy1.gd" type="Script" id=3]
+[ext_resource path="res://packs/characters/Effects/laserbolt.tscn" type="PackedScene" id=4]
+[ext_resource path="res://packs/characters/Effects/shield.tscn" type="PackedScene" id=5]
+[ext_resource path="res://packs/waypoints/trappist-1/scenes/deflect.anim" type="Animation" id=6]
+[ext_resource path="res://packs/waypoints/trappist-1/scenes/block.anim" type="Animation" id=7]
+[ext_resource path="res://assets/Tex_skill_13.PNG" type="Texture" id=8]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2.54726, 2.08406, 2.01518 )
+
+[node name="Enemy1" type="Spatial" groups=[
+"enemy",
+]]
+script = ExtResource( 3 )
+
+[node name="Enemy1" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+
+[node name="Armature001" parent="Enemy1" index="0"]
+transform = Transform( 0.080792, 0, 0, 0, 0.080792, 0, 0, 0, 0.080792, 2.14683, 15.9089, 0.0707275 )
+
+[node name="AnimationPlayer" parent="Enemy1" index="3"]
+autoplay = "onBase"
+anims/block = ExtResource( 7 )
+anims/deflect = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy1"]
+anims/block = ExtResource( 7 )
+anims/deflect = ExtResource( 6 )
+
+[node name="Battle" type="Camera" parent="."]
+transform = Transform( 0.870072, 0, -0.492925, 0, 1, 0, 0.492925, 0, 0.870072, -0.713067, 0.775219, 1.57133 )
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "sfx"
+
+[node name="Area" type="Area" parent="." groups=[
+"enemy",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 0.709497, 0, -0.704709, 0, 1, 0, 0.704709, 0, 0.709497, 0, 2.06577, -0.111986 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="laserbolt" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.999998, 0, -0.00181527, 0, 1, 0, 0.00181527, 0, 0.999998, -5.33258, 2.28242, 2.76416 )
+lifetime = 0.2
+
+[node name="shield" parent="." instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -5, 0, 5, 0, 1, 0, -2.18557e-07, -5.05672, 2.1533, 4.4369 )
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 3.3, 0, 0, 0, 10.4789, 0, 0, 0, 3.3, 0, 5.95536, 0 )
+visible = false
+axis = 1
+texture = ExtResource( 8 )
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14602, 0 )
+enabled = true
+cast_to = Vector3( 0, -1, 20 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Enemy1"]

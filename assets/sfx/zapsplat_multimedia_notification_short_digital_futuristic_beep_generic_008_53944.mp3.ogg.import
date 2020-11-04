@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zapsplat_multimedia_notification_short_digital_futuristic_beep_generic_008_53944.mp3.ogg-05c87bf8dec84dcf1fa568a2d3d56d4c.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/zapsplat_multimedia_notification_short_digital_futuristic_beep_generic_008_53944.mp3.ogg"
+dest_files=[ "res://.import/zapsplat_multimedia_notification_short_digital_futuristic_beep_generic_008_53944.mp3.ogg-05c87bf8dec84dcf1fa568a2d3d56d4c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

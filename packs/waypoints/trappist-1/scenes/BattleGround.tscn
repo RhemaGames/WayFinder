@@ -1,0 +1,183 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/startmat.tres" type="Material" id=1]
+[ext_resource path="res://packs/waypoints/trappist-1/scenes/Enemy1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/battleGround.glb" type="PackedScene" id=3]
+[ext_resource path="res://packs/waypoints/trappist-1/scenes/BattleGround.gd" type="Script" id=4]
+[ext_resource path="res://packs/waypoints/trappist-1/enviroments/trappist-1.tres" type="Environment" id=5]
+[ext_resource path="res://scenes/2DUI/PlayerUI/Combat/Countdown.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/sfx/zapsplat_multimedia_notification_short_digital_futuristic_beep_generic_008_53944.mp3.ogg" type="AudioStream" id=19]
+[ext_resource path="res://scenes/gui_panel_3d.tscn" type="PackedScene" id=21]
+
+[sub_resource type="CylinderMesh" id=1]
+material = ExtResource( 1 )
+top_radius = 20.0
+bottom_radius = 20.0
+height = 0.2
+
+[sub_resource type="Animation" id=2]
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerCamera/GUIPanel3D/Viewport/Controls/PlayerChoice/Control:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 2.5, 2.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerCamera/GUIPanel3D/Viewport/Controls/PlayerChoice/Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.08 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerCamera/GUIPanel3D/Viewport/Controls/PlayerChoice/Control:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -360.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PlayerCamera/GUIPanel3D/Viewport/Controls/PlayerChoice/Control:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.780392, 0.643137, 0.160784, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="BattleGround" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5 )
+
+[node name="battleGround" type="MeshInstance" parent="."]
+visible = false
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="slow_rotate" type="Position3D" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.977683, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera" type="Camera" parent="slow_rotate"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92944e-07, 2.07489, 13.565 )
+size = 11.0
+
+[node name="PlayerCamera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.659525, 5.64035, 19.6596 )
+
+[node name="Choices" parent="PlayerCamera" instance=ExtResource( 21 )]
+transform = Transform( 0.590885, 0, 0.0694593, 0, 0.6, 0, -0.104189, 0, 0.393923, -2.362, -1.417, -2.734 )
+UI = "res://scenes/2DUI/PlayerUI/Combat/PlayerChoice.tscn"
+distance = 10
+resolution = Vector2( 1200, 700 )
+
+[node name="Stats" parent="PlayerCamera" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.795, 3, -4.95 )
+UI = "res://scenes/2DUI/PlayerUI/Combat/PlayerStats.tscn"
+handle_input = false
+resolution = Vector2( 500, 250 )
+
+[node name="eStats" parent="PlayerCamera" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.731, 2.983, -4.95 )
+UI = "res://scenes/2DUI/PlayerUI/Combat/EnemyStats.tscn"
+handle_input = false
+resolution = Vector2( 500, 250 )
+
+[node name="eChoices" parent="PlayerCamera" instance=ExtResource( 21 )]
+transform = Transform( 0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 3.232, -1.901, -2 )
+UI = "res://scenes/2DUI/PlayerUI/Combat/EnemyChoice.tscn"
+resolution = Vector2( 1000, 700 )
+
+[node name="Player" type="Position3D" parent="."]
+transform = Transform( -9.61651e-08, 0, 2.2, 0, 2.2, 0, -2.2, 0, -9.61651e-08, -4.32704, 1.12721, 10.9927 )
+
+[node name="load" type="Camera" parent="Player"]
+transform = Transform( 0.348605, 0, 0.93727, 0, 1, 0, -0.93727, 0, 0.348605, 6.80582, 4.86854, 5.02068 )
+
+[node name="EnemyCamera" type="Camera" parent="."]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.27139, 4.6051, -19.366 )
+
+[node name="Enemy" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.27139, 0.0646026, -10.7459 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="load" type="Camera" parent="Enemy"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48004, 3.77273, 6.06392 )
+
+[node name="Enemy1" parent="Enemy" instance=ExtResource( 2 )]
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.4736, 0 )
+shadow_enabled = true
+spot_range = 25.885
+spot_angle = 47.8125
+
+[node name="SpotLight2" type="SpotLight" parent="."]
+transform = Transform( 0.413867, -3.97921e-08, 0.910337, -0.910337, -1.80907e-08, 0.413867, 0, -1, -4.37114e-08, 69.7407, 33.6899, 0 )
+visible = false
+shadow_enabled = true
+spot_range = 110.127
+spot_angle = 23.1224
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.654253, 0.756276, 0, -0.756276, -0.654253, 0, 12.1531, 0 )
+shadow_enabled = true
+omni_range = 36.1559
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Begin = SubResource( 2 )
+
+[node name="battleGround2" parent="." instance=ExtResource( 3 )]
+
+[node name="count" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+bus = "sfx"
+
+[node name="rotate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+bus = "sfx"
+
+[node name="select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+bus = "sfx"
+
+[node name="Countdown" parent="." instance=ExtResource( 11 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -1366.0
+margin_top = -16.0
+margin_right = 1366.0
+margin_bottom = 16.0
+[connection signal="visibility_changed" from="." to="." method="_on_BattleGround_visibility_changed"]
+[connection signal="relay" from="PlayerCamera/Choices" to="." method="_on_Choices_relay"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

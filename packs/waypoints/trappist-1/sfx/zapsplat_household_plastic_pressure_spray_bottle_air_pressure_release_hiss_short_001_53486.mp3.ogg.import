@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zapsplat_household_plastic_pressure_spray_bottle_air_pressure_release_hiss_short_001_53486.mp3.ogg-0eec3c49c1d28fcf2b340afbb06a1621.oggstr"
+
+[deps]
+
+source_file="res://packs/waypoints/trappist-1/sfx/zapsplat_household_plastic_pressure_spray_bottle_air_pressure_release_hiss_short_001_53486.mp3.ogg"
+dest_files=[ "res://.import/zapsplat_household_plastic_pressure_spray_bottle_air_pressure_release_hiss_short_001_53486.mp3.ogg-0eec3c49c1d28fcf2b340afbb06a1621.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.137255, 1, 0.109804, 1 )
+emission_enabled = true
+emission = Color( 0.388235, 0.980392, 0.2, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CapsuleMesh" id=2]
+material = SubResource( 1 )
+mid_height = 22.621
+radial_segments = 10
+rings = 3
+
+[node name="laserbolt" type="CPUParticles"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.42951, 2.63516, 3.84966 )
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+mesh = SubResource( 2 )
+direction = Vector3( 0, 0, 1 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+scale_amount = 0.2

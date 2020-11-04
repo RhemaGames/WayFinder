@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/card_line.glb" type="PackedScene" id=1]
+[ext_resource path="res://packs/waypoints/trappist-1/scenes/cards.gd" type="Script" id=2]
+
+[sub_resource type="BakedLightmapData" id=1]
+bounds = AABB( -2.1619, -2.19855, -3.27279, 4.3238, 4.3971, 6.54558 )
+cell_space_transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 8.6476, 8.7942, 13.0912 )
+cell_subdiv = 6
+octree = PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.47695, 1.3665, 3.04505 )
+
+[node name="card_line" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Cube" parent="." index="0"]
+use_in_baked_light = true
+
+[node name="Cube070" parent="." index="1"]
+use_in_baked_light = true
+
+[node name="Cube010" parent="." index="2"]
+use_in_baked_light = true
+
+[node name="Cube006" parent="." index="5"]
+use_in_baked_light = true
+
+[node name="Cube005" parent="." index="6"]
+use_in_baked_light = true
+
+[node name="Cube021" parent="." index="7"]
+use_in_baked_light = true
+
+[node name="Cube022" parent="." index="8"]
+use_in_baked_light = true
+
+[node name="Cube023" parent="." index="9"]
+use_in_baked_light = true
+
+[node name="Cube024" parent="." index="10"]
+transform = Transform( -0.15515, 0, 0, 0, 0.15515, 0, 0, 0, 0.15515, -1.28, -0.368, -1.587 )
+use_in_baked_light = true
+
+[node name="BakedLightmap" type="BakedLightmap" parent="." index="16"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.80734, 0 )
+visible = false
+bake_extents = Vector3( 2.1619, 2.19855, 3.27279 )
+light_data = SubResource( 1 )
+
+[node name="lights" type="Spatial" parent="." index="17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.002774, 0 )
+visible = false
+
+[node name="OmniLight" type="OmniLight" parent="lights" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.01286, 2.42549 )
+light_bake_mode = 2
+shadow_enabled = true
+omni_range = 3.0
+
+[node name="OmniLight2" type="OmniLight" parent="lights" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7445, -0.400833 )
+light_bake_mode = 2
+shadow_enabled = true
+omni_range = 3.0
+
+[node name="OmniLight3" type="OmniLight" parent="lights" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86101, -2.67075 )
+light_bake_mode = 2
+shadow_enabled = true
+omni_range = 3.0
+
+[node name="Area" type="Area" parent="." index="18" groups=[
+"Wall",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53991, 1.36961, 0 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Area" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52105, 1.36961, 0 )
+shape = SubResource( 2 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zapsplat_multimedia_game_sound_coins_collect_several_at_once_002_40813.mp3.ogg-a999804538677ac05b5e45dc4d623d6d.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/zapsplat_multimedia_game_sound_coins_collect_several_at_once_002_40813.mp3.ogg"
+dest_files=[ "res://.import/zapsplat_multimedia_game_sound_coins_collect_several_at_once_002_40813.mp3.ogg-a999804538677ac05b5e45dc4d623d6d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

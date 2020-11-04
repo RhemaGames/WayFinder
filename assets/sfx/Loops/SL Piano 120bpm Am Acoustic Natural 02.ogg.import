@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SL Piano 120bpm Am Acoustic Natural 02.ogg-ae5ba11eba2477aa9643482ecb4fac46.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/Loops/SL Piano 120bpm Am Acoustic Natural 02.ogg"
+dest_files=[ "res://.import/SL Piano 120bpm Am Acoustic Natural 02.ogg-ae5ba11eba2477aa9643482ecb4fac46.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

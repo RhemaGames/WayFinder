@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/power_outage.glb" type="PackedScene" id=1]
+[ext_resource path="res://packs/waypoints/trappist-1/scenes/event3.gd" type="Script" id=2]
+
+
+
+[node name="event3" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="power_outage" parent="." instance=ExtResource( 1 )]
+transform = Transform( -2.44381e-07, 0, -1.5, 0, 1.5, 0, 1.5, 0, -2.44381e-07, -0.10725, 6.13085, 0 )
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="visibility_changed" from="." to="." method="_on_event3_visibility_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

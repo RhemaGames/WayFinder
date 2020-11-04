@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PLPSF-Synth_Arpeggiator_Root_Note_A_028.wav-f8c77414b1d2fa76b9f5be3d0a4b9aa0.sample"
+
+[deps]
+
+source_file="res://packs/characters/Medic/assets/PLPSF-Synth_Arpeggiator_Root_Note_A_028.wav"
+dest_files=[ "res://.import/PLPSF-Synth_Arpeggiator_Root_Note_A_028.wav-f8c77414b1d2fa76b9f5be3d0a4b9aa0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PLPSF-Mixed_Beat_120_20.wav-f685ca20fff68e62afd6cfcfb5858ad0.sample"
+
+[deps]
+
+source_file="res://packs/characters/Engineer/assets/PLPSF-Mixed_Beat_120_20.wav"
+dest_files=[ "res://.import/PLPSF-Mixed_Beat_120_20.wav-f685ca20fff68e62afd6cfcfb5858ad0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

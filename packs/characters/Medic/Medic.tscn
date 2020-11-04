@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://packs/characters/Medic/Medic.glb" type="PackedScene" id=1]
+[ext_resource path="res://packs/characters/Medic/Medic.gd" type="Script" id=2]
+[ext_resource path="res://packs/characters/Effects/shield.tscn" type="PackedScene" id=3]
+[ext_resource path="res://packs/characters/Effects/laserbolt.tscn" type="PackedScene" id=4]
+[ext_resource path="res://packs/characters/Medic/deflect.anim" type="Animation" id=5]
+[ext_resource path="res://packs/characters/Medic/block.anim" type="Animation" id=6]
+
+[node name="Medic" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Medic" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, -0.256759, 0 )
+
+[node name="Cube027" parent="Medic" index="0"]
+visible = false
+
+[node name="BoneAttachment" parent="Medic/Armature008/Skeleton" index="0"]
+transform = Transform( 0.316745, -0.08084, -0.94506, 0.334112, -0.922992, 0.190933, -0.887717, -0.376233, -0.265344, -36.6717, -33.9507, -28.7506 )
+
+[node name="BoneAttachment 2" parent="Medic/Armature008/Skeleton" index="1"]
+transform = Transform( -0.987204, 0.159463, 1.75834e-07, 1.7381e-07, 2.94447e-08, 1, 0.159463, 0.987204, -4.32643e-08, -1.39033e-06, 57.7864, 8.94929e-07 )
+
+[node name="BoneAttachment 3" parent="Medic/Armature008/Skeleton" index="2"]
+transform = Transform( 0.961758, -2.1993e-08, -0.2739, -8.24847e-09, 1, -1.09259e-07, 0.2739, 1.0734e-07, 0.961758, -2.33505e-07, -34.2109, -5.93757e-06 )
+
+[node name="AnimationPlayer" parent="Medic" index="2"]
+autoplay = "onBaseMedic"
+anims/block = ExtResource( 6 )
+anims/deflect = ExtResource( 5 )
+
+[node name="shield" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 2.54675, 1.5675, 2.04396 )
+visible = false
+
+[node name="laserbolt" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.750251, 1.54123, 3.12545 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="sfx" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.4624, 2.25804, 3.73772 )
+max_distance = 100.0
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Medic"]

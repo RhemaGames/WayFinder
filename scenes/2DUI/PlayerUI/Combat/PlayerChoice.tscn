@@ -1,0 +1,312 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/Tex_skill_21.PNG" type="Texture" id=1]
+[ext_resource path="res://assets/Tex_skill_16.PNG" type="Texture" id=2]
+[ext_resource path="res://assets/circle.svg" type="Texture" id=3]
+[ext_resource path="res://assets/circle_pressed.svg" type="Texture" id=4]
+[ext_resource path="res://assets/Tex_skill_64.PNG" type="Texture" id=5]
+[ext_resource path="res://assets/Tex_skill_44.PNG" type="Texture" id=6]
+[ext_resource path="res://assets/Title.tres" type="DynamicFont" id=7]
+[ext_resource path="res://scenes/2DUI/PlayerUI/Combat/PlayerChoice.gd" type="Script" id=8]
+[ext_resource path="res://assets/sfx/zapsplat_multimedia_notification_short_digital_futuristic_beep_generic_008_53944.mp3.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/default_theme.tres" type="Theme" id=10]
+[ext_resource path="res://scenes/WFpanel.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/space age.ttf" type="DynamicFontData" id=12]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 100
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 12 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Hit"
+length = 0.742
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 50 ), Vector2( 0, -50 ), Vector2( 0, 50 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.878431, 0.27451, 0.27451, 1 ), Color( 1, 1, 1, 1 ), Color( 0.854902, 0.317647, 0.317647, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="PlayerChoice" type="Control"]
+light_mask = 2
+margin_right = 1200.0
+margin_bottom = 655.0
+grow_vertical = 0
+rect_min_size = Vector2( 200, 200 )
+rect_pivot_offset = Vector2( 3482.26, -1813.18 )
+theme = ExtResource( 10 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WFpanel" parent="." instance=ExtResource( 11 )]
+border = false
+bg_opacity = 0.4
+hFlip = true
+
+[node name="Control" type="TextureRect" parent="."]
+self_modulate = Color( 0.780392, 0.643137, 0.160784, 1 )
+light_mask = 0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 95.1366
+margin_top = -250.0
+margin_right = 595.137
+margin_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 250, 250 )
+mouse_filter = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="melee" type="TextureRect" parent="Control"]
+anchor_left = 0.697625
+anchor_top = 0.0374685
+anchor_right = 0.961624
+anchor_bottom = 0.301468
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 48, 48 )
+rect_pivot_offset = Vector2( 66, 66 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="selected" type="TextureRect" parent="Control/melee"]
+modulate = Color( 0.211765, 0.905882, 0.419608, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 56, 56 )
+rect_pivot_offset = Vector2( 27.886, 27.4588 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ranged" type="TextureRect" parent="Control"]
+anchor_left = 0.0422424
+anchor_top = 0.694121
+anchor_right = 0.306242
+anchor_bottom = 0.958121
+margin_left = 1.4983
+margin_top = 2.99658
+margin_right = 1.49831
+margin_bottom = 2.99658
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 48, 48 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+flip_v = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="selected" type="TextureRect" parent="Control/ranged"]
+modulate = Color( 0.211765, 0.905882, 0.419608, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 56, 56 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="block" type="TextureRect" parent="Control"]
+anchor_left = 0.696757
+anchor_top = 0.696963
+anchor_right = 0.960757
+anchor_bottom = 0.960963
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 48, 48 )
+rect_pivot_offset = Vector2( 66, 66 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="selected" type="TextureRect" parent="Control/block"]
+modulate = Color( 0.211765, 0.905882, 0.419608, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 56, 56 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="command" type="TextureRect" parent="Control"]
+anchor_left = 0.0424113
+anchor_top = 0.0308877
+anchor_right = 0.138411
+anchor_bottom = 0.126888
+margin_left = -3.8147e-06
+margin_right = 84.0
+margin_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 48, 48 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="selected" type="TextureRect" parent="Control/command"]
+modulate = Color( 0.211765, 0.905882, 0.419608, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 56, 56 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="."]
+visible = false
+modulate = Color( 0.705882, 0.584314, 0.145098, 1 )
+anchor_left = 0.234
+anchor_top = 0.071
+anchor_right = 0.234
+anchor_bottom = 0.071
+margin_left = 109.031
+margin_top = -5.57968
+margin_right = 167.031
+margin_bottom = 47.4203
+rect_rotation = -177.0
+rect_pivot_offset = Vector2( 30.141, 28.1747 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = ExtResource( 7 )
+text = ">>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Forward" type="Button" parent="."]
+visible = false
+modulate = Color( 0.780392, 0.643137, 0.160784, 1 )
+anchor_left = 0.409
+anchor_top = 0.477
+anchor_right = 0.409
+anchor_bottom = 0.477
+margin_left = 99.0307
+margin_top = -47.2347
+margin_right = 157.031
+margin_bottom = 5.76532
+rect_rotation = 84.0
+rect_pivot_offset = Vector2( 27.3951, 27.5545 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = ExtResource( 7 )
+text = ">>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rotate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "sfx"
+
+[node name="Hint" type="Label" parent="."]
+anchor_left = 0.432
+anchor_top = 0.837
+anchor_right = 0.432
+anchor_bottom = 0.837
+margin_left = 81.6
+margin_top = -86.235
+margin_right = 275.6
+margin_bottom = 35.765
+rect_pivot_offset = Vector2( 0.417969, 3.82617 )
+custom_fonts/font = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="confirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+pitch_scale = 1.89
+bus = "sfx"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hit = SubResource( 4 )
+[connection signal="visibility_changed" from="." to="." method="_on_PlayerChoice_visibility_changed"]
+[connection signal="gui_input" from="Control/melee" to="." method="_on_melee_gui_input"]
+[connection signal="gui_input" from="Control/ranged" to="." method="_on_ranged_gui_input"]
+[connection signal="gui_input" from="Control/block" to="." method="_on_block_gui_input"]
+[connection signal="gui_input" from="Control/command" to="." method="_on_command_gui_input"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Forward" to="." method="_on_Forward_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zapsplat_science_fiction_door_open_hiss_air_release_then_auto_motor_drome_44436.mp3.ogg-1181b4bcc4f0f7011b2305804dac9a50.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/zapsplat_science_fiction_door_open_hiss_air_release_then_auto_motor_drome_44436.mp3.ogg"
+dest_files=[ "res://.import/zapsplat_science_fiction_door_open_hiss_air_release_then_auto_motor_drome_44436.mp3.ogg-1181b4bcc4f0f7011b2305804dac9a50.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

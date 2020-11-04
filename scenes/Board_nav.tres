@@ -1,0 +1,10 @@
+[gd_resource type="NavigationMesh" format=2]
+
+[resource]
+vertices = PoolVector3Array( -17.6867, 2.09369, 2.15665, -13.7867, 2.09369, 2.15665, -13.4867, 2.09369, -0.543353, -17.6867, 2.09369, -3.54335, -13.4867, 2.09369, -0.543353, -7.7867, 1.89369, -0.543353, -7.7867, 1.89369, -3.54335, -17.6867, 2.09369, -3.54335 )
+polygons = [ PoolIntArray( 1, 0, 2 ), PoolIntArray( 2, 0, 3 ), PoolIntArray( 5, 4, 6 ), PoolIntArray( 6, 4, 7 ) ]
+geometry/parsed_geometry_type = 2
+geometry/collision_mask = 4294967295
+geometry/source_geometry_mode = 1
+geometry/source_group_name = "cardnav"
+region/merge_size = 150.0

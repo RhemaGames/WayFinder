@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zapsplat_science_fiction_retro_laser_beam_002_44337.mp3.ogg-ba2e8dcdd75aa239e57526dbc62a8c2f.oggstr"
+
+[deps]
+
+source_file="res://packs/characters/Effects/sfx/zapsplat_science_fiction_retro_laser_beam_002_44337.mp3.ogg"
+dest_files=[ "res://.import/zapsplat_science_fiction_retro_laser_beam_002_44337.mp3.ogg-ba2e8dcdd75aa239e57526dbc62a8c2f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,1368 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://assets/Title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/default_theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/logo2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Menu.gd" type="Script" id=4]
+[ext_resource path="res://scenes/InfoBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/small_font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/sfx/zapsplat_multimedia_notification_short_digital_futuristic_beep_generic_008_53944.mp3.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/button.svg" type="Texture" id=8]
+[ext_resource path="res://assets/menuFontMedium.tres" type="DynamicFont" id=9]
+[ext_resource path="res://scenes/WFpanel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/wfRichText.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/End.tscn" type="PackedScene" id=14]
+
+[sub_resource type="Animation" id=1]
+resource_name = "EncounterSelect"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Encounter:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Encounter:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Encounter:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "HideInfo"
+
+[sub_resource type="Animation" id=3]
+resource_name = "MainMenu"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("MainMenu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MainMenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.02, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mission:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Mission:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Mission:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "NewGame"
+length = 0.58
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("MainMenu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.48, 0.49 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MainMenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.46, 0.49 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+[sub_resource type="Animation" id=7]
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Players:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Players:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Players:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=8]
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.909804, 0.819608, 0.0941176, 1 ), Color( 0.909804, 0.819608, 0.0941176, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 0.909804, 0.819608, 0.0941176, 1 ), Color( 1, 1, 1, 0 ), Color( 0.909804, 0.819608, 0.0941176, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.01, 0.01 ), Vector2( 0.01, 1 ), Vector2( 0.01, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("..:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=9]
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="Animation" id=12]
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("back:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.658824, 0.552941, 0.137255, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("next:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.658824, 0.552941, 0.137255, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("back:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.658824, 0.552941, 0.137255, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("next:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.658824, 0.552941, 0.137255, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.25, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WFpanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WFpanel:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2.5, 2.75, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.01, 0.01 ), Vector2( 0.01, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 2.0
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1024, 0 ), Vector2( 1024, 200 ), Vector2( 1024, 200 ), Vector2( 1024, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.06, 1.96, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 2.0
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1024, 0 ), Vector2( 1024, 200 ), Vector2( 1024, 200 ), Vector2( 1024, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.06, 1.96, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_clip_content = true
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="WFpanel2" parent="." instance=ExtResource( 10 )]
+visible = false
+margin_left = -28.0
+margin_top = -15.0
+margin_right = 21.0
+margin_bottom = 24.0
+border = false
+
+[node name="Main" parent="." instance=ExtResource( 10 )]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+rect_scale = Vector2( 0.01, 0.01 )
+rect_pivot_offset = Vector2( 703.048, 386.946 )
+
+[node name="Control" type="MarginContainer" parent="Main"]
+margin_right = 1366.0
+margin_bottom = 768.0
+rect_clip_content = true
+custom_constants/margin_right = 22
+custom_constants/margin_top = 20
+custom_constants/margin_left = 22
+custom_constants/margin_bottom = 30
+
+[node name="MainMenu" type="VBoxContainer" parent="Main/Control"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 22.0
+margin_top = 20.0
+margin_right = 1344.0
+margin_bottom = 738.0
+custom_constants/separation = 20
+
+[node name="Label" type="Label" parent="Main/Control/MainMenu"]
+margin_right = 1322.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "Main Menu"
+align = 1
+autowrap = true
+
+[node name="HSeparator" type="HSeparator" parent="Main/Control/MainMenu"]
+margin_top = 81.0
+margin_right = 1322.0
+margin_bottom = 85.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New Game" type="Button" parent="Main/Control/MainMenu"]
+margin_top = 105.0
+margin_right = 1322.0
+margin_bottom = 163.0
+text = "New Game"
+
+[node name="Continue" type="Button" parent="Main/Control/MainMenu"]
+margin_top = 183.0
+margin_right = 1322.0
+margin_bottom = 241.0
+disabled = true
+text = "Continue"
+
+[node name="HSeparator2" type="HSeparator" parent="Main/Control/MainMenu"]
+margin_top = 261.0
+margin_right = 1322.0
+margin_bottom = 265.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Store" type="Button" parent="Main/Control/MainMenu"]
+margin_top = 285.0
+margin_right = 1322.0
+margin_bottom = 343.0
+text = "Store"
+
+[node name="Extras" type="Button" parent="Main/Control/MainMenu"]
+margin_top = 363.0
+margin_right = 1322.0
+margin_bottom = 421.0
+text = "Extras"
+
+[node name="HSeparator3" type="HSeparator" parent="Main/Control/MainMenu"]
+margin_top = 441.0
+margin_right = 1322.0
+margin_bottom = 445.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spacer2" type="Control" parent="Main/Control/MainMenu"]
+margin_top = 465.0
+margin_right = 1322.0
+margin_bottom = 485.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="spacer" type="Control" parent="Main/Control/MainMenu"]
+margin_top = 505.0
+margin_right = 1322.0
+margin_bottom = 525.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="Settings" type="Button" parent="Main/Control/MainMenu"]
+margin_top = 545.0
+margin_right = 1322.0
+margin_bottom = 603.0
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Main/Control/MainMenu"]
+margin_top = 623.0
+margin_right = 1322.0
+margin_bottom = 681.0
+text = "Quit"
+
+[node name="Mission" type="VBoxContainer" parent="Main/Control"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 22.0
+margin_top = 20.0
+margin_right = 1344.0
+margin_bottom = 739.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_clip_content = true
+mouse_filter = 2
+custom_constants/separation = 12
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main/Control/Mission"]
+margin_right = 428.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "Missions"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="Main/Control/Mission"]
+margin_top = 73.0
+margin_right = 428.0
+margin_bottom = 77.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/Control/Mission"]
+margin_top = 89.0
+margin_right = 428.0
+margin_bottom = 649.0
+rect_min_size = Vector2( 428, 560 )
+scroll_horizontal_enabled = false
+
+[node name="Missions" type="VBoxContainer" parent="Main/Control/Mission/ScrollContainer"]
+margin_right = 428.0
+rect_min_size = Vector2( 428, 0 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Control/Mission"]
+margin_right = 40.0
+margin_bottom = 40.0
+alignment = 1
+
+[node name="BacktoMain" type="Button" parent="Main/Control/Mission/HBoxContainer"]
+margin_top = 661.0
+margin_right = 428.0
+margin_bottom = 719.0
+text = "Back"
+
+[node name="Encounter" type="VBoxContainer" parent="Main/Control"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 22.0
+margin_top = 20.0
+margin_right = 1344.0
+margin_bottom = 739.0
+rect_clip_content = true
+mouse_filter = 2
+custom_constants/separation = 12
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main/Control/Encounter"]
+margin_right = 448.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "Encounter"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="Main/Control/Encounter"]
+margin_top = 73.0
+margin_right = 448.0
+margin_bottom = 77.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/Control/Encounter"]
+margin_top = 89.0
+margin_right = 448.0
+margin_bottom = 649.0
+rect_min_size = Vector2( 448, 560 )
+
+[node name="Encounters" type="VBoxContainer" parent="Main/Control/Encounter/ScrollContainer"]
+margin_right = 448.0
+rect_min_size = Vector2( 448, 0 )
+custom_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/Control/Encounter"]
+margin_top = 661.0
+margin_right = 448.0
+margin_bottom = 719.0
+alignment = 1
+
+[node name="BackToMissions" type="Button" parent="Main/Control/Encounter/HBoxContainer"]
+margin_left = 192.0
+margin_right = 256.0
+margin_bottom = 58.0
+text = "Back"
+
+[node name="Players" type="VBoxContainer" parent="Main/Control"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 22.0
+margin_top = 20.0
+margin_right = 1344.0
+margin_bottom = 738.0
+grow_horizontal = 2
+rect_clip_content = true
+mouse_filter = 0
+custom_constants/separation = 12
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main/Control/Players"]
+margin_right = 469.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "Players"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="Main/Control/Players"]
+margin_top = 73.0
+margin_right = 469.0
+margin_bottom = 77.0
+
+[node name="2players" type="Button" parent="Main/Control/Players"]
+margin_top = 89.0
+margin_right = 469.0
+margin_bottom = 147.0
+text = "2 Players"
+clip_text = true
+
+[node name="3players" type="Button" parent="Main/Control/Players"]
+margin_top = 159.0
+margin_right = 469.0
+margin_bottom = 217.0
+text = "3 players"
+clip_text = true
+
+[node name="4players" type="Button" parent="Main/Control/Players"]
+margin_top = 229.0
+margin_right = 469.0
+margin_bottom = 287.0
+text = "4 players"
+clip_text = true
+
+[node name="5players" type="Button" parent="Main/Control/Players"]
+margin_top = 299.0
+margin_right = 469.0
+margin_bottom = 357.0
+disabled = true
+text = "5 players"
+clip_text = true
+
+[node name="6players" type="Button" parent="Main/Control/Players"]
+margin_top = 369.0
+margin_right = 469.0
+margin_bottom = 427.0
+disabled = true
+text = "6 players"
+clip_text = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main/Control"]
+anims/EncounterSelect = SubResource( 1 )
+anims/HideInfo = SubResource( 2 )
+anims/MainMenu = SubResource( 3 )
+anims/MissionSelect = SubResource( 4 )
+anims/NewGame = SubResource( 5 )
+anims/OnLoad = SubResource( 6 )
+anims/PlayerSelect = SubResource( 7 )
+anims/Show = SubResource( 8 )
+anims/ShowInfo = SubResource( 9 )
+
+[node name="Logo" type="TextureRect" parent="Main/Control"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 22.0
+margin_top = 20.0
+margin_right = 1344.0
+margin_bottom = 738.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoBox" parent="Main/Control" instance=ExtResource( 5 )]
+visible = false
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 22.0
+margin_top = 20.0
+margin_right = 1344.0
+margin_bottom = 738.0
+
+[node name="Title" type="Label" parent="Main/Control"]
+visible = false
+modulate = Color( 1, 1, 1, 0.0326977 )
+margin_left = 22.0
+margin_top = 348.0
+margin_right = 1344.0
+margin_bottom = 409.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "Way Finder"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterSelect" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="WFpanel" parent="CharacterSelect" instance=ExtResource( 10 )]
+modulate = Color( 0.823529, 0.629105, 0.168627, 1 )
+anchor_right = 0.408492
+anchor_bottom = 0.980469
+margin_bottom = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 558, 753 )
+
+[node name="MC" type="MarginContainer" parent="CharacterSelect/WFpanel"]
+margin_right = 558.0
+margin_bottom = 753.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelect/WFpanel/MC"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 538.0
+margin_bottom = 733.0
+custom_constants/separation = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" type="Label" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
+margin_right = 518.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "Player"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
+margin_top = 86.0
+margin_right = 518.0
+margin_bottom = 90.0
+
+[node name="CharacterName" type="LineEdit" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
+margin_top = 115.0
+margin_right = 518.0
+margin_bottom = 173.0
+text = "Character Name"
+
+[node name="Label" type="Label" parent="CharacterSelect/WFpanel/MC/VBoxContainer/CharacterName"]
+margin_top = -20.0
+margin_right = 524.0
+margin_bottom = 2.0
+custom_fonts/font = ExtResource( 6 )
+text = "Character Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RandomName" type="Button" parent="CharacterSelect/WFpanel/MC/VBoxContainer/CharacterName"]
+modulate = Color( 1, 1, 1, 0.388235 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -31.0
+margin_top = -27.0
+margin_bottom = 27.0
+grow_horizontal = 0
+text = "R"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Class" type="Label" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
+margin_top = 198.0
+margin_right = 518.0
+margin_bottom = 232.0
+text = "Class Name"
+
+[node name="Label" type="Label" parent="CharacterSelect/WFpanel/MC/VBoxContainer/Class"]
+margin_top = -20.0
+margin_right = 64.0
+margin_bottom = 2.0
+custom_fonts/font = ExtResource( 6 )
+text = "Class:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
+margin_top = 257.0
+margin_right = 518.0
+margin_bottom = 261.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
+margin_top = 286.0
+margin_right = 518.0
+margin_bottom = 311.0
+custom_fonts/font = ExtResource( 6 )
+text = "Commands:"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
+margin_top = 336.0
+margin_right = 518.0
+margin_bottom = 616.0
+rect_min_size = Vector2( 0, 280 )
+
+[node name="CommandList" type="VBoxContainer" parent="CharacterSelect/WFpanel/MC/VBoxContainer/ScrollContainer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
+margin_top = 641.0
+margin_right = 518.0
+margin_bottom = 699.0
+alignment = 2
+
+[node name="CharacterSelectAccept" type="Button" parent="CharacterSelect/WFpanel/MC/VBoxContainer/HBoxContainer"]
+margin_left = 428.0
+margin_right = 518.0
+margin_bottom = 58.0
+text = "Accept"
+
+[node name="back" type="Button" parent="CharacterSelect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.514
+anchor_bottom = 0.5
+margin_left = -8.36401
+margin_top = -27.0
+margin_right = 60.512
+margin_bottom = 27.0
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = ExtResource( 1 )
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next" type="Button" parent="CharacterSelect"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -152.363
+margin_top = -27.0
+margin_right = -62.3628
+margin_bottom = 27.0
+grow_horizontal = 0
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = ExtResource( 1 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterSelectAnimations" type="AnimationPlayer" parent="CharacterSelect"]
+anims/Hide = SubResource( 12 )
+anims/Show = SubResource( 13 )
+
+[node name="CommandView" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WFpanel" parent="CommandView" instance=ExtResource( 10 )]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 811.658
+margin_top = 10.0
+margin_right = 1361.66
+margin_bottom = 768.0
+
+[node name="MC" type="MarginContainer" parent="CommandView/WFpanel"]
+margin_right = 550.0
+margin_bottom = 758.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 25
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CommandView/WFpanel/MC"]
+margin_left = 20.0
+margin_top = 25.0
+margin_right = 530.0
+margin_bottom = 728.0
+custom_constants/separation = 15
+
+[node name="Label" type="Label" parent="CommandView/WFpanel/MC/VBoxContainer"]
+margin_right = 510.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "Commands"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="CommandView/WFpanel/MC/VBoxContainer"]
+margin_top = 76.0
+margin_right = 510.0
+margin_bottom = 80.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CommandView/WFpanel/MC/VBoxContainer"]
+margin_top = 95.0
+margin_right = 510.0
+margin_bottom = 630.0
+grow_horizontal = 0
+grow_vertical = 2
+rect_min_size = Vector2( 510, 535 )
+
+[node name="CommandList" type="VBoxContainer" parent="CommandView/WFpanel/MC/VBoxContainer/ScrollContainer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CommandView/WFpanel/MC/VBoxContainer"]
+margin_top = 645.0
+margin_right = 510.0
+margin_bottom = 703.0
+alignment = 1
+
+[node name="CommandViewCancel" type="Button" parent="CommandView/WFpanel/MC/VBoxContainer/HBoxContainer"]
+margin_left = 105.0
+margin_right = 405.0
+margin_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 300, 0 )
+text = "Cancel"
+flat = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="CommandView"]
+margin_right = 12.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CommandView/PanelContainer2"]
+margin_left = 6.0
+margin_top = 10.0
+margin_right = 234.0
+margin_bottom = 44.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CommandView/PanelContainer2"]
+margin_left = 6.0
+margin_top = 10.0
+margin_right = 234.0
+margin_bottom = 44.0
+
+[node name="Label" type="Label" parent="CommandView/PanelContainer2/HBoxContainer"]
+margin_right = 216.0
+margin_bottom = 34.0
+text = "Command Points: "
+
+[node name="CP" type="Label" parent="CommandView/PanelContainer2/HBoxContainer"]
+margin_left = 220.0
+margin_right = 228.0
+margin_bottom = 34.0
+
+[node name="CrewLog" type="PanelContainer" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -223.0
+rect_pivot_offset = Vector2( 360, 629 )
+mouse_filter = 2
+
+[node name="WFpanel" parent="CrewLog" instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 6.0
+margin_top = 10.0
+margin_right = 1360.0
+margin_bottom = 213.0
+rect_pivot_offset = Vector2( 707, 114 )
+bg_opacity = 0.5
+border_color = Color( 0.109804, 0.780392, 0.780392, 1 )
+
+[node name="MC" type="MarginContainer" parent="CrewLog/WFpanel"]
+margin_right = 1354.0
+margin_bottom = 203.0
+custom_constants/margin_right = 63
+custom_constants/margin_top = 20
+custom_constants/margin_left = 63
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CrewLog/WFpanel/MC"]
+margin_left = 63.0
+margin_top = 20.0
+margin_right = 1291.0
+margin_bottom = 183.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="CrewLog/WFpanel/MC/VBoxContainer"]
+margin_right = 1228.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 9 )
+autowrap = true
+
+[node name="HSeparator" type="HSeparator" parent="CrewLog/WFpanel/MC/VBoxContainer"]
+margin_top = 43.0
+margin_right = 1228.0
+margin_bottom = 47.0
+
+[node name="RichTextLabel" parent="CrewLog/WFpanel/MC/VBoxContainer" instance=ExtResource( 13 )]
+margin_top = 51.0
+margin_right = 1280.0
+margin_bottom = 101.0
+grow_vertical = 2
+rect_min_size = Vector2( 50, 50 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CrewLog/WFpanel/MC/VBoxContainer"]
+margin_top = 51.0
+margin_right = 1228.0
+margin_bottom = 109.0
+alignment = 2
+
+[node name="CrewLogContinue" type="Button" parent="CrewLog/WFpanel/MC/VBoxContainer/HBoxContainer"]
+margin_left = 1028.0
+margin_right = 1228.0
+margin_bottom = 58.0
+grow_horizontal = 2
+rect_min_size = Vector2( 200, 55 )
+text = "Dismiss"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CrewLog"]
+anims/Show = SubResource( 14 )
+
+[node name="Rolls" type="Control" parent="."]
+visible = false
+anchor_left = 0.125183
+anchor_top = 0.357382
+anchor_right = 0.874817
+anchor_bottom = 0.617799
+margin_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 525.073, 113.971 )
+rect_clip_content = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rolls"]
+anims/Grow = SubResource( 15 )
+
+[node name="WFpanel" parent="Rolls" instance=ExtResource( 10 )]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Rolls"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 20
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Rolls/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "Character Name"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="Rolls/VBoxContainer"]
+margin_top = 81.0
+margin_right = 1024.0
+margin_bottom = 85.0
+
+[node name="info" type="Label" parent="Rolls/VBoxContainer"]
+margin_top = 105.0
+margin_right = 1024.0
+margin_bottom = 139.0
+text = "Player 1"
+align = 1
+
+[node name="PlayerChange" type="Control" parent="."]
+visible = false
+anchor_left = 0.125183
+anchor_top = 0.384252
+anchor_right = 0.874817
+anchor_bottom = 0.384252
+margin_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 0.750122, 1.07355 )
+rect_clip_content = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerChange"]
+anims/Grow = SubResource( 16 )
+
+[node name="WFpanel" parent="PlayerChange" instance=ExtResource( 10 )]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerChange"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 20
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="PlayerChange/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "Character Name"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="PlayerChange/VBoxContainer"]
+margin_top = 81.0
+margin_right = 1024.0
+margin_bottom = 85.0
+
+[node name="playerNum" type="Label" parent="PlayerChange/VBoxContainer"]
+margin_top = 105.0
+margin_right = 1024.0
+margin_bottom = 139.0
+text = "Player 1"
+align = 1
+
+[node name="MainEvent" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="MainEvent"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="MainEvent/Panel"]
+modulate = Color( 1, 1, 1, 0.0784314 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WFpanel" parent="MainEvent" instance=ExtResource( 10 )]
+
+[node name="MC" type="MarginContainer" parent="MainEvent/WFpanel"]
+margin_right = 1366.0
+margin_bottom = 768.0
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 45
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainEvent/WFpanel/MC"]
+margin_left = 50.0
+margin_top = 40.0
+margin_right = 1326.0
+margin_bottom = 723.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="MainEvent/WFpanel/MC/VBoxContainer"]
+margin_right = 1276.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+align = 1
+autowrap = true
+
+[node name="HSeparator" type="HSeparator" parent="MainEvent/WFpanel/MC/VBoxContainer"]
+margin_top = 81.0
+margin_right = 1276.0
+margin_bottom = 85.0
+
+[node name="Discription" type="RichTextLabel" parent="MainEvent/WFpanel/MC/VBoxContainer"]
+margin_top = 105.0
+margin_right = 1276.0
+margin_bottom = 655.0
+rect_min_size = Vector2( 0, 550 )
+
+[node name="Control" type="Control" parent="MainEvent"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 68.0
+margin_top = -114.0
+margin_right = -43.0
+margin_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainEventContinue" type="Button" parent="MainEvent/Control"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = -27.0
+margin_bottom = 27.0
+grow_horizontal = 0
+text = "Confirm"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="MainEvent/Control/MainEventContinue"]
+modulate = Color( 0.823529, 0.686275, 0.168627, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 1
+
+[node name="End" parent="." instance=ExtResource( 14 )]
+visible = false
+
+[node name="WFpanel" parent="." instance=ExtResource( 10 )]
+visible = false
+anchor_left = 0.576099
+anchor_top = 0.486069
+anchor_right = 0.986055
+anchor_bottom = 0.983465
+rect_pivot_offset = Vector2( 278.931, 198.685 )
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -11.0
+bus = "sfx"
+[connection signal="onLoad" from="." to="." method="_on_Menu_onLoad"]
+[connection signal="resized" from="." to="." method="_on_Menu_resized"]
+[connection signal="pressed" from="Main/Control/MainMenu/New Game" to="." method="_on_MainMenu_New_Game_pressed"]
+[connection signal="pressed" from="Main/Control/MainMenu/Store" to="." method="_on_Store_pressed"]
+[connection signal="pressed" from="Main/Control/MainMenu/Extras" to="." method="_on_Extras_pressed"]
+[connection signal="pressed" from="Main/Control/MainMenu/Settings" to="." method="_on_MainMenu_Settings_pressed"]
+[connection signal="pressed" from="Main/Control/MainMenu/Quit" to="." method="_on_MainMenu_Quit_pressed"]
+[connection signal="pressed" from="Main/Control/Mission/HBoxContainer/BacktoMain" to="." method="_on_BacktoMain_pressed"]
+[connection signal="pressed" from="Main/Control/Encounter/HBoxContainer/BackToMissions" to="." method="_on_BackToMissions_pressed"]
+[connection signal="pressed" from="Main/Control/Players/2players" to="." method="_on_2players_pressed"]
+[connection signal="pressed" from="Main/Control/Players/3players" to="." method="_on_3players_pressed"]
+[connection signal="pressed" from="Main/Control/Players/4players" to="." method="_on_4players_pressed"]
+[connection signal="animation_finished" from="Main/Control/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="visibility_changed" from="CharacterSelect" to="." method="_on_CharacterSelect_visibility_changed"]
+[connection signal="pressed" from="CharacterSelect/WFpanel/MC/VBoxContainer/CharacterName/RandomName" to="." method="_on_RandomName_pressed"]
+[connection signal="pressed" from="CharacterSelect/WFpanel/MC/VBoxContainer/HBoxContainer/CharacterSelectAccept" to="." method="_on_CharacterSelectAccept_pressed"]
+[connection signal="pressed" from="CharacterSelect/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CharacterSelect/next" to="." method="_on_next_pressed"]
+[connection signal="animation_finished" from="CharacterSelect/CharacterSelectAnimations" to="." method="_on_CharacterSelectAnimations_animation_finished"]
+[connection signal="pressed" from="CommandView/WFpanel/MC/VBoxContainer/HBoxContainer/CommandViewCancel" to="." method="_on_CommandViewCancel_pressed"]
+[connection signal="pressed" from="CrewLog/WFpanel/MC/VBoxContainer/HBoxContainer/CrewLogContinue" to="." method="_on_CrewLogContinue_pressed"]
+[connection signal="animation_finished" from="CrewLog/AnimationPlayer" to="CrewLog/WFpanel/MC/VBoxContainer/RichTextLabel" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="MainEvent/Control/MainEventContinue" to="." method="_on_MainEventContinue_pressed"]

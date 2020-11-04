@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/medbay.glb" type="PackedScene" id=1]
+[ext_resource path="res://scenes/marker.tscn" type="PackedScene" id=2]
+[ext_resource path="res://packs/waypoints/trappist-1/scenes/medbay.gd" type="Script" id=3]
+[ext_resource path="res://assets/sfx/zapsplat_multimedia_notification_short_digital_futuristic_beep_generic_008_53944.mp3.ogg" type="AudioStream" id=4]
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/card_placement.glb" type="PackedScene" id=5]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 6.17625, 1.71078, 2.99661 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "lightsOn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("lights:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false, true, false, true ]
+}
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1.98744, 0.507043, 2.96283 )
+
+[node name="medbay" groups=[
+"card",
+"medical",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.655505 )
+script = ExtResource( 3 )
+
+[node name="lights" type="Spatial" parent="." index="51"]
+visible = false
+
+[node name="OmniLight" type="OmniLight" parent="lights" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43692, 2.0165, 0 )
+omni_range = 4.43273
+
+[node name="OmniLight2" type="OmniLight" parent="lights" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96359, 1.89974, -0.327034 )
+omni_range = 4.43273
+
+[node name="OmniLight3" type="OmniLight" parent="lights" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25372, 0 )
+
+[node name="path_marker" parent="." index="52" instance=ExtResource( 2 )]
+visible = false
+
+[node name="Area" type="Area" parent="." index="53" groups=[
+"card",
+"medical",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+transform = Transform( 0.999996, 0, 0.00275762, 0, 1, 0, -0.00275762, 0, 0.999996, 0.122305, 1.73024, 0.122303 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="54"]
+anims/lightsOn = SubResource( 2 )
+
+[node name="Marker" type="Position3D" parent="." index="55"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0859299, 0 )
+
+[node name="Audio" type="Node" parent="." index="56"]
+
+[node name="confirm" type="AudioStreamPlayer" parent="Audio" index="0"]
+stream = ExtResource( 4 )
+bus = "sfx"
+
+[node name="Connectors" type="Spatial" parent="." index="57"]
+
+[node name="Connector1" type="Area" parent="Connectors" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.65, 0, 0, -4.98397 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Connectors/Connector1" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.176482 )
+shape = SubResource( 3 )
+
+[node name="card_placement" parent="Connectors/Connector1" index="1" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0336199 )
+visible = false
+[connection signal="place" from="." to="." method="_on_medbay_place"]
+[connection signal="input_event" from="Area" to="." method="_on_Area_input_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

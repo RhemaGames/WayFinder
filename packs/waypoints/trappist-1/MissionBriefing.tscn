@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://packs/waypoints/trappist-1/MissionBriefing.gd" type="Script" id=1]
+
+[node name="MissionBriefing" type="Node"]
+script = ExtResource( 1 )

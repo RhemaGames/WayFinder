@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/button.svg" type="Texture" id=2]
+[ext_resource path="res://scenes/2DUI/PlayerUI/Commands.gd" type="Script" id=3]
+
+[node name="Commands" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 695, 388 )
+mouse_filter = 2
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+anchor_left = 0.00219619
+anchor_top = 0.552501
+anchor_right = 1.00219
+anchor_bottom = 0.812918
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 683, 100 )
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 0.358478
+anchor_right = 1.0
+anchor_bottom = 0.879314
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 683, 200 )
+custom_constants/separation = 40
+alignment = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="CommandsCancelButton" type="Button" parent="."]
+self_modulate = Color( 0.184314, 0.184314, 0.184314, 1 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -137.0
+margin_top = -75.1533
+margin_right = -8.0
+margin_bottom = -17.1533
+grow_horizontal = 2
+grow_vertical = 0
+text = " Dismiss "
+flat = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CommandsCancelButton"]
+modulate = Color( 0.0392157, 0.419608, 0.564706, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="." to="." method="_on_Commands_gui_input"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/CharacterSelect.gd" type="Script" id=1]
+
+[node name="CharacterSelect" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Position3D" type="Position3D" parent="."]
+transform = Transform( -0.0684041, 0, -0.187939, 0, 0.2, 0, 0.187939, 0, -0.0684041, 0, 0, 0 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.927053, 0.37493, 0, -0.37493, 0.927053, 0, 9.21533, 6.83175 )
+spot_range = 21.1549
+
+[node name="SpotLight2" type="SpotLight" parent="."]
+transform = Transform( 0.878809, 0.178907, -0.442366, 0, 0.927053, 0.37493, 0.477174, -0.329492, 0.814702, -6.17656, 3.47898, 6.83175 )
+visible = false
+spot_range = 18.939
+
+[node name="SpotLight3" type="SpotLight" parent="."]
+transform = Transform( -0.925765, 0.141761, -0.350518, 0, 0.927053, 0.37493, 0.378099, 0.347097, -0.858233, -5.9473, 11.2561, -14.438 )
+visible = false
+spot_range = 21.3809
+
+[node name="SpotLight4" type="SpotLight" parent="."]
+transform = Transform( -0.99399, -0.0410452, 0.101488, 0, 0.927053, 0.37493, -0.109474, 0.372677, -0.921481, -0.229259, 3.47898, -16.7733 )
+visible = false
+spot_range = 23.2011
+[connection signal="player_selected" from="." to="." method="_on_CharacterSelect_player_selected"]

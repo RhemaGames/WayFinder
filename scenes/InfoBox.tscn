@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/InfoBox.gd" type="Script" id=1]
+
+[node name="InfoBox" type="Panel"]
+self_modulate = Color( 1, 1, 1, 0.486275 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -400.0
+margin_top = 9.5244
+margin_bottom = 589.524
+grow_horizontal = 0
+rect_min_size = Vector2( 400, 580 )
+rect_clip_content = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texts" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 13.0
+margin_right = -13.0
+margin_bottom = -10.0
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="showInfo" from="." to="." method="_on_InfoBox_showInfo"]
