@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui_panel_3d.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/default_font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://packs/characters/Commander/assets/PLPSF-Percussion_80_01.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/sfx/zapsplat_multimedia_game_sound_coins_collect_several_at_once_002_40813.mp3.ogg" type="AudioStream" id=6]
 
@@ -31,21 +31,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.271571, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0.33192, 0 ), Vector3( 0, 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "update"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1229, -61.0974 ), Vector2( 1229, 15.23 ), Vector2( 1229, 15.23 ), Vector2( 1229, -61.0974 ) ]
 }
 
 [sub_resource type="BoxShape" id=3]
@@ -82,76 +67,32 @@ doppler_tracking = 2
 fov = 78.7
 
 [node name="HealthDisplay" parent="CameraBoom/Movement" instance=ExtResource( 2 )]
-transform = Transform( 0.496273, -1.85177e-14, 0.0853078, 3.10861e-14, 0.3, 9.64214e-17, -0.0609342, 2.23203e-15, 0.694782, -3.055, 1.823, -2.7 )
+transform = Transform( 0.496273, -2.93099e-14, 0.0853078, 8.88178e-15, 0.3, -2.06501e-14, -0.0609342, -9.13158e-15, 0.694782, -2.531, 1.527, -2.34 )
 visible = false
 UI = "res://scenes/2DUI/PlayerUI/Health.tscn"
 handle_input = false
 resolution = Vector2( 2027, 758 )
+ratio = 2
 
 [node name="Modifers" parent="CameraBoom/Movement" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.163, -1.72, -1.134 )
+transform = Transform( 1, 0, 3.72529e-09, -7.10543e-15, 1, 0, -3.72529e-09, -1.11022e-16, 1, -0.392, -0.896, -0.61 )
 visible = false
 UI = "res://scenes/2DUI/PlayerUI/Modifers.tscn"
 handle_input = false
 
 [node name="CP" parent="CameraBoom/Movement" instance=ExtResource( 2 )]
-transform = Transform( 0.397018, 0, -0.0487476, 0, 0.4, 0, 0.0487476, 0, 0.397018, 3.215, 1.774, -2.676 )
+transform = Transform( 0.397018, 0, -0.0487476, -1.24345e-14, 0.4, 3.10862e-15, 0.0487476, -5.55112e-17, 0.397018, 2.705, 1.533, -2.34 )
 visible = false
 UI = "res://scenes/2DUI/PlayerUI/ControlPoints.tscn"
 handle_input = false
 resolution = Vector2( 238, 137 )
+ratio = 2
 
 [node name="Model" type="Position3D" parent="."]
 
 [node name="Puzzle" type="Spatial" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.41114, 4.96975, -6.03664 )
 visible = false
-
-[node name="commandPointFound" type="PanelContainer" parent="."]
-visible = false
-anchor_left = 0.899707
-anchor_top = -0.0795544
-anchor_right = 0.956076
-anchor_bottom = -0.00924134
-margin_left = 0.000244141
-margin_top = 0.000354767
-margin_right = 0.000244141
-margin_bottom = 0.000350952
-grow_horizontal = 0
-theme = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": true
-}
-
-[node name="Panel" type="Panel" parent="commandPointFound"]
-margin_left = 6.0
-margin_top = 10.0
-margin_right = 71.0001
-margin_bottom = 44.0004
-
-[node name="HBoxContainer" type="HBoxContainer" parent="commandPointFound"]
-margin_left = 6.0
-margin_top = 10.0
-margin_right = 71.0001
-margin_bottom = 44.0004
-grow_horizontal = 0
-grow_vertical = 2
-custom_constants/separation = 10
-alignment = 1
-
-[node name="Label" type="Label" parent="commandPointFound/HBoxContainer"]
-margin_right = 47.0
-margin_bottom = 34.0
-text = "CP:"
-
-[node name="count" type="Label" parent="commandPointFound/HBoxContainer"]
-margin_left = 57.0
-margin_right = 65.0
-margin_bottom = 34.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="commandPointFound"]
-anims/update = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.134078, 1.07401, 0.0301063 )
@@ -183,14 +124,43 @@ bus = "bgm"
 emission_angle_enabled = true
 
 [node name="Commands" type="Spatial" parent="."]
-transform = Transform( 0.779622, -0.100115, 0.618196, 0, 0.987139, 0.159864, -0.62625, -0.124634, 0.769595, 2.134, 1.93005, 1.59658 )
+transform = Transform( 0.779622, -0.100115, 0.618196, 0, 0.987139, 0.159864, -0.62625, -0.124634, 0.769595, 1.104, 1.699, 0.273 )
 visible = false
 
-[node name="UI" parent="Commands" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -1.865 )
+[node name="Control" type="Control" parent="Commands"]
 visible = false
-UI = "res://scenes/2DUI/PlayerUI/Commands.tscn"
-distance = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Commands/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -110.5
+margin_top = -48.541
+margin_right = 110.5
+margin_bottom = -22.541
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+text = "Press ESC to skip"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeechBox" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.779622, -0.100115, 0.618196, 0, 0.987139, 0.159864, -0.62625, -0.124633, 0.769596, 1.112, 1.979, 0.302 )
+visible = false
+UI = "res://scenes/2DUI/PlayerUI/CrewLog.tscn"
+resolution = Vector2( 1366, 768 )
+ratio = 8
 [connection signal="body_shape_entered" from="." to="." method="_on_Player_body_shape_entered"]
 [connection signal="loadup" from="." to="." method="_on_Player_loadup"]
 [connection signal="area_shape_entered" from="PlayerArea" to="." method="_on_PlayerArea_area_shape_entered"]
+[connection signal="visibility_changed" from="Commands" to="." method="_on_Commands_visibility_changed"]

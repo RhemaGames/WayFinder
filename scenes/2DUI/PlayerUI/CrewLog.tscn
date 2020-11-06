@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/2DUI/PlayerUI/CrewLog.gd" type="Script" id=1]
+[ext_resource path="res://assets/menuFontMedium.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/WFpanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/default_theme.tres" type="Theme" id=4]
+[ext_resource path="res://scenes/wfRichText.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.25, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WFpanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WFpanel:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2.5, 2.75, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.01, 0.01 ), Vector2( 0.01, 1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="CrewLog" type="PanelContainer"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -223.0
+rect_pivot_offset = Vector2( 360, 629 )
+theme = ExtResource( 4 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WFpanel" parent="." instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 2725.0
+margin_bottom = 216.0
+rect_pivot_offset = Vector2( 707, 114 )
+bg_opacity = 0.5
+border_color = Color( 0.109804, 0.780392, 0.780392, 1 )
+
+[node name="MC" type="MarginContainer" parent="WFpanel"]
+margin_right = 2718.0
+margin_bottom = 209.0
+mouse_filter = 2
+custom_constants/margin_right = 63
+custom_constants/margin_top = 20
+custom_constants/margin_left = 63
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WFpanel/MC"]
+margin_left = 63.0
+margin_top = 20.0
+margin_right = 2655.0
+margin_bottom = 189.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="WFpanel/MC/VBoxContainer"]
+margin_right = 2592.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 2 )
+autowrap = true
+
+[node name="HSeparator" type="HSeparator" parent="WFpanel/MC/VBoxContainer"]
+margin_top = 35.0
+margin_right = 2592.0
+margin_bottom = 39.0
+
+[node name="RichTextLabel" parent="WFpanel/MC/VBoxContainer" instance=ExtResource( 5 )]
+margin_top = 51.0
+margin_right = 1280.0
+margin_bottom = 101.0
+grow_vertical = 2
+rect_min_size = Vector2( 50, 50 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WFpanel/MC/VBoxContainer"]
+margin_top = 43.0
+margin_right = 2592.0
+margin_bottom = 98.0
+alignment = 2
+
+[node name="CrewLogContinue" type="Button" parent="WFpanel/MC/VBoxContainer/HBoxContainer"]
+margin_left = 2392.0
+margin_right = 2592.0
+margin_bottom = 55.0
+grow_horizontal = 2
+rect_min_size = Vector2( 200, 55 )
+text = "Dismiss"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Show = SubResource( 1 )
+[connection signal="visibility_changed" from="." to="." method="_on_CrewLog_visibility_changed"]
+[connection signal="pressed" from="WFpanel/MC/VBoxContainer/HBoxContainer/CrewLogContinue" to="." method="_on_CrewLogContinue_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="WFpanel/MC/VBoxContainer/RichTextLabel" method="_on_AnimationPlayer_animation_finished"]

@@ -4,6 +4,7 @@ extends RigidBody
 export var SPEED = 0.05
 var Root
 
+var UITemplate = preload("res://scenes/gui_panel_3d.tscn")
 var board
 var inCombat = false
 var type
@@ -63,6 +64,7 @@ func _ready():
 	_error = WayFinder.connect("unlocked",self,"on_unlock")
 	_error = connect("command",WayFinder,"parse_command")
 	_error = WayFinder.connect("movementType",self,"on_movementType_change")
+	WayFinder.connect("turn_start",self,"_on_turn_start")
 	on_movementType_change(WayFinder.mType)
 	
 	$CameraBoom/Movement/CP.update_internal({"type":"background","value":Color(0.07451, 0.239216, 0.305882,0.5)})
@@ -76,18 +78,30 @@ func execute_command():
 	
 	pass
 
-#func load_commands():
+func load_commands():
+	var card = "res://scenes/CommandCard.tscn"
+	var cardNum = 0
+	var OffSet = 2
+	
+	for c in commands:
+		if c["type"] == "general":
+			var theCard = UITemplate.instance()
+			theCard.UI = card
+			theCard.handle_input = false
+			theCard.connect("relay",self,"on_card_ready",[theCard,c])
+			theCard.resolution = Vector2(500,800)
+			theCard.ratio = 4
+			theCard.scale = Vector3(0.6,0.7,0.6)
+			$Commands.add_child(theCard)
+			theCard.translate_object_local(Vector3(2.5*cardNum-OffSet,0,0))
+			cardNum += 1
+	pass
 
-#	for c in commands:
-#		if c["type"] == "general":
-#			var theCard = card.instance()
-#			#$Commands/HBoxContainer.add_child(theCard)
-#			theCard.load_card(c)
-#			theCard.connect("execute",self,"on_command_execute")
-#			var _error = connect("ability_check",theCard,"_on_check_abilities")
-#			
-#	pass
-
+func on_card_ready(data,theCard,c):
+	theCard.get_node("Viewport").get_child(0).playerRoot = self
+	theCard.get_node("Viewport").get_child(0).load_card(c)
+	theCard.get_node("Viewport").get_child(0).connect("execute",self,"on_command_execute")
+	var _error = connect("ability_check",theCard.get_node("Viewport").get_child(0),"_on_check_abilities")
 
 func _on_Player_loadup(data):
 	model = WayFinder.get_character_class(data.info["class"])
@@ -97,7 +111,7 @@ func _on_Player_loadup(data):
 	info["class"] = data.info["class"]
 	$Audio/Theme.stream = load(model.theme)
 	$Audio/Theme.play()
-	$Commands/UI.from_Above(["commands"])
+	load_commands()
 	update_cp_count()
 	$Model.add_child(model)
 	
@@ -313,12 +327,14 @@ func update_cp_count():
 	
 func _on_CommandsCancelButton_pressed():
 	$Commands.hide()
+	$Commands/Control.hide()
 	WayFinder.step_complete("command")
 	Root.get_node("Menu/Click").play()
 	
 func on_command_execute(data):
 	emit_signal("command",data)
 	$Commands.hide()
+	$Commands/Control.hide()
 	if data["effect"].has("view"):
 		if data["effect"]["view"] != "":
 			get_parent().players[WayFinder.turn -1].get_node(data["effect"]["view"]).make_current()
@@ -355,8 +371,10 @@ func on_step():
 			return step
 		
 func _on_Commands_visibility_changed():
-	#if visible:
-	#	$Commands/HBoxContainer.get_child(0).emit_signal("display")
+	if visible:
+		$Commands/Control.show()
+	else:
+		$Commands/Control.hide()
 	pass
 	
 func on_movementType_change(changeTo):
@@ -418,3 +436,28 @@ func toggle_UI(display):
 		$CameraBoom/Movement/HealthDisplay.hide()
 		$CameraBoom/Movement/Modifers.hide()
 		$CameraBoom/Movement/CP.hide()
+
+func _on_turn_start(turn):
+	if playernum+1 == turn:
+		$SpeechBox.show()
+	pass
+
+func _unhandled_key_input(event):
+	
+	if event.is_pressed() and $SpeechBox.visible and event.as_text() == "Escape":
+		$SpeechBox.hide()
+		if WayFinder.players[WayFinder.turn-1].turnSteps["build"] == false:
+			if WayFinder.placing == 0:
+				WayFinder.emit_signal("place_cards",WayFinder.roll_dice())
+		else:
+			WayFinder.emit_signal("turn_ended")
+		Root.get_node("Menu/Click").play()
+	
+	elif event.is_pressed() and $Commands.visible and event.as_text() == "Escape":
+		$Commands.hide()
+		$Commands/Control.hide()
+		WayFinder.step_complete("command")
+		Root.get_node("Menu/Click").play()
+		
+	
+	pass

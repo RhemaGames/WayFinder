@@ -4,6 +4,7 @@ extends Control
 #signal skipped
 # warning-ignore:unused_signal
 signal roll
+signal finished(data)
 
 var characterStat = preload("res://scenes/PlayerControlStat.tscn")
 var commandIcon = preload("res://scenes/CommandIcon.tscn")

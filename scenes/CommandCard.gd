@@ -14,10 +14,12 @@ var skill = ""
 signal execute(data)
 # warning-ignore:unused_signal
 signal display()
+signal finished(data)
+
 var playerRoot = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	playerRoot = get_parent().get_parent().get_parent()
+	#playerRoot = get_parent().get_parent().get_parent()
 	pass # Replace with function body.
 
 
@@ -89,4 +91,8 @@ func _on_CommandCard_mouse_entered():
 func _on_CommandCard_mouse_exited():
 	self.rect_scale = Vector2(1,1)
 	get_parent().set("custom_constants/seperation",40)
+	pass # Replace with function body.
+
+
+func _on_CommandCard_finished(data):
 	pass # Replace with function body.

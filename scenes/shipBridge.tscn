@@ -85,6 +85,7 @@ material/1 = ExtResource( 5 )
 [node name="GUIPanel3D" parent="LeftHullMonitor" index="0" instance=ExtResource( 6 )]
 transform = Transform( 0.676, -5.2132e-08, 7.27423e-07, 8.19563e-08, 0.43, 1.79965e-08, -4.91738e-07, -7.73847e-09, 1, 0.099, 0.345, 0 )
 resolution = Vector2( 1024, 768 )
+ratio = 2
 
 [node name="RightHullMonitor" parent="." index="30"]
 material/1 = ExtResource( 5 )
@@ -92,6 +93,7 @@ material/1 = ExtResource( 5 )
 [node name="GUIPanel3D" parent="RightHullMonitor" index="0" instance=ExtResource( 6 )]
 transform = Transform( 0.656, -1.11759e-08, 0, 7.45058e-09, 0.429, -5.96046e-08, 5.96046e-08, -5.96046e-08, 1, -0.173999, 0.359, -9.53674e-07 )
 resolution = Vector2( 1024, 768 )
+ratio = 2
 
 [node name="MainScreen" parent="." index="35"]
 material/1 = ExtResource( 5 )
@@ -100,6 +102,7 @@ material/1 = ExtResource( 5 )
 transform = Transform( 0.4, 0, 0, 0, 0.45, 0, 0, 0, 0.091, -0.0158043, 0.371639, 0.00673938 )
 UI = "res://scenes/2DUI/Start.tscn"
 resolution = Vector2( 1024, 768 )
+ratio = 2
 
 [node name="LeftScreen" parent="." index="36"]
 transform = Transform( 0.675893, 0, 0.528209, 0, 1, 0, -0.987916, 0, 0.36138, -1.00979, -0.0465913, 0.143927 )
@@ -108,6 +111,7 @@ material/1 = ExtResource( 5 )
 [node name="GUIPanel3D" parent="LeftScreen" index="0" instance=ExtResource( 6 )]
 transform = Transform( 0.203, 0, 3.40598e-08, 0, 0.339, 0, -4.32134e-08, 0, 0.16, -0.008, 0.341, -0.006 )
 resolution = Vector2( 1024, 768 )
+ratio = 2
 
 [node name="RightScreen" parent="." index="37"]
 material/1 = ExtResource( 5 )
@@ -115,6 +119,7 @@ material/1 = ExtResource( 5 )
 [node name="GUIPanel3D" parent="RightScreen" index="0" instance=ExtResource( 6 )]
 transform = Transform( -0.0778444, 0, -0.100938, 0, 0.339999, 0, 0.383173, 0, -0.0205063, -0.0157984, 0.341992, 0.0324661 )
 resolution = Vector2( 1024, 768 )
+ratio = 2
 
 [node name="Sprite3D" type="Sprite3D" parent="." index="46"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -42.5035 )

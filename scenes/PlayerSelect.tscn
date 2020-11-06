@@ -33,8 +33,8 @@ grow_vertical = 2
 border_color = Color( 0.109804, 0.780392, 0.780392, 1 )
 
 [node name="fullbox" type="Control" parent="WFpanel"]
-margin_right = 1414.0
-margin_bottom = 809.0
+margin_right = 2828.0
+margin_bottom = 1618.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_clip_content = true

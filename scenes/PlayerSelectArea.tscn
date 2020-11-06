@@ -9,17 +9,15 @@
 [ext_resource path="res://assets/Tex_skill_71.PNG" type="Texture" id=7]
 
 [node name="PlayerSelectArea" type="Control"]
-anchor_right = 0.219619
-anchor_bottom = 0.78125
-margin_top = 40.0
-margin_bottom = 40.0
+margin_right = 300.0
+margin_bottom = 500.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_min_size = Vector2( 300, 600 )
+rect_min_size = Vector2( 300, 500 )
 theme = ExtResource( 2 )
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Panel" type="Panel" parent="."]
@@ -40,7 +38,7 @@ border_color = Color( 0.109804, 0.780392, 0.780392, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="WFpanel"]
 margin_right = 298.0
-margin_bottom = 615.0
+margin_bottom = 513.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_clip_content = true
@@ -53,7 +51,7 @@ custom_constants/margin_bottom = 28
 margin_left = 13.0
 margin_top = 21.0
 margin_right = 285.0
-margin_bottom = 587.0
+margin_bottom = 485.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -86,7 +84,7 @@ __meta__ = {
 margin_left = 13.0
 margin_top = 21.0
 margin_right = 285.0
-margin_bottom = 587.0
+margin_bottom = 485.0
 rect_clip_content = true
 __meta__ = {
 "_edit_group_": true,
@@ -158,9 +156,9 @@ margin_bottom = 1.0
 border = false
 
 [node name="Join" type="Label" parent="Overlay"]
-margin_top = 281.0
+margin_top = 231.0
 margin_right = 285.0
-margin_bottom = 320.0
+margin_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 3 )

@@ -10,6 +10,7 @@ var selecting = false
 var classShown = 0
 
 var availableClasses = []
+signal finished(data)
 
 signal change(num,crewType)
 
@@ -38,6 +39,7 @@ func player_add(_characterName,CharacterData):
 	var fullname = WayFinder.generate_name()
 	var classInfo = CharacterData["data"].instance().get_info() 
 	var characterMap = WayFinder.player.instance()
+	characterMap.playernum = len(WayFinder.players)
 	characterMap.info["class"] = CharacterData["class"]
 	characterMap.info["name"] = fullname["name"]+" "+fullname["surname"]
 	characterMap.info["maxHp"] = classInfo["hp"]

@@ -289,6 +289,7 @@ func get_character_class(name):
 			return c["data"].instance()
 
 func game_round():
+	
 	board = get_tree().get_root().get_node("com_ve_wayfinder").currentView
 	board.get_node("Camera").make_current()
 	if turn == len(players):
@@ -317,14 +318,15 @@ func game_round():
 	#	emit_signal("combat_start",board.players[turn -1],enemies[0])
 	emit_signal("enviroment_turn")
 	
-	game_check()
+	#game_check()
 	pass
 
 func _on_turn_ended():
 	for opt in players[turn-1].turnSteps:
 		players[turn-1].turnSteps[opt] = false
-	game_check()
-	game_round()
+
+	if game_check() == 0:
+		game_round()
 	
 func game_check():
 	board = get_tree().get_root().get_node("com_ve_wayfinder").currentView
@@ -388,14 +390,16 @@ func step_complete(step):
 				"command":
 					clear_path()
 					players[turn-1].turnSteps["command"] = true
-					emit_signal("combat_round")
 					emit_signal("step_completed","command")
+					emit_signal("combat_round")
+					
 				"combat":
 					clear_path()
 					players[turn-1].turnSteps["combat"] = true
 					thePlayer.inCombat = false
-					emit_signal("turn_ended")
 					emit_signal("step_completed","combat")
+					emit_signal("turn_ended")
+					
 
 func make_path(startObject,endObject):
 	clear_path()

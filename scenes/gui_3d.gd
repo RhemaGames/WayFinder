@@ -1,5 +1,7 @@
 extends Spatial
 
+var Ratios = [preload("res://scenes/Quad1-1.tscn"),preload("res://scenes/Quad3-2.tscn"),preload("res://scenes/Quad2-3.tscn"),preload("res://scenes/Quad4-3.tscn"),preload("res://scenes/Quad4-9.tscn")]
+
 # The size of the quad mesh itself.
 var quad_mesh_size
 # Used for checking if the mouse is inside the Area
@@ -24,27 +26,50 @@ onready var node_viewport = $Viewport
 var node_quad = ""
 var node_area = ""
 
+
+
 export var resolution = Vector2(1024,768)
-export var ratio = Vector2(3,2)
+export(int, FLAGS,"1:1","3:2","2:3","4:3","4:9") var ratio = 1
 
 signal finished(menu)
 
 signal relay(baton)
 signal to_ui(data)
 
-func _ready():
+
+func display_setup():
+	node_viewport = $Viewport
+	var quad_instance = Ratios[0].instance()
+	match ratio:
+		1:
+			quad_instance = Ratios[0].instance()
+		2:
+			quad_instance = Ratios[1].instance()
+		4:
+			quad_instance = Ratios[2].instance()
+		8:
+			quad_instance = Ratios[3].instance()
+		16:
+			quad_instance = Ratios[4].instance()
 	
-	node_quad = $Quad
-	node_area = $Quad/Area
+	node_quad = quad_instance
+	node_area = node_quad.get_node("Area")
+	add_child(quad_instance)
 	node_viewport.set_size(resolution)
-	
+
+func _ready():
+
 	if UI != "":
-		load_ui(UI)
-		node_area.connect("mouse_entered", self, "_mouse_entered_area")
+		if load_ui(UI) == 1:
+			var viewport = node_quad.get_surface_material(0).get_texture(0)
+			viewport.set_viewport_path_in_scene("../Viewport")
+			node_area.connect("mouse_entered", self, "_mouse_entered_area")
+			emit_signal("relay",["ui","ready"])
 		
 	else:
+		display_setup()
 		var viewport = node_quad.get_surface_material(0).get_texture(0)
-		viewport.set_viewport_path_in_scene("../../Viewport")
+		viewport.set_viewport_path_in_scene("../Viewport")
 		
 		# If the material is NOT set to use billboard settings, then avoid running billboard specific code
 	if node_quad.get_surface_material(0).params_billboard_mode == 0:
@@ -205,6 +230,7 @@ func from_Above(data):
 	emit_signal("to_ui",data)
 	
 func load_ui(path):
+	display_setup()
 	if node_viewport.get_child_count() > 0:
 		var child = node_viewport.get_child(0)
 		node_viewport.remove_child(child)
@@ -216,7 +242,7 @@ func load_ui(path):
 		if !node_viewport.get_child(0).is_connected("finished",self,"_on_ui_finished"):
 			var _error = node_viewport.get_child(0).connect("finished",self,"_on_ui_finished")
 			_error = connect("to_ui",node_viewport.get_child(0),"from_Above")
-	
+	return 1
 	
 func update_internal(data):
 	node_viewport = $Viewport

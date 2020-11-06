@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/Title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/default_theme.tres" type="Theme" id=2]
@@ -8,9 +8,7 @@
 [ext_resource path="res://assets/small_font.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/sfx/zapsplat_multimedia_notification_short_digital_futuristic_beep_generic_008_53944.mp3.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/button.svg" type="Texture" id=8]
-[ext_resource path="res://assets/menuFontMedium.tres" type="DynamicFont" id=9]
 [ext_resource path="res://scenes/WFpanel.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/wfRichText.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/End.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=1]
@@ -323,43 +321,31 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=14]
-length = 3.0
-step = 0.05
+length = 2.0
+step = 0.02
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
+tracks/0/path = NodePath(".:rect_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.25, 2.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, false, true ]
+"times": PoolRealArray( 0, 0.2, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1024, 0 ), Vector2( 1024, 200 ), Vector2( 1024, 200 ), Vector2( 1024, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("WFpanel:modulate")
+tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 2.5, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("WFpanel:rect_scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 2.5, 2.75, 3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.01, 0.01 ), Vector2( 0.01, 1 ), Vector2( 1, 1 ) ]
+"times": PoolRealArray( 0, 0.06, 1.96, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -390,35 +376,7 @@ tracks/1/keys = {
 "values": [ false, true, true, false ]
 }
 
-[sub_resource type="Animation" id=16]
-length = 2.0
-step = 0.02
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 1.8, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1024, 0 ), Vector2( 1024, 200 ), Vector2( 1024, 200 ), Vector2( 1024, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.06, 1.96, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, true, false ]
-}
-
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=16]
 bg_color = Color( 0, 0, 0, 1 )
 
 [node name="Menu" type="Control"]
@@ -452,8 +410,8 @@ rect_scale = Vector2( 0.01, 0.01 )
 rect_pivot_offset = Vector2( 703.048, 386.946 )
 
 [node name="Control" type="MarginContainer" parent="Main"]
-margin_right = 1366.0
-margin_bottom = 768.0
+margin_right = 2732.0
+margin_bottom = 1536.0
 rect_clip_content = true
 custom_constants/margin_right = 22
 custom_constants/margin_top = 20
@@ -464,8 +422,8 @@ custom_constants/margin_bottom = 30
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 22.0
 margin_top = 20.0
-margin_right = 1344.0
-margin_bottom = 738.0
+margin_right = 2710.0
+margin_bottom = 1506.0
 custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="Main/Control/MainMenu"]
@@ -555,8 +513,8 @@ modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 22.0
 margin_top = 20.0
-margin_right = 1344.0
-margin_bottom = 739.0
+margin_right = 2710.0
+margin_bottom = 1506.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_clip_content = true
@@ -607,8 +565,8 @@ modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 22.0
 margin_top = 20.0
-margin_right = 1344.0
-margin_bottom = 739.0
+margin_right = 2710.0
+margin_bottom = 1506.0
 rect_clip_content = true
 mouse_filter = 2
 custom_constants/separation = 12
@@ -659,8 +617,8 @@ modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 22.0
 margin_top = 20.0
-margin_right = 1344.0
-margin_bottom = 738.0
+margin_right = 2710.0
+margin_bottom = 1506.0
 grow_horizontal = 2
 rect_clip_content = true
 mouse_filter = 0
@@ -736,8 +694,8 @@ visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 22.0
 margin_top = 20.0
-margin_right = 1344.0
-margin_bottom = 738.0
+margin_right = 2710.0
+margin_bottom = 1506.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 5
@@ -751,16 +709,16 @@ anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 22.0
 margin_top = 20.0
-margin_right = 1344.0
-margin_bottom = 738.0
+margin_right = 2710.0
+margin_bottom = 1506.0
 
 [node name="Title" type="Label" parent="Main/Control"]
 visible = false
 modulate = Color( 1, 1, 1, 0.0326977 )
 margin_left = 22.0
-margin_top = 348.0
-margin_right = 1344.0
-margin_bottom = 409.0
+margin_top = 732.0
+margin_right = 2710.0
+margin_bottom = 793.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource( 2 )
@@ -795,8 +753,8 @@ grow_vertical = 2
 rect_min_size = Vector2( 558, 753 )
 
 [node name="MC" type="MarginContainer" parent="CharacterSelect/WFpanel"]
-margin_right = 558.0
-margin_bottom = 753.0
+margin_right = 1116.0
+margin_bottom = 1506.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -805,8 +763,8 @@ custom_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelect/WFpanel/MC"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 538.0
-margin_bottom = 733.0
+margin_right = 1096.0
+margin_bottom = 1486.0
 custom_constants/separation = 25
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1051,81 +1009,6 @@ margin_left = 220.0
 margin_right = 228.0
 margin_bottom = 34.0
 
-[node name="CrewLog" type="PanelContainer" parent="."]
-visible = false
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -223.0
-rect_pivot_offset = Vector2( 360, 629 )
-mouse_filter = 2
-
-[node name="WFpanel" parent="CrewLog" instance=ExtResource( 10 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 6.0
-margin_top = 10.0
-margin_right = 1360.0
-margin_bottom = 213.0
-rect_pivot_offset = Vector2( 707, 114 )
-bg_opacity = 0.5
-border_color = Color( 0.109804, 0.780392, 0.780392, 1 )
-
-[node name="MC" type="MarginContainer" parent="CrewLog/WFpanel"]
-margin_right = 1354.0
-margin_bottom = 203.0
-custom_constants/margin_right = 63
-custom_constants/margin_top = 20
-custom_constants/margin_left = 63
-custom_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CrewLog/WFpanel/MC"]
-margin_left = 63.0
-margin_top = 20.0
-margin_right = 1291.0
-margin_bottom = 183.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="Label" parent="CrewLog/WFpanel/MC/VBoxContainer"]
-margin_right = 1228.0
-margin_bottom = 39.0
-custom_fonts/font = ExtResource( 9 )
-autowrap = true
-
-[node name="HSeparator" type="HSeparator" parent="CrewLog/WFpanel/MC/VBoxContainer"]
-margin_top = 43.0
-margin_right = 1228.0
-margin_bottom = 47.0
-
-[node name="RichTextLabel" parent="CrewLog/WFpanel/MC/VBoxContainer" instance=ExtResource( 13 )]
-margin_top = 51.0
-margin_right = 1280.0
-margin_bottom = 101.0
-grow_vertical = 2
-rect_min_size = Vector2( 50, 50 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CrewLog/WFpanel/MC/VBoxContainer"]
-margin_top = 51.0
-margin_right = 1228.0
-margin_bottom = 109.0
-alignment = 2
-
-[node name="CrewLogContinue" type="Button" parent="CrewLog/WFpanel/MC/VBoxContainer/HBoxContainer"]
-margin_left = 1028.0
-margin_right = 1228.0
-margin_bottom = 58.0
-grow_horizontal = 2
-rect_min_size = Vector2( 200, 55 )
-text = "Dismiss"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CrewLog"]
-anims/Show = SubResource( 14 )
-
 [node name="Rolls" type="Control" parent="."]
 visible = false
 anchor_left = 0.125183
@@ -1143,7 +1026,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rolls"]
-anims/Grow = SubResource( 15 )
+anims/Grow = SubResource( 14 )
 
 [node name="WFpanel" parent="Rolls" instance=ExtResource( 10 )]
 
@@ -1192,7 +1075,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerChange"]
-anims/Grow = SubResource( 16 )
+anims/Grow = SubResource( 15 )
 
 [node name="WFpanel" parent="PlayerChange" instance=ExtResource( 10 )]
 
@@ -1236,7 +1119,7 @@ __meta__ = {
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 17 )
+custom_styles/panel = SubResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1255,8 +1138,8 @@ __meta__ = {
 [node name="WFpanel" parent="MainEvent" instance=ExtResource( 10 )]
 
 [node name="MC" type="MarginContainer" parent="MainEvent/WFpanel"]
-margin_right = 1366.0
-margin_bottom = 768.0
+margin_right = 2732.0
+margin_bottom = 1536.0
 custom_constants/margin_right = 40
 custom_constants/margin_top = 40
 custom_constants/margin_left = 50
@@ -1265,8 +1148,8 @@ custom_constants/margin_bottom = 45
 [node name="VBoxContainer" type="VBoxContainer" parent="MainEvent/WFpanel/MC"]
 margin_left = 50.0
 margin_top = 40.0
-margin_right = 1326.0
-margin_bottom = 723.0
+margin_right = 2692.0
+margin_bottom = 1491.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1363,6 +1246,4 @@ bus = "sfx"
 [connection signal="pressed" from="CharacterSelect/next" to="." method="_on_next_pressed"]
 [connection signal="animation_finished" from="CharacterSelect/CharacterSelectAnimations" to="." method="_on_CharacterSelectAnimations_animation_finished"]
 [connection signal="pressed" from="CommandView/WFpanel/MC/VBoxContainer/HBoxContainer/CommandViewCancel" to="." method="_on_CommandViewCancel_pressed"]
-[connection signal="pressed" from="CrewLog/WFpanel/MC/VBoxContainer/HBoxContainer/CrewLogContinue" to="." method="_on_CrewLogContinue_pressed"]
-[connection signal="animation_finished" from="CrewLog/AnimationPlayer" to="CrewLog/WFpanel/MC/VBoxContainer/RichTextLabel" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="MainEvent/Control/MainEventContinue" to="." method="_on_MainEventContinue_pressed"]

@@ -238,7 +238,7 @@ func _on_turn_start(player):
 	$PlayerChange/VBoxContainer/Name.text = WayFinder.players[player-1].info["name"]
 	$PlayerChange/VBoxContainer/playerNum.text = "Player "+str(player)
 	$PlayerChange/AnimationPlayer.play("Grow")
-	player_log(WayFinder.players[player-1].info["class"])
+	#player_log(WayFinder.players[player-1].info["class"])
 	pass
 
 func _on_turn_ended():
@@ -256,9 +256,9 @@ func _on_turn_ended():
 func player_log(playerClass):
 	var thelog = WayFinder.currentMission.get_crew_comment(playerClass,WayFinder.mainEvent)
 	#var thelog = Root.currentView.Briefing.get_crew_comment(playerClass,WayFinder.mainEvent)
-	$CrewLog/WFpanel/MC/VBoxContainer/Title.text = thelog["title"]
-	$CrewLog/WFpanel/MC/VBoxContainer/RichTextLabel.theText = thelog["log"]
-	$CrewLog/AnimationPlayer.play("Show")
+	#$CrewLog/WFpanel/MC/VBoxContainer/Title.text = thelog["title"]
+	#$CrewLog/WFpanel/MC/VBoxContainer/RichTextLabel.theText = thelog["log"]
+	#$CrewLog/AnimationPlayer.play("Show")
 	pass
 
 #func player_controls_update(player):
@@ -486,16 +486,16 @@ func _on_CommandViewCancel_pressed():
 
 
 func _on_CrewLogContinue_pressed():
-	$CrewLog/AnimationPlayer.play_backwards("Show")
-	var player = WayFinder.turn -1
+	#$CrewLog/AnimationPlayer.play_backwards("Show")
+	#var player = WayFinder.turn -1
 	#if Root.currentView.players[player].info["canMove"]:
 		#player_controls_update(player)
-	if WayFinder.players[player].turnSteps["build"] == false:
-		if WayFinder.placing == 0:
-			WayFinder.emit_signal("place_cards",WayFinder.roll_dice())
-	else:
-		WayFinder.emit_signal("turn_ended")
-	$Click.play()
+	#if WayFinder.players[player].turnSteps["build"] == false:
+	#	if WayFinder.placing == 0:
+	#		WayFinder.emit_signal("place_cards",WayFinder.roll_dice())
+	#else:
+	#	WayFinder.emit_signal("turn_ended")
+	#$Click.play()
 	pass # Replace with function body.
 
 
