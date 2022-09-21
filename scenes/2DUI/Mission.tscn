@@ -135,4 +135,5 @@ stream = ExtResource( 6 )
 volume_db = -10.0
 pitch_scale = 1.28
 [connection signal="finished" from="." to="." method="_on_Mission_finished"]
+[connection signal="visibility_changed" from="." to="." method="_on_Mission_visibility_changed"]
 [connection signal="pressed" from="Control/BackButton" to="." method="_on_BackButton_pressed"]

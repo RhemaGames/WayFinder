@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://com_ve_wayfinder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Combat.tscn" type="PackedScene" id=2]
@@ -7,13 +7,14 @@
 [ext_resource path="res://assets/default_theme.tres" type="Theme" id=5]
 [ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Settings.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Pselect.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/teaser1.4-smaller.png" type="Texture" id=10]
 [ext_resource path="res://scenes/Extras.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/MapView.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/button.svg" type="Texture" id=13]
 [ext_resource path="res://scenes/shipBridge.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/Preface.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/PlayerSelect.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/2DUI/PlayerSelect.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/sfx/Loops/SL Piano 120bpm Am Acoustic Natural 02.ogg" type="AudioStream" id=17]
 
 [node name="com_ve_wayfinder" type="Node"]
@@ -169,7 +170,7 @@ stretch_mode = 6
 [node name="Label" type="Label" parent="Title/HBoxContainer"]
 modulate = Color( 0.788235, 0.662745, 0.156863, 1 )
 margin_left = 57.0
-margin_right = 461.0
+margin_right = 455.0
 margin_bottom = 53.0
 custom_fonts/font = ExtResource( 4 )
 text = "WayFinder"
@@ -189,6 +190,9 @@ text = "0.2 MVP"
 visible = false
 
 [node name="PlayerSelect" parent="." instance=ExtResource( 16 )]
+visible = false
+
+[node name="Pselect" parent="." instance=ExtResource( 8 )]
 visible = false
 
 [node name="Audio" type="Node" parent="."]

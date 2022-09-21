@@ -32,16 +32,16 @@ tracks/0/keys = {
 length = 0.5
 
 [sub_resource type="BoxShape" id=4]
-extents = Vector3( 1.58351, 0.661577, 1.6165 )
+extents = Vector3( 2.06232, 0.661577, 1.63823 )
 
 [sub_resource type="BoxShape" id=5]
-extents = Vector3( 1.58351, 0.52916, 1.44282 )
+extents = Vector3( 1.97314, 0.52916, 1.33239 )
 
 [sub_resource type="BoxShape" id=6]
-extents = Vector3( 1.58351, 0.370164, 1.5843 )
+extents = Vector3( 1.98428, 0.370164, 1.50174 )
 
 [sub_resource type="BoxShape" id=7]
-extents = Vector3( 1.58351, 0.488875, 1.50629 )
+extents = Vector3( 2.00658, 0.488875, 1.51817 )
 
 [node name="card" type="Spatial" groups=[
 "card",
@@ -180,14 +180,14 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.2036
 light_cull_mask = 4293918721
 shadow_enabled = true
 shadow_bias = 2.95
-omni_range = 3.55563
+omni_range = 2.6
 
 [node name="OmniLight2" type="OmniLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.115, -1.50766 )
 light_cull_mask = 4293918721
 shadow_enabled = true
 shadow_bias = 2.95
-omni_range = 3.55431
+omni_range = 2.6
 
 [node name="Connectors" type="Spatial" parent="."]
 

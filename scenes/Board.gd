@@ -117,7 +117,7 @@ func place_card(location,parent,type = "card"):
 		for area in WayFinder.currentMission.eventAreas:
 			if type == area["name"]:
 				var new_area = area["file"].instance()
-				var fixed_origin = Vector3(location.origin.x,0.0,location.origin.z)
+				var fixed_origin = Vector3(stepify(location.origin.x,1),0.0,stepify(location.origin.z,1))
 				new_area.set_transform(Transform(location.basis,fixed_origin))
 				new_area.connect("place",self,"place_card")
 				var dic_placement = {
@@ -128,7 +128,7 @@ func place_card(location,parent,type = "card"):
 				WayFinder.map.append(dic_placement)
 				$Map.add_child(new_area)
 				new_area.on_add()
-				print("New area in conflict: "+str(new_area.inConflict))
+				#print("New area in conflict: "+str(new_area.inConflict))
 				
 				break
 				
@@ -246,7 +246,7 @@ func on_event():
 		if info["encounter"] and unlocks.has("enemies"):
 			var combatant_instance = Combatant.instance()
 			if parent.translation != Vector3(0,0,0):
-				combatant_instance.set_scale(Vector3(0.5,0.5,0.5))
+				combatant_instance.set_scale(Vector3(0.4,0.4,0.4))
 				var ends = WayFinder.get_map_ends()
 				var whichend = 0
 				if len(ends) > 1:

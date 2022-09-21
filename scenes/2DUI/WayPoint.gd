@@ -1,6 +1,6 @@
 extends Control
 
-
+var highlighted = 0
 
 signal finished(data)
 
@@ -45,4 +45,11 @@ func list_wayPoints():
 		button.text = m["title"]
 		button.connect("pressed",self,"_on_WayPoint_pressed",[m])
 		button.connect("mouse_entered",self,"_on_WayPoint_entered",[m])
+		button.connect("focus_entered",self,"_on_WayPoint_entered",[m])
 		$SystemSelect/MarginContainer/VBoxContainer/SystemList.add_child(button)
+	
+
+func _on_WayPoint_visibility_changed():
+	if visible:
+		$SystemSelect/MarginContainer/VBoxContainer/SystemList.get_child(0).grab_focus()
+	pass # Replace with function body.

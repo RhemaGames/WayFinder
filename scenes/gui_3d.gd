@@ -1,6 +1,6 @@
 extends Spatial
 
-var Ratios = [preload("res://scenes/Quad1-1.tscn"),preload("res://scenes/Quad3-2.tscn"),preload("res://scenes/Quad2-3.tscn"),preload("res://scenes/Quad4-3.tscn"),preload("res://scenes/Quad4-9.tscn")]
+var Ratios = ["res://scenes/Quad1-1.tscn","res://scenes/Quad3-2.tscn","res://scenes/Quad2-3.tscn","res://scenes/Quad4-3.tscn","res://scenes/Quad4-9.tscn"]
 
 # The size of the quad mesh itself.
 var quad_mesh_size
@@ -39,18 +39,19 @@ signal to_ui(data)
 
 func display_setup():
 	node_viewport = $Viewport
-	var quad_instance = Ratios[0].instance()
+	var quad_instance
 	match ratio:
 		1:
-			quad_instance = Ratios[0].instance()
+			
+			quad_instance = load(Ratios[0]).instance()
 		2:
-			quad_instance = Ratios[1].instance()
+			quad_instance = load(Ratios[1]).instance()
 		4:
-			quad_instance = Ratios[2].instance()
+			quad_instance = load(Ratios[2]).instance()
 		8:
-			quad_instance = Ratios[3].instance()
+			quad_instance = load(Ratios[3]).instance()
 		16:
-			quad_instance = Ratios[4].instance()
+			quad_instance = load(Ratios[4]).instance()
 	
 	node_quad = quad_instance
 	node_area = node_quad.get_node("Area")

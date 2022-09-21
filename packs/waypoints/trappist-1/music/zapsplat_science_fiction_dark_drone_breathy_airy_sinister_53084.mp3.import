@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_science_fiction_dark_drone_breathy_airy_sinister_53084.mp3-cf1fe9b3455db40a2ca197d8ca7f3768.mp3str"
+
+[deps]
+
+source_file="res://packs/waypoints/trappist-1/music/zapsplat_science_fiction_dark_drone_breathy_airy_sinister_53084.mp3"
+dest_files=[ "res://.import/zapsplat_science_fiction_dark_drone_breathy_airy_sinister_53084.mp3-cf1fe9b3455db40a2ca197d8ca7f3768.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

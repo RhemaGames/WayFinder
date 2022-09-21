@@ -118,20 +118,20 @@ func check_doors():
 				if "card" in area.get_groups():
 					match check.name:
 						"Connector1":
-								if area.get_parent().card_aligned(self.get_node("Area")) and $HyperSleepChamber/door/InnerDoor.visible:
-									$HyperSleepChamber/door/InnerDoor.hide()
+								if area.get_parent().card_aligned(self.get_node("Area")) and $Sleepchambers/door/InnerDoor.visible:
+									$Sleepchambers/door/InnerDoor.hide()
 									$Audio/AudioStreamPlayer.play()
 						"Connector2":
-								if area.get_parent().card_aligned(self.get_node("Area")) and $HyperSleepChamber/door4/InnerDoor002.visible:
-									$HyperSleepChamber/door4/InnerDoor002.hide()
+								if area.get_parent().card_aligned(self.get_node("Area")) and $Sleepchambers/door4/InnerDoor002.visible:
+									$Sleepchambers/door4/InnerDoor002.hide()
 									$Audio/AudioStreamPlayer.play()
 						"Connector3":
-								if area.get_parent().card_aligned(self.get_node("Area")) and $HyperSleepChamber/door3/InnerDoor003.visible:
-									$HyperSleepChamber/door3/InnerDoor003.hide()
+								if area.get_parent().card_aligned(self.get_node("Area")) and $Sleepchambers/door3/InnerDoor003.visible:
+									$Sleepchambers/door3/InnerDoor003.hide()
 									$Audio/AudioStreamPlayer.play()
 						"Connector4":
-								if area.get_parent().card_aligned(self.get_node("Area")) and $HyperSleepChamber/door2/InnerDoor001.visible:
-									$HyperSleepChamber/door2/InnerDoor001.hide()
+								if area.get_parent().card_aligned(self.get_node("Area")) and $Sleepchambers/door2/InnerDoor001.visible:
+									$Sleepchambers/door2/InnerDoor001.hide()
 									$Audio/AudioStreamPlayer.play()
 	#if power:		
 	#	for check in connector_list:

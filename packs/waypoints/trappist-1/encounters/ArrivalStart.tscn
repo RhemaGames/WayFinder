@@ -1,0 +1,133 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/Rooms/SleepBay/Sleepchambers.glb" type="PackedScene" id=1]
+[ext_resource path="res://packs/waypoints/trappist-1/graphics/Rooms/SleepBay/Sleeppods.glb" type="PackedScene" id=2]
+
+[node name="PlayerStart" type="Spatial"]
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8038, 4.848 )
+light_energy = 0.5
+omni_range = 6.2234
+
+[node name="OmniLight4" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.79775, 3.8038, -0.809899 )
+light_energy = 0.5
+omni_range = 6.147
+
+[node name="OmniLight2" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191145, 3.8038, -4.67103 )
+light_energy = 0.5
+omni_range = 6.2043
+
+[node name="OmniLight3" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.66394, 3.8038, 1.17801 )
+light_energy = 0.5
+omni_range = 5.93233
+
+[node name="OmniLight5" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.66394, 3.8038, -1.0775 )
+light_energy = 0.5
+omni_range = 5.79881
+
+[node name="OmniLight6" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02614, 3.8038, -4.25051 )
+light_energy = 0.5
+omni_range = 6.4482
+
+[node name="OmniLight8" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98792, 3.8038, -4.25051 )
+light_energy = 0.5
+omni_range = 6.14352
+
+[node name="OmniLight9" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.79188, 3.8038, -2.86513 )
+light_energy = 0.5
+omni_range = 6.47481
+
+[node name="OmniLight10" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.79188, 3.8038, 3.27208 )
+light_energy = 0.5
+omni_range = 6.15245
+
+[node name="OmniLight11" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59357, 3.8038, 3.35009 )
+light_energy = 0.5
+omni_range = 6.50556
+
+[node name="OmniLight12" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07963, 3.8038, 4.51219 )
+light_energy = 0.5
+omni_range = 6.5377
+
+[node name="OmniLight13" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28369, 3.8038, 4.51219 )
+light_energy = 0.5
+omni_range = 6.47768
+
+[node name="OmniLight14" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76027, 3.8038, 1.29254 )
+light_energy = 0.5
+omni_range = 6.02845
+
+[node name="OmniLight7" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.78467, 3.8038, -2.74047 )
+light_energy = 0.5
+omni_range = 5.83776
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Player1" type="Position3D" parent="Players"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43178, 0.0458474, 2.6706 )
+
+[node name="Camera" type="Position3D" parent="Players/Player1"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 1.2534, 1.60931, 2.69627 )
+
+[node name="Player2" type="Position3D" parent="Players"]
+transform = Transform( 0.687911, 0, -0.725795, 0, 1, 0, 0.725795, 0, 0.687911, -3.5158, 0.0458474, 2.6706 )
+
+[node name="Camera" type="Position3D" parent="Players/Player2"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 2.17537, 1.48651, 0.721785 )
+
+[node name="Player3" type="Position3D" parent="Players"]
+transform = Transform( 0.842368, 0, -0.538903, 0, 1, 0, 0.538903, 0, 0.842368, 2.43178, 0.0458474, -4.0177 )
+
+[node name="Camera" type="Position3D" parent="Players/Player3"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 2.35162, 1.60929, 1.55043 )
+
+[node name="Player4" type="Position3D" parent="Players"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20796, 0.0458474, -3.27596 )
+
+[node name="Camera" type="Position3D" parent="Players/Player4"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 1.2534, 1.60931, 2.69627 )
+
+[node name="Sleepchambers" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -0.235798, -0.090997, -0.107181 )
+
+[node name="Sleeppods" parent="." instance=ExtResource( 2 )]
+
+[node name="Bone" parent="Sleeppods/Pod1/Armature001" index="0"]
+transform = Transform( 1, -3.37931e-09, -2.81828e-08, -3.37931e-09, 0.971652, -0.236414, 2.81828e-08, 0.236414, 0.971652, 0, 0, 0 )
+
+[node name="Bone001" parent="Sleeppods/Pod1/Armature001" index="1"]
+transform = Transform( 1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, 0 )
+
+[node name="Bone 2" parent="Sleeppods/Pod2/Armature" index="0"]
+transform = Transform( 1, -1.58695e-09, -1.36624e-08, -1.58695e-09, 0.973375, -0.229217, 1.36624e-08, 0.229217, 0.973375, 0, 0, 0 )
+
+[node name="Bone001 2" parent="Sleeppods/Pod2/Armature" index="1"]
+transform = Transform( 1, -3.77225e-08, -6.74343e-09, -1.23184e-08, -0.483074, 0.875579, -3.62867e-08, -0.875579, -0.483074, 0, 0, 0 )
+
+[node name="Bone 3" parent="Sleeppods/Pod3/Armature002" index="0"]
+transform = Transform( 1, 8.47955e-10, 7.29304e-09, 8.47972e-10, 0.973323, -0.229438, -7.29304e-09, 0.229438, 0.973323, 0, 0, 0 )
+
+[node name="Bone001 3" parent="Sleeppods/Pod3/Armature002" index="1"]
+transform = Transform( 1, 1.59162e-08, 1.66271e-09, 4.02828e-09, -0.350916, 0.936407, 1.54875e-08, -0.936407, -0.350916, 0, 0, 0 )
+
+[node name="Bone 4" parent="Sleeppods/Pod4/Armature003" index="0"]
+transform = Transform( 1, 1.42098e-08, 1.11815e-07, 2.07169e-08, 0.968213, -0.250127, -1.03414e-07, 0.250127, 0.968213, 0, 0, 0 )
+
+[node name="Bone001 4" parent="Sleeppods/Pod4/Armature003" index="1"]
+transform = Transform( 1, 2.24877e-07, 2.37739e-08, 3.87953e-08, -0.353236, 0.935534, 2.08005e-07, -0.935534, -0.353236, 0, 0, 0 )
+
+[editable path="Sleeppods"]

@@ -95,23 +95,27 @@ transform = Transform( 0.590885, 0, 0.0694593, 0, 0.6, 0, -0.104189, 0, 0.393923
 UI = "res://scenes/2DUI/PlayerUI/Combat/PlayerChoice.tscn"
 distance = 10
 resolution = Vector2( 1200, 700 )
+ratio = 2
 
 [node name="Stats" parent="PlayerCamera" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.795, 3, -4.95 )
 UI = "res://scenes/2DUI/PlayerUI/Combat/PlayerStats.tscn"
 handle_input = false
 resolution = Vector2( 500, 250 )
+ratio = 2
 
 [node name="eStats" parent="PlayerCamera" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.731, 2.983, -4.95 )
 UI = "res://scenes/2DUI/PlayerUI/Combat/EnemyStats.tscn"
 handle_input = false
 resolution = Vector2( 500, 250 )
+ratio = 2
 
 [node name="eChoices" parent="PlayerCamera" instance=ExtResource( 21 )]
 transform = Transform( 0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 3.232, -1.901, -2 )
 UI = "res://scenes/2DUI/PlayerUI/Combat/EnemyChoice.tscn"
 resolution = Vector2( 1000, 700 )
+ratio = 2
 
 [node name="Player" type="Position3D" parent="."]
 transform = Transform( -9.61651e-08, 0, 2.2, 0, 2.2, 0, -2.2, 0, -9.61651e-08, -4.32704, 1.12721, 10.9927 )

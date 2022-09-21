@@ -6,7 +6,7 @@ var deckstack = {
 	"cross":15,
 	"cp":20,
 	"events":30,
-	"encounter":30
+	"encounter":10
 }
 
 var info = {

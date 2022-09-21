@@ -5,6 +5,7 @@ extends Control
 # var a = 2
 # var b = "text"
 var data
+var highlighted = 0
 
 signal finished(data)
 
@@ -54,6 +55,7 @@ func list_Missions(_data):
 			button.text = m["title"]
 			button.connect("pressed",self,"_on_Mission_pressed",[m])
 			button.connect("mouse_entered",self,"_on_Mission_entered",[m])
+			button.connect("focus_entered",self,"_on_Mission_entered",[m])
 			for unlocked in WayFinder.gamedata["unlocked"]:
 				
 				if _data["title"] == unlocked["waypoint"]:
@@ -62,3 +64,8 @@ func list_Missions(_data):
 						break
 
 			$MissionSelect/MarginContainer/VBoxContainer/MissionList.add_child(button)
+
+func _on_Mission_visibility_changed():
+	if visible:
+		$MissionSelect/MarginContainer/VBoxContainer/MissionList.get_child(highlighted).grab_focus()
+	pass # Replace with function body.

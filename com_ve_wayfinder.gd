@@ -51,6 +51,8 @@ func _on_start_game(_data):
 	$MapView/ViewportContainer/Viewport/InterpolatedCamera.transform = currentView.get_node("boardBacking/FullBoard").transform
 	$shipBridge.hide()
 	$shipBridge.queue_free()
+	$Pselect.hide()
+	$Pselect.queue_free()
 	$PlayerSelect.hide()
 	$PlayerSelect.queue_free()
 	$Title.hide()
@@ -187,7 +189,8 @@ func show(item):
 
 func player_select():
 	$shipBridge.hide()
-	$PlayerSelect.show()
+	$Title.hide()
+	$Pselect.show()
 
 func on_preface_done():
 	music_fade =true

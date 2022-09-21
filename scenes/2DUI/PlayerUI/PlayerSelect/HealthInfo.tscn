@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/WFpanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/space age.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://scenes/2DUI/PlayerUI/PlayerSelect/HealthInfo.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 128
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="HealthInfo" type="Control"]
+margin_right = 204.0
+margin_bottom = 168.0
+theme = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WFpanel" parent="." instance=ExtResource( 1 )]
+bg_opacity = 0.8
+border_color = Color( 0.109804, 0.780392, 0.780392, 1 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Control"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Health"
+
+[node name="HP" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -4.0
+margin_top = -17.0
+margin_right = 4.0
+margin_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

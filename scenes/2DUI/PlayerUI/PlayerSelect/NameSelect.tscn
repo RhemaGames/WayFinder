@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/WFpanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/space age.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://scenes/2DUI/PlayerUI/PlayerSelect/NameSelect.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="NameSelect" type="Control"]
+margin_right = 650.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 1000, 300 )
+theme = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WFpanel" parent="." instance=ExtResource( 1 )]
+bg_opacity = 0.8
+border_color = Color( 0.109804, 0.780392, 0.780392, 1 )
+
+[node name="NameArea" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 31.0
+margin_top = 18.0
+margin_right = -27.0001
+margin_bottom = -18.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="NameArea"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "Name"
+
+[node name="Name" type="LineEdit" parent="NameArea"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -209.0
+margin_bottom = -115.0
+custom_fonts/font = SubResource( 2 )
+max_length = 255
+placeholder_text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="text_changed" from="NameArea/Name" to="." method="_on_Name_text_changed"]
