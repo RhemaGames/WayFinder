@@ -7,7 +7,7 @@ extends Control
 signal selected(select)
 signal selecting()
 signal countdown(time)
-signal finished(data)
+#signal finished(data)
 var select = 1
 var rotateIt = 0
 var rotating = 0

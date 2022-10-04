@@ -26,4 +26,5 @@ spot_range = 21.3809
 transform = Transform( -0.99399, -0.0410452, 0.101488, 0, 0.927053, 0.37493, -0.109474, 0.372677, -0.921481, -0.229259, 3.47898, -16.7733 )
 visible = false
 spot_range = 23.2011
+
 [connection signal="player_selected" from="." to="." method="_on_CharacterSelect_player_selected"]

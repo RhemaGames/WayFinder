@@ -97,7 +97,7 @@ func load_commands():
 			cardNum += 1
 	pass
 
-func on_card_ready(data,theCard,c):
+func on_card_ready(_data,theCard,c):
 	theCard.get_node("Viewport").get_child(0).playerRoot = self
 	theCard.get_node("Viewport").get_child(0).load_card(c)
 	theCard.get_node("Viewport").get_child(0).connect("execute",self,"on_command_execute")
@@ -109,8 +109,12 @@ func _on_Player_loadup(data):
 	info["hp"] = model.get_info()["hp"]
 	info["maxHp"] = model.get_info()["hp"]
 	info["class"] = data.info["class"]
-	$Audio/Theme.stream = load(model.theme)
-	$Audio/Theme.play()
+	
+	## Remove this at a later date
+	#$Audio/Theme.stream = load(model.theme)
+	#$Audio/Theme.play()
+	# ^^^
+	
 	load_commands()
 	update_cp_count()
 	$Model.add_child(model)

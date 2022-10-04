@@ -11,7 +11,7 @@ var weapon = preload("res://packs/characters/gun1.glb")
 var lazerbeam = preload("res://packs/characters/Effects/sfx/zapsplat_science_fiction_retro_laser_beam_002_44337.mp3.ogg")
 var shield = preload("res://packs/characters/Effects/sfx/zapsplat_science_fiction_droning_pulsating_force_field_25225.mp3.ogg")
 
-var theme = "res://packs/characters/Commander/assets/PLPSF-Percussion_80_01.wav"
+#var theme = "res://packs/characters/Commander/assets/PLPSF-Percussion_80_01.wav"
 
 var command1 = preload("res://packs/characters/Commander/assets/Tex_skill_35.PNG")
 var command2 = preload("res://packs/characters/Commander/assets/Tex_skill_94.PNG")

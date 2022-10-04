@@ -29,12 +29,10 @@ margin_bottom = 26.5
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 2 )
-text = "Click Here (or press Enter)"
+text = "Click Here 
+(or press Enter)"
 align = 1
 autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -42,6 +40,7 @@ autostart = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 bus = "sfx"
+
 [connection signal="finished" from="." to="." method="_on_Start_finished"]
 [connection signal="gui_input" from="." to="." method="_on_Start_gui_input"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

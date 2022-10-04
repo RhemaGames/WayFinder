@@ -254,7 +254,7 @@ func _on_turn_ended():
 
 
 func player_log(playerClass):
-	var thelog = WayFinder.currentMission.get_crew_comment(playerClass,WayFinder.mainEvent)
+	var _thelog = WayFinder.currentMission.get_crew_comment(playerClass,WayFinder.mainEvent)
 	#var thelog = Root.currentView.Briefing.get_crew_comment(playerClass,WayFinder.mainEvent)
 	#$CrewLog/WFpanel/MC/VBoxContainer/Title.text = thelog["title"]
 	#$CrewLog/WFpanel/MC/VBoxContainer/RichTextLabel.theText = thelog["log"]

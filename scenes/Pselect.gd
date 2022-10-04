@@ -8,20 +8,20 @@ var holding = false
 var selecting = false
 var classShown = 0
 onready var fullname = WayFinder.generate_name()
-signal finished(data)
+#signal finished(data)
 
 signal change(num,crewType)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	var _error = null
 	var start = load("res://packs/waypoints/trappist-1/encounters/ArrivalStart.tscn").instance()
 	$Location.add_child(start)
 	$Camera/CharacterSelect/AnimationPlayer.play("powerup")
-	connect("change",$Camera/CharacterSelect/Viewport.get_child(0),"_on_PlayerSelectArea_change")
-	connect("change",$Camera/Health/Viewport.get_child(0),"set_hp")
-	$Camera/Name/Viewport.get_child(0).connect("entering_text",self,"set_name")
+	_error = connect("change",$Camera/CharacterSelect/Viewport.get_child(0),"_on_PlayerSelectArea_change")
+	_error = connect("change",$Camera/Health/Viewport.get_child(0),"set_hp")
+	_error = $Camera/Name/Viewport.get_child(0).connect("entering_text",self,"set_name")
 	
 	pass # Replace with function body.
 

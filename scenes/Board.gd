@@ -218,7 +218,7 @@ func on_event():
 		info = card.info
 	
 	var parent = ""
-	var child = ""
+	var _child = ""
 	for point in WayFinder.map:
 		if str(point["parent"]) == str(card):
 			child = point["card"]

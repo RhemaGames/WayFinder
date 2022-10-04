@@ -29,7 +29,7 @@ var info = {
 func _ready():
 # warning-ignore:return_value_discarded
 	$Enemy1/AnimationPlayer.connect("animation_finished",self,"do_stuff")
-	WayFinder.connect("enviroment_turn",self,"ai")
+	var _error = WayFinder.connect("enviroment_turn",self,"ai")
 	#$AudioStreamPlayer.play()
 	pass # Replace with function body.
 

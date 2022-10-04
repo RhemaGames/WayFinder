@@ -97,6 +97,6 @@ func _on_ScrollContainer_resized():
 	for child in place.get_children():
 		child.rect_size.x = place.rect_size.x
 
-func _on_PlayerSelectArea_change(num,crewType):
+func _on_PlayerSelectArea_change(_num,crewType):
 	var classInstance = crewType["data"].instance()
 	_on_Update_Info(classInstance.get_info())

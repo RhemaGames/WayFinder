@@ -14,7 +14,7 @@ var skill = ""
 signal execute(data)
 # warning-ignore:unused_signal
 signal display()
-signal finished(data)
+#signal finished(data)
 
 var playerRoot = ""
 # Called when the node enters the scene tree for the first time.

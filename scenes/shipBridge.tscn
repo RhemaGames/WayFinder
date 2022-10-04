@@ -164,5 +164,6 @@ preprocess = 10.0
 visibility_aabb = AABB( -8.28948, -6.81488, -4, 16.579, 14.1923, 8 )
 process_material = SubResource( 3 )
 draw_pass_1 = SubResource( 5 )
+
 [connection signal="finished" from="MainScreen/GUIPanel3D" to="." method="_on_GUIPanel3D_finished"]
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_AudioStreamPlayer3D_finished"]

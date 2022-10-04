@@ -419,6 +419,7 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
 [connection signal="visibility_changed" from="." to="." method="_on_MapView_visibility_changed"]
 [connection signal="pressed" from="WFpanel/MapControls/MapControlsButton" to="." method="_on_MapControlsButton_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

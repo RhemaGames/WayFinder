@@ -34,7 +34,7 @@ func change_class(direction):
 	if len(classes) > 0:
 		var classInstances = $Position3D.get_child(0)
 		$Position3D.remove_child(classInstances)
-		#classInstances.queue_free()
+		classInstances.queue_free()
 	
 		if showing < len(classes) -1 and showing >= 0:
 			showing += direction

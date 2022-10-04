@@ -14,7 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func set_hp(num,data):
+func set_hp(_num,data):
 	var inclass = data["data"].instance()
 	var info= inclass.get_info()
 	$Control/HP.text = str(info["hp"])

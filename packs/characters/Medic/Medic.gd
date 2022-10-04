@@ -14,7 +14,7 @@ var weapon = preload("res://packs/characters/gun1.glb")
 var lazerbeam = preload("res://packs/characters/Effects/sfx/zapsplat_science_fiction_retro_laser_beam_002_44337.mp3.ogg")
 var shield = preload("res://packs/characters/Effects/sfx/zapsplat_science_fiction_droning_pulsating_force_field_25225.mp3.ogg")
 
-var theme = "res://packs/characters/Medic/assets/PLPSF-Synth_Arpeggiator_Root_Note_A_028.wav"
+#var theme = "res://packs/characters/Medic/assets/PLPSF-Synth_Arpeggiator_Root_Note_A_028.wav"
 
 # Declare member variables here. Examples:
 # var a = 2
