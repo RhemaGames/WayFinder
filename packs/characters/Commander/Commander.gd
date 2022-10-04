@@ -77,7 +77,7 @@ func action(act):
 			animQueue.append("block")
 			shields = true
 			$sfx.play()
-			#$AnimationPlayer.block("block")
+			#$Commander/AnimationPlayer.block("block")
 		"drop":
 			animQueue.append("deflect")
 			shields = false

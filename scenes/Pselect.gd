@@ -8,7 +8,7 @@ var holding = false
 var selecting = false
 var classShown = 0
 onready var fullname = WayFinder.generate_name()
-#signal finished(data)
+signal finished(data)
 
 signal change(num,crewType)
 

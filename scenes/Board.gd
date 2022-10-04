@@ -209,16 +209,17 @@ func on_event():
 	var player = players[WayFinder.turn -1]
 	
 	var info = {
-	"type":"T",
-	"event":0,
-	"cp":false,
-	"encounter":false
-}
+		"type":"T",
+		"event":0,
+		"cp":false,
+		"encounter":false
+		}
+	
 	if typeof(card) !=TYPE_STRING:
 		info = card.info
 	
 	var parent = ""
-	var _child = ""
+	var child = ""
 	for point in WayFinder.map:
 		if str(point["parent"]) == str(card):
 			child = point["card"]
@@ -265,10 +266,6 @@ func on_event():
 
 func find_end():
 	WayFinder.map.invert()
-	var _map_invert = WayFinder.map
-	#for card in map_invert:
-		#print(card["card"].name)
-		#print(card["parent"].name)
-		
+	#var _map_invert = WayFinder.map
 	WayFinder.map.invert()
 	pass

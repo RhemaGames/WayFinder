@@ -10,7 +10,7 @@ var selecting = false
 var classShown = 0
 
 var availableClasses = []
-#signal finished(data)
+signal finished(data)
 
 signal change(num,crewType)
 

@@ -14,7 +14,7 @@ var skill = ""
 signal execute(data)
 # warning-ignore:unused_signal
 signal display()
-#signal finished(data)
+signal finished(data)
 
 var playerRoot = ""
 # Called when the node enters the scene tree for the first time.
@@ -94,5 +94,5 @@ func _on_CommandCard_mouse_exited():
 	pass # Replace with function body.
 
 
-func _on_CommandCard_finished(data):
+func _on_CommandCard_finished(_data):
 	pass # Replace with function body.

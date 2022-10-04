@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://packs/missions/maiden_voyage/enviroments/trapist-9.tres" type="Environment" id=1]
-[ext_resource path="res://packs/characters/Commander/Commander.tscn" type="PackedScene" id=2]
+[ext_resource path="res://packs/characters/Commander/Commander-old.tscn" type="PackedScene" id=2]
 [ext_resource path="res://packs/characters/Medic/Medic.tscn" type="PackedScene" id=3]
 [ext_resource path="res://packs/characters/Engineer/Engineer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://tests/animationTest.gd" type="Script" id=5]

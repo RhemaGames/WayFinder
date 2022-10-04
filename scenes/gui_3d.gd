@@ -38,11 +38,9 @@ signal to_ui(data)
 
 
 func display_setup():
-	node_viewport = $Viewport
 	var quad_instance
 	match ratio:
 		1:
-			
 			quad_instance = load(Ratios[0]).instance()
 		2:
 			quad_instance = load(Ratios[1]).instance()
@@ -52,6 +50,8 @@ func display_setup():
 			quad_instance = load(Ratios[3]).instance()
 		16:
 			quad_instance = load(Ratios[4]).instance()
+		_:
+			quad_instance = load(Ratios[0]).instance()
 	
 	node_quad = quad_instance
 	node_area = node_quad.get_node("Area")

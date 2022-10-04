@@ -11,10 +11,7 @@
 script = ExtResource( 2 )
 
 [node name="Security" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, -0.168221, 0 )
-
-[node name="Cube035" parent="Security" index="0"]
-visible = false
+transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0.0858809, 0 )
 
 [node name="BoneAttachment" parent="Security/Armature007/Skeleton" index="0"]
 transform = Transform( 0.316745, -0.08084, -0.94506, 0.334112, -0.922992, 0.190933, -0.887717, -0.376233, -0.265344, -36.6717, -31.3694, -28.7506 )
@@ -36,6 +33,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.44523
 [node name="shield" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 1.25079, 1.63305, 1.81141 )
 visible = false
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="Security"]

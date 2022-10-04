@@ -27,14 +27,144 @@ tracks/0/keys = {
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 1.98744, 0.507043, 1.88918 )
 
-[node name="medbay" groups=[
-"card",
-"medical",
-] instance=ExtResource( 1 )]
+[node name="medbay" groups=["card", "medical"] instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.655505 )
 script = ExtResource( 3 )
 
+[node name="Cube015" parent="." index="0"]
+transform = Transform( 0.968586, 0, 0, 0, 1, 0, 0, 0, 1.28993, -0.0870552, 0.0156122, 2.00224 )
+
+[node name="ceiling001" parent="." index="1"]
+transform = Transform( -0.970515, 1.50996e-07, 0, -1.46544e-07, -1, 0, 0, 0, 1.29038, -0.277119, 2.65377, 1.96199 )
+
+[node name="Cube016" parent="." index="2"]
+transform = Transform( 1, 1.50996e-07, 0, 1.50996e-07, -1, 0, 0, 0, 1.33442, -6.29016, 0.0152037, 4.7674 )
+
+[node name="Cube017" parent="." index="3"]
+transform = Transform( -1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1.3347, 6.11806, -0.000492347, 4.78019 )
+
+[node name="Cube018" parent="." index="4"]
+transform = Transform( -4.37847e-09, 1.0581e-07, -1.15698, -7.70788e-09, -0.504199, -2.428e-07, -0.0367293, 1.0581e-07, 6.89614e-08, 3.75808, 1.57746, -1.82295 )
+
+[node name="Cube019" parent="." index="5"]
+transform = Transform( -0.148902, 2.24836e-08, 0, -2.24836e-08, -0.148902, 0, 0, 0, 0.148902, -5.88866, 0.374134, 3.39827 )
+
+[node name="Cube025" parent="." index="6"]
+transform = Transform( 0.15515, 2.3427e-08, 0, 2.3427e-08, -0.15515, 0, 0, 0, 0.15515, 5.70451, 0.381621, 3.47413 )
+
+[node name="Cube028" parent="." index="7"]
+transform = Transform( 0.15515, 2.3427e-08, 0, 2.3427e-08, -0.15515, 0, 0, 0, 0.15515, 5.70451, 0.381622, 0.474134 )
+
+[node name="Cube036" parent="." index="8"]
+transform = Transform( -1.19209e-07, 7.54979e-08, 1, -7.54979e-08, -1, 7.54979e-08, 1, -7.54979e-08, 5.96046e-08, 4.98495, 0.022691, -2.2038 )
+
+[node name="Cube043" parent="." index="9"]
+transform = Transform( -1.19209e-07, 7.54979e-08, 1, -7.54979e-08, -1, 7.54979e-08, 1, -7.54979e-08, 5.96046e-08, -1.93904, 0.022691, -2.24767 )
+
+[node name="Cube045" parent="." index="10"]
+transform = Transform( -1.19209e-07, 2.09857e-07, -1, -2.09857e-07, -1, -2.09857e-07, -1, 2.09857e-07, 5.96046e-08, -5.13159, 0.022691, 6.24093 )
+
+[node name="Cube058" parent="." index="11"]
+transform = Transform( -1.19209e-07, 2.09857e-07, -1, -2.09857e-07, -1, -2.09857e-07, -1, 2.09857e-07, 5.96046e-08, 1.29453, 0.022691, 6.24093 )
+
+[node name="Cube071" parent="." index="12"]
+transform = Transform( 1.84953e-08, 3.25593e-08, -0.15515, 3.25593e-08, -0.15515, -3.25593e-08, 0.15515, 3.25593e-08, 9.24766e-09, -5.0107, 0.381621, 5.87009 )
+
+[node name="Cube072" parent="." index="13"]
+transform = Transform( 1.84953e-08, 3.25593e-08, -0.15515, 3.25593e-08, -0.15515, -3.25593e-08, 0.15515, 3.25593e-08, 9.24766e-09, -2.0107, 0.381622, 5.87009 )
+
+[node name="Cube073" parent="." index="14"]
+transform = Transform( 1.84953e-08, 3.25593e-08, -0.15515, 3.25593e-08, -0.15515, -3.25593e-08, 0.15515, 3.25593e-08, 9.24766e-09, 2.00225, 0.381621, 5.88301 )
+
+[node name="Cube074" parent="." index="15"]
+transform = Transform( 1.84953e-08, 3.25593e-08, -0.15515, 3.25593e-08, -0.15515, -3.25593e-08, 0.15515, 3.25593e-08, 9.24766e-09, 5.00225, 0.381622, 5.88301 )
+
+[node name="door002" parent="." index="16"]
+transform = Transform( -1.00324, -1.50996e-07, 0, 1.51485e-07, -1, 0, 0, 0, 1, -0.168222, 2.64724, -1.905 )
+
+[node name="Cube075" parent="." index="17"]
+transform = Transform( 0.703726, 0, 0, 0, 0.703726, 0, 0, 0, 0.703726, 3.70239, 0.735631, 5.17752 )
+
+[node name="Cube076" parent="." index="18"]
+transform = Transform( 0.703726, 0, 0, 0, 0.703699, 0.00612745, 0, -0.00612745, 0.703699, 3.70239, 0.870436, 3.82562 )
+
+[node name="Cylinder" parent="." index="19"]
+transform = Transform( 0.570228, 0, 0, 0, 3.39882e-08, 0.570228, 0, -0.570228, 3.39882e-08, 3.70564, 0.883002, 5.09773 )
+
+[node name="Cube077" parent="." index="20"]
+transform = Transform( 4.19453e-08, 0, -0.703726, 0, 0.703726, 0, 0.703726, 0, 4.19453e-08, -5.16488, 0.719576, 2.62612 )
+
+[node name="Cube078" parent="." index="21"]
+transform = Transform( 4.19453e-08, 0.00612745, -0.703699, 0, 0.703699, 0.00612745, 0.703726, -3.27698e-10, 4.19453e-08, -3.81298, 0.85438, 2.62612 )
+
+[node name="Cube079" parent="." index="22"]
+transform = Transform( 4.19453e-08, 0, -0.703726, 0, 0.703726, 0, 0.703726, 0, 4.19453e-08, -5.18574, 0.722101, 0.498176 )
+
+[node name="Cube080" parent="." index="23"]
+transform = Transform( 4.19453e-08, 0.00612745, -0.703699, 0, 0.703699, 0.00612745, 0.703726, -3.27698e-10, 4.19453e-08, -3.83384, 0.856905, 0.498176 )
+
+[node name="Cube081" parent="." index="24"]
+transform = Transform( -0.0138494, 2.87069e-08, 0, -2.0912e-09, -0.190117, 0, 0, 0, 0.252308, -5.90042, 1.57746, 2.98116 )
+
+[node name="Cube082" parent="." index="25"]
+transform = Transform( -0.0138494, 2.87069e-08, 0, -2.0912e-09, -0.190117, 0, 0, 0, 0.252308, -5.90042, 2.07746, 2.98116 )
+
+[node name="Cube083" parent="." index="26"]
+transform = Transform( -0.0138494, 2.87069e-08, 0, -2.0912e-09, -0.190117, 0, 0, 0, 0.252308, -5.90042, 1.57746, 2.16277 )
+
+[node name="Cube084" parent="." index="27"]
+transform = Transform( -0.0138494, 2.87069e-08, 0, -2.0912e-09, -0.190117, 0, 0, 0, 0.252308, -5.90042, 2.07746, 2.16277 )
+
+[node name="Cube085" parent="." index="28"]
+transform = Transform( -0.0138494, 2.87069e-08, 0, -2.0912e-09, -0.190117, 0, 0, 0, 0.252308, -5.90042, 1.57746, 0.920475 )
+
+[node name="Cube086" parent="." index="29"]
+transform = Transform( -0.0138494, 2.87069e-08, 0, -2.0912e-09, -0.190117, 0, 0, 0, 0.252308, -5.90042, 2.07746, 0.920475 )
+
+[node name="Cube087" parent="." index="30"]
+transform = Transform( -0.0138494, 2.87069e-08, 0, -2.0912e-09, -0.190117, 0, 0, 0, 0.252308, -5.90042, 1.57746, 0.102089 )
+
+[node name="Cube088" parent="." index="31"]
+transform = Transform( -0.0138494, 2.87069e-08, 0, -2.0912e-09, -0.190117, 0, 0, 0, 0.252308, -5.90042, 2.07746, 0.102089 )
+
+[node name="Cube089" parent="." index="32"]
+transform = Transform( -1.65098e-09, -1.11905e-08, 0.252308, 8.15189e-10, -0.190117, -1.48511e-08, 0.0138494, 1.11905e-08, 1.50387e-08, 2.59972, 1.57746, 5.88082 )
+
+[node name="Cube090" parent="." index="33"]
+transform = Transform( -1.65098e-09, -1.11905e-08, 0.252308, 8.15189e-10, -0.190117, -1.48511e-08, 0.0138494, 1.11905e-08, 1.50387e-08, 2.59972, 2.07746, 5.88082 )
+
+[node name="Cube091" parent="." index="34"]
+transform = Transform( -1.65098e-09, -1.11905e-08, 0.252308, 8.15189e-10, -0.190117, -1.48511e-08, 0.0138494, 1.11905e-08, 1.50387e-08, 1.78134, 1.57746, 5.88082 )
+
+[node name="Cube092" parent="." index="35"]
+transform = Transform( -1.65098e-09, -1.11905e-08, 0.252308, 8.15189e-10, -0.190117, -1.48511e-08, 0.0138494, 1.11905e-08, 1.50387e-08, 1.78134, 2.07746, 5.88082 )
+
+[node name="Cube093" parent="." index="36"]
+transform = Transform( -3.08487e-09, -4.7937e-08, 0.47144, 1.52319e-09, -0.814412, -2.77494e-08, 0.0258777, 4.7937e-08, 2.81e-08, 4.90756, 1.4085, 5.88082 )
+
+[node name="Cube094" parent="." index="37"]
+transform = Transform( 0.703726, 0, 0, 0, 0.703726, 0, 0, 0, 0.703726, 0.782649, 0.725447, 5.17808 )
+
+[node name="Cube095" parent="." index="38"]
+transform = Transform( 0.703726, 0, 0, 0, -0.266446, 0.651335, 0, -0.651335, -0.266446, 0.782649, 0.581873, 4.34392 )
+
+[node name="Cube096" parent="." index="39"]
+transform = Transform( 0.406514, 0, -0.20402, 0, 0.454838, 0, 0.20402, 0, 0.406514, 4.90963, 0.442884, 5.08154 )
+
+[node name="Cube097" parent="." index="40"]
+transform = Transform( 0.454838, 0, -0.000708058, 0, 0.454838, 0, 0.000708058, 0, 0.454838, -0.169141, 0.445641, 5.30827 )
+
+[node name="Cube098" parent="." index="41"]
+transform = Transform( 0.454838, 0, -0.000708058, 0, 0.454838, 0, 0.000708058, 0, 0.454838, -5.34728, 0.445409, 1.56805 )
+
+[node name="Cube099" parent="." index="42"]
+transform = Transform( 2.1211, 0, 0, 0, 1, 0, 0, 0, 1, 3.80422, 0.0121621, -1.52261 )
+
+[node name="Cube100" parent="." index="43"]
+transform = Transform( 2.1211, 0, 0, 0, 1, 0, 0, 0, 1, -3.05335, 1.34386, 5.69716 )
+
 [node name="lights" type="Spatial" parent="." index="44"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0870552, 0, 2.00224 )
 visible = false
 
 [node name="OmniLight" type="OmniLight" parent="lights" index="0"]
@@ -49,12 +179,11 @@ omni_range = 4.43273
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25372, 0 )
 
 [node name="path_marker" parent="." index="45" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0870552, 0, 2.00224 )
 visible = false
 
-[node name="Area" type="Area" parent="." index="46" groups=[
-"card",
-"medical",
-]]
+[node name="Area" type="Area" parent="." index="46" groups=["card", "medical"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0870552, 0, 2.00224 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
 transform = Transform( 0.999996, 0, 0.00275762, 0, 1, 0, -0.00275762, 0, 0.999996, 0.122305, 1.73024, 0.0313058 )
@@ -64,7 +193,7 @@ shape = SubResource( 1 )
 anims/lightsOn = SubResource( 2 )
 
 [node name="Marker" type="Position3D" parent="." index="48"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0859299, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0870552, 0.0859299, 2.00224 )
 
 [node name="Audio" type="Node" parent="." index="49"]
 
@@ -73,9 +202,10 @@ stream = ExtResource( 4 )
 bus = "sfx"
 
 [node name="Connectors" type="Spatial" parent="." index="50"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0870552, 0, 2.00224 )
 
 [node name="Connector1" type="Area" parent="Connectors" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.9936 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.21012 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Connectors/Connector1" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2538 )
@@ -84,6 +214,7 @@ shape = SubResource( 3 )
 [node name="card_placement" parent="Connectors/Connector1" index="1" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.65, 0, 0, 1.24063 )
 visible = false
+
 [connection signal="place" from="." to="." method="_on_medbay_place"]
 [connection signal="input_event" from="Area" to="." method="_on_Area_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

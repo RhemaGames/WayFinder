@@ -257,6 +257,7 @@ func check_doors():
 								$Audio/AudioStreamPlayer.play()
 									
 func on_event_changed():
+	#print(info["event"])
 	if info["event"] == 4:
 		if WayFinder.check_event_map(WayFinder.mainEvent):
 				if WayFinder.check_event_location(info["location"],WayFinder.mainEvent):
