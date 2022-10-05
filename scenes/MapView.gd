@@ -4,6 +4,7 @@ var currentTask = ""
 var main_event_marked = []
 var cp_marked = []
 var event_marked = []
+var open_paths_marked = []
 var PlayerPositions = []
 var marker = preload("res://scenes/mapInfoMaker.tscn")
 var event_texture = preload("res://assets/Tex_skill_13.PNG")
@@ -24,6 +25,20 @@ func fill_map():
 	$PlayerMarker.set_info(current_player.info["class"])
 	
 	for c in WayFinder.map:
+		#var mkr = marker.instance()
+		#var doors = WayFinder.currentView.get_node("boardBacking/FullBoard").unproject_position(c["card"].get_node("Connectors/Connectors1").get_global_transform().origin)
+		#m["marker"].rect_position = cp_cardPos
+		
+		if !str(c["card"]) in str(open_paths_marked):
+			var themark = marker.instance()
+			var connectors =  c["card"].check_connectors()
+			if !connectors == []:
+				print(connectors)
+			#if c["card"].info["event"] == 4:
+			#	themark.set_info("")
+			#	themark.set_icon(event_texture)
+			#	$markers.add_child(themark)
+			#	main_event_marked.append({"marker":themark,"card":c["card"]})
 
 		if !str(c["card"]) in str(main_event_marked):
 			var themark = marker.instance()
@@ -52,7 +67,6 @@ func fill_map():
 			main_event_marked.remove(main_event_marked.find(m))
 	
 	for m in cp_marked:
-		
 		var cp_cardPos
 		if m["card"].info["cp"]:
 			cp_cardPos = WayFinder.currentView.get_node("boardBacking/FullBoard").unproject_position(m["card"].get_global_transform().origin)

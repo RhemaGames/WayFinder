@@ -43,15 +43,10 @@ extents = Vector3( 1.98428, 0.370164, 1.50174 )
 [sub_resource type="BoxShape" id=7]
 extents = Vector3( 2.00658, 0.488875, 1.51817 )
 
-[node name="card" type="Spatial" groups=[
-"card",
-"cardnav",
-]]
+[node name="card" type="Spatial" groups=["card", "cardnav"]]
 script = ExtResource( 2 )
 
-[node name="Area" type="Area" parent="." groups=[
-"card",
-]]
+[node name="Area" type="Area" parent="." groups=["card"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
@@ -191,9 +186,7 @@ omni_range = 2.6
 
 [node name="Connectors" type="Spatial" parent="."]
 
-[node name="Connector1" type="Area" parent="Connectors" groups=[
-"placement",
-]]
+[node name="Connector1" type="Area" parent="Connectors" groups=["placement"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.98015 )
 __meta__ = {
 "_edit_group_": true
@@ -207,9 +200,7 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0.0865889 )
 visible = false
 
-[node name="Connector2" type="Area" parent="Connectors" groups=[
-"placement",
-]]
+[node name="Connector2" type="Area" parent="Connectors" groups=["placement"]]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -3.99537 )
 __meta__ = {
 "_edit_group_": true
@@ -223,9 +214,7 @@ shape = SubResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.7, -7.25569e-09, 0, 0.0829954 )
 visible = false
 
-[node name="Connector3" type="Area" parent="Connectors" groups=[
-"placement",
-]]
+[node name="Connector3" type="Area" parent="Connectors" groups=["placement"]]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -3.953, 0, 0 )
 __meta__ = {
 "_edit_group_": true
@@ -239,9 +228,7 @@ shape = SubResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.7, 2.42144e-08, 0, 0.147253 )
 visible = false
 
-[node name="Connector4" type="Area" parent="Connectors" groups=[
-"placement",
-]]
+[node name="Connector4" type="Area" parent="Connectors" groups=["placement"]]
 transform = Transform( 7.54982e-08, 0, 1, 0, 1, 0, -1, 0, 7.54982e-08, 3.996, 0, 0 )
 __meta__ = {
 "_edit_group_": true
@@ -254,6 +241,7 @@ shape = SubResource( 7 )
 [node name="card_placement" parent="Connectors/Connector4" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.7, 7.45058e-09, 0, 0.0952415 )
 visible = false
+
 [connection signal="placed" from="." to="." method="_on_card_placed"]
 [connection signal="body_shape_entered" from="Area" to="." method="_on_Area_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area" to="." method="_on_Area_body_shape_exited"]

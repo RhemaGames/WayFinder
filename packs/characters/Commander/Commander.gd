@@ -59,50 +59,50 @@ func _ready():
 func action(act):
 	match act:
 		"start":
-			animQueue.append("start")
+			animQueue.append("startCommander")
 			#$Commander/AnimationPlayer.play("start")
 		"melee":
-			animQueue.append("melee")
+			animQueue.append("meleeCommander")
 			#$Commander/AnimationPlayer.play("melee")
 		"range":
 			$Timer.start()
 			$sfx.stream = lazerbeam
-			animQueue.append("ranged")
+			animQueue.append("rangedCommander")
 			#$Commander/AnimationPlayer.play("ranged")
 		"hit":
-			animQueue.append("hit")
+			animQueue.append("hitCommander")
 			#$Commander/AnimationPlayer.play("hit")
 		"block":
 			$sfx.stream = shield
-			animQueue.append("block")
+			animQueue.append("blockCommander")
 			shields = true
 			$sfx.play()
 			#$Commander/AnimationPlayer.block("block")
 		"drop":
-			animQueue.append("deflect")
+			animQueue.append("deflectCommander")
 			shields = false
 			$sfx.stop()
 		"win":
-			animQueue.append("win")
+			animQueue.append("winCommander")
 			shields = false
 		"loss":
-			animQueue.append("loss")
+			animQueue.append("lossCommander")
 			shields = false
 
 func do_stuff(anim_name):
-	if anim_name == "ranged":
+	if anim_name == "rangedCommander":
 		$laserbolt.emitting = false
 		$sfx.stop()
 	
-	if anim_name == "block":
+	if anim_name == "blockCommander":
 		emit_signal("react","block")
-	if anim_name == "ranged":
+	if anim_name == "rangedCommander":
 		emit_signal("react","ranged")
-	if anim_name == "melee":
+	if anim_name == "meleeCommander":
 		emit_signal("react","melee")
-	if anim_name == "win":
+	if anim_name == "winCommander":
 		emit_signal("finish","win")
-	if anim_name == "loss":
+	if anim_name == "lossCommander":
 		emit_signal("finish","loss")
 	
 	animQueue.remove(0)

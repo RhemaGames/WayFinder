@@ -2,6 +2,7 @@ extends Spatial
 
 var Combatant
 var path = []
+var available_connectors = []
 var is_flipped = true
 var rotated = 0
 var flipped = 0
@@ -27,57 +28,41 @@ var info = {
 var card_set = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#path = WayFinder.pathit(self)
 	$AnimationPlayer.play_backwards("PopUp")
 	$Model/AnimationPlayer.play("lift")
-	#WayFinder.currentMission.cards
 	var _error = WayFinder.connect("movementType",self,"on_movementType_change")
-	
-	#if rotation_degrees.z != 0:
-	#	rotation_degrees.z = 0
-	#$card/card_line/ceiling.hide()
+
 	match type:
 		"line":
 			var line = WayFinder.currentMission.cards[0].instance()
 			add_objects(line.get_objects())
 			add_panels(line.get_panels())
-			
-			#line.rotation_degrees.z = 180
+			available_connectors = ["Connector1","Connector2"]
 			$Model.add_child(line)
-			for c in ["Connector1","Connector2"]:
-				_error = $Connectors.get_node(c).connect("mouse_entered",self,"card_input",[$Connectors.get_node(c),"entered"])
-				_error = $Connectors.get_node(c).connect("mouse_exited",self,"card_input",[$Connectors.get_node(c),"exited"])
-				_error = $Connectors.get_node(c).connect("input_event",self,"card_event",[$Connectors.get_node(c)])
-				#$card.get_node(c).connect("area_shape_entered",self,"card_entered",[$card.get_node(c)])
-			
+				
 		"T":
 			var t = WayFinder.currentMission.cards[1].instance()
 			add_objects(t.get_objects())
 			add_panels(t.get_panels())
-			#t.rotation_degrees.z = 180
+			available_connectors = ["Connector1","Connector2","Connector3"]
 			$Model.add_child(t)
-			for c in ["Connector1","Connector2","Connector3"]:
-				_error = $Connectors.get_node(c).connect("mouse_entered",self,"card_input",[$Connectors.get_node(c),"entered"])
-				_error = $Connectors.get_node(c).connect("mouse_exited",self,"card_input",[$Connectors.get_node(c),"exited"])
-				_error = $Connectors.get_node(c).connect("input_event",self,"card_event",[$Connectors.get_node(c)])
-				#$card.get_node(c).connect("area_shape_entered",self,"card_entered",[$card.get_node(c)])
 				
 		"cross":
 			var cross = WayFinder.currentMission.cards[2].instance()
 			add_objects(cross.get_objects())
 			add_panels(cross.get_panels())
-			#cross.rotation_degrees.z = 180
+			available_connectors = ["Connector1","Connector2","Connector3","Connector4"]
 			$Model.add_child(cross)
-			for c in ["Connector1","Connector2","Connector3","Connector4"]:
-				_error = $Connectors.get_node(c).connect("mouse_entered",self,"card_input",[$Connectors.get_node(c),"entered"])
-				_error = $Connectors.get_node(c).connect("mouse_exited",self,"card_input",[$Connectors.get_node(c),"exited"])
-				_error = $Connectors.get_node(c).connect("input_event",self,"card_event",[$Connectors.get_node(c)])
-				#$card.get_node(c).connect("area_shape_entered",self,"card_entered",[$card.get_node(c)])
-
+		
+	for c in available_connectors:
+		_error = $Connectors.get_node(c).connect("mouse_entered",self,"card_input",[$Connectors.get_node(c),"entered"])
+		_error = $Connectors.get_node(c).connect("mouse_exited",self,"card_input",[$Connectors.get_node(c),"exited"])
+		_error = $Connectors.get_node(c).connect("input_event",self,"card_event",[$Connectors.get_node(c)])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
 func _physics_process(_delta):
 	pass
 	#var new_rotation = 0
@@ -232,7 +217,8 @@ func check_doors():
 			connector_list = [$Connectors/Connector1,$Connectors/Connector2,$Connectors/Connector3,$Connectors/Connector4]
 		_:
 			connector_list = [$Connectors/Connector1]
-	if power:		
+	if power:
+		available_connectors = []		
 		for check in connector_list:
 			var areas = check.get_overlapping_areas()
 			for area in areas:
@@ -241,21 +227,38 @@ func check_doors():
 					match check.name:
 						"Connector1":
 							if area.get_parent().card_aligned(self.get_node("Area")):
-								card_type.door(1,"open")
-								$Audio/AudioStreamPlayer.play()
+								if card_type.get_door(1) == "closed":
+									card_type.door(1,"open")
+									$Audio/AudioStreamPlayer.play()
+							#else:
+							#	available_connectors.append({"card":self,"connector":1})
+								
 						"Connector2":
 							if area.get_parent().card_aligned(self.get_node("Area")):
-								card_type.door(0,"open")
-								$Audio/AudioStreamPlayer.play()
+								if card_type.get_door(0) == "closed":
+									card_type.door(0,"open")
+									$Audio/AudioStreamPlayer.play()
+							#else:
+							#	available_connectors.append({"card":self,"connector":0})
+									
 						"Connector3":
 							if area.get_parent().card_aligned(self.get_node("Area")):
-								card_type.door(2,"open")
-								$Audio/AudioStreamPlayer.play()
+								if card_type.get_door(2) == "closed":
+									card_type.door(2,"open")
+									$Audio/AudioStreamPlayer.play()
+							#else:
+							#	available_connectors.append({"card":self,"connector":2})
+									
 						"Connector4":
 							if area.get_parent().card_aligned(self.get_node("Area")):
-								card_type.door(3,"open")
-								$Audio/AudioStreamPlayer.play()
+								if card_type.get_door(3) == "closed":
+									card_type.door(3,"open")
+									$Audio/AudioStreamPlayer.play()
+							#else:
+							#	available_connectors.append({"card":self,"connector":3})
 									
+		#print("from ",self,", available connectors ",available_connectors)
+		
 func on_event_changed():
 	#print(info["event"])
 	if info["event"] == 4:
@@ -326,8 +329,6 @@ func card_aligned(overlap):
 	var connector_list = []
 	var is_aligned = false
 	var card_type = find_card()
-	#print(card_type.name)
-	#print(overlap)
 	match card_type.name:
 		"card_line":
 			connector_list = [$Connectors/Connector1,$Connectors/Connector2]
@@ -423,3 +424,12 @@ func _on_Area_body_shape_exited(_body_id, body, _body_shape, _area_shape):
 	#print("Exited, ",body)
 	update_points(body,"leaving")
 	pass # Replace with function body.
+
+func check_connectors():
+	var connectors = []
+	for c in available_connectors:
+		var overlap = self.get_node("Connectors/"+c).get_overlapping_areas()
+		if overlap == []:
+			connectors.append(c)
+
+	return(connectors)

@@ -15,9 +15,7 @@ extents = Vector3( 4.90352, 5.03937, 4.76453 )
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.6808, 0.081, 1.84199 )
 
-[node name="sleepbay" type="Spatial" groups=[
-"card",
-]]
+[node name="sleepbay" type="Spatial" groups=["card"]]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 5.49099, -0.0926189, 0 )
 script = ExtResource( 4 )
 
@@ -66,10 +64,7 @@ light_energy = 0.5
 shadow_enabled = true
 omni_range = 6.08246
 
-[node name="Area" type="Area" parent="." groups=[
-"card",
-"sleepbay",
-]]
+[node name="Area" type="Area" parent="." groups=["card", "sleepbay"]]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 1 )
@@ -160,6 +155,7 @@ transform = Transform( 1, 1.39437e-08, 1.1078e-07, 2.03995e-08, 0.968808, -0.247
 
 [node name="Bone001 4" parent="Sleeppods/Pod4/Armature003" index="1"]
 transform = Transform( 1, 1.55048e-07, 3.71847e-09, 1.49272e-08, -0.19703, 0.980397, 1.44352e-07, -0.980397, -0.19703, 0, 0, 0 )
+
 [connection signal="character_Select" from="." to="." method="_on_Start_character_Select"]
 [connection signal="character_back" from="." to="." method="_on_Start_character_back"]
 [connection signal="character_next" from="." to="." method="_on_Start_character_next"]

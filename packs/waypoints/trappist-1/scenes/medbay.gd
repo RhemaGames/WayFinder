@@ -1,5 +1,6 @@
 extends Spatial
 var path = []
+var available_connectors = []
 var is_flipped = true
 var rotated = 0
 var flipped = 0
@@ -192,3 +193,12 @@ func update_points(player,doing):
 				points.remove(points.find(p))
 				break
 		#print ("Player leaving Card, Postion should now be, ",len(points)+1)
+
+func check_connectors():
+	var connectors = []
+	for c in available_connectors:
+		var overlap = self.get_node("Connectors/"+c).get_overlapping_areas()
+		if overlap == []:
+			connectors.append(c)
+
+	return(connectors)

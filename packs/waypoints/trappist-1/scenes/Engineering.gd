@@ -1,5 +1,6 @@
 extends Spatial
 var path = []
+var available_connectors = []
 var is_flipped = false
 var rotated = 0
 var flipped = 0
@@ -165,3 +166,12 @@ func available_point():
 		return {"position":1,"location":$Marker.get_global_transform().origin}
 	else:
 		return {"position":len(points)+1,"location":$standardMovement.get_node("point"+str(len(points)+1)).get_global_transform().origin}
+
+func check_connectors():
+	var connectors = []
+	for c in available_connectors:
+		var overlap = self.get_node("Connectors/"+c).get_overlapping_areas()
+		if overlap == []:
+			connectors.append(c)
+
+	return(connectors)

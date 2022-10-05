@@ -11,6 +11,19 @@ script = ExtResource( 2 )
 [node name="Commander" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0 )
 
+[node name="Skeleton" parent="Commander/Armature005" index="0"]
+bones/4/bound_children = [ NodePath("BoneAttachment") ]
+bones/14/bound_children = [ NodePath("BoneAttachment2") ]
+
+[node name="BoneAttachment" parent="Commander/Armature005/Skeleton" index="0"]
+transform = Transform( 0.778728, -0.137527, -0.612103, 1.08996e-07, -0.975677, 0.219216, -0.627362, -0.170709, -0.759786, -28.3131, -36.6566, -35.1442 )
+
+[node name="BoneAttachment2" parent="Commander/Armature005/Skeleton" index="1"]
+transform = Transform( -0.998228, -0.0595008, 7.98244e-08, 8.11714e-08, -2.02202e-08, 1, -0.0595008, 0.998228, 2.50141e-08, -6.16061e-06, 57.7864, 7.96041e-06 )
+
+[node name="AnimationPlayer" parent="Commander" index="2"]
+autoplay = "onBaseCommander"
+
 [node name="sfx" type="AudioStreamPlayer3D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
@@ -21,3 +34,5 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.43425
 [node name="shield" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 1.13737, 1.18509, 2.43435 )
 visible = false
+
+[editable path="Commander"]

@@ -24,6 +24,7 @@ var is_flipped = true
 var rotated = 0
 var flipped = 0
 export var SPEED = 400
+var available_connectors = ["Connector1","Connector2","Connector3","Connector4"]
 
 var inConflict = false
 
@@ -43,7 +44,7 @@ var card_set = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var _error = ""
-	for c in ["Connector1","Connector2","Connector3","Connector4"]:
+	for c in available_connectors:
 		_error = $Connectors.get_node(c).connect("mouse_entered",self,"card_input",[$Connectors.get_node(c),"entered"])
 		_error = $Connectors.get_node(c).connect("mouse_exited",self,"card_input",[$Connectors.get_node(c),"exited"])
 		_error = $Connectors.get_node(c).connect("input_event",self,"card_event",[$Connectors.get_node(c)])
@@ -72,6 +73,7 @@ func card_input(object,event):
 		object.get_node("card_placement").hide()
 
 func card_event(_camera, event, _click_position, _click_normal, _shape_idx,object):
+	
 	var covered = false 
 	for overlap in object.get_overlapping_areas():
 		if "card" in overlap.get_groups():
@@ -80,8 +82,8 @@ func card_event(_camera, event, _click_position, _click_normal, _shape_idx,objec
 		if "startpoint" in overlap.get_groups():
 			covered = true
 			break
-	
 	if event.is_pressed() and event.get_button_index() == 1 and covered == false and is_flipped == true:
+		#print("Avaialble Connectors",check_connectors())
 		#var core_rot = object.get_parent().get_parent().rotation_degrees
 		object.set_rotation_degrees(Vector3(object.rotation_degrees.x,object.rotation_degrees.y,0))
 		if power:
@@ -110,7 +112,6 @@ func _on_Start_placed():
 func check_doors():
 	print("Checking doors")
 	$Audio/AudioStreamPlayer.play()
-	
 	var connector_list = [$Connectors/Connector1,$Connectors/Connector2,$Connectors/Connector3,$Connectors/Connector4]
 	for check in connector_list:
 			var areas = check.get_overlapping_areas()
@@ -192,15 +193,12 @@ func _on_card_placed(_object):
 	pass # Replace with function body.
 
 func card_aligned(overlap):
-	var connector_list = []
 	var is_aligned = false
-	connector_list = [$Connectors/Connector1,$Connectors/Connector2,$Connectors/Connector3,$Connectors/Connector4]
+	var connector_list = [$Connectors/Connector1,$Connectors/Connector2,$Connectors/Connector3,$Connectors/Connector4]
 	if len(connector_list) > 0:
 		for connector in connector_list:
-			#print(connector.get_overlapping_areas())
 			if str(connector) != "[Object:null]":
 				if overlap in connector.get_overlapping_areas():
-					#print(connector.name)
 					is_aligned = true
 					break
 					
@@ -259,3 +257,15 @@ func available_point():
 			return {"position":1,"location":$p1.translation}
 		else:
 			return {"position":len(points)+1,"location":$standardMovement.get_node("point"+str(len(points)+1)).translation}
+
+func check_connectors():
+	var connectors = []
+	for c in available_connectors:
+		var overlap = self.get_node("Connectors/"+c).get_overlapping_areas()
+		if overlap == []:
+			connectors.append(c)
+			#if "card" in overlap.get_groups():
+			#	covered = true
+			#if "startpoint" in overlap.get_groups():
+			#	covered = true
+	return(connectors)
