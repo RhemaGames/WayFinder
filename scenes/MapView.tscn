@@ -102,6 +102,7 @@ tracks/2/keys = {
 }
 
 [node name="MapView" type="Control"]
+modulate = Color( 1, 1, 1, 0.982486 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -386,6 +387,22 @@ expand = true
 stretch_mode = 1
 flip_v = true
 
+[node name="markers" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="pathways" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="PlayerMarker" parent="." instance=ExtResource( 9 )]
 margin_top = -0.5
 margin_bottom = 24.5
@@ -408,14 +425,6 @@ anims/Show = SubResource( 5 )
 
 [node name="Notification" parent="." instance=ExtResource( 6 )]
 modulate = Color( 1, 1, 1, 1 )
-
-[node name="markers" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": true
-}
 
 [connection signal="visibility_changed" from="." to="." method="_on_MapView_visibility_changed"]
 [connection signal="pressed" from="WFpanel/MapControls/MapControlsButton" to="." method="_on_MapControlsButton_pressed"]

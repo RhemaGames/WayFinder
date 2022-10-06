@@ -2,6 +2,7 @@ extends Spatial
 
 var Combatant
 var path = []
+var connectors = []
 var available_connectors = []
 var is_flipped = true
 var rotated = 0
@@ -31,7 +32,7 @@ func _ready():
 	$AnimationPlayer.play_backwards("PopUp")
 	$Model/AnimationPlayer.play("lift")
 	var _error = WayFinder.connect("movementType",self,"on_movementType_change")
-
+	#_error = WayFinder.currentView.connect("mapUpdate",self,"check_connectors")
 	match type:
 		"line":
 			var line = WayFinder.currentMission.cards[0].instance()
@@ -58,7 +59,7 @@ func _ready():
 		_error = $Connectors.get_node(c).connect("mouse_entered",self,"card_input",[$Connectors.get_node(c),"entered"])
 		_error = $Connectors.get_node(c).connect("mouse_exited",self,"card_input",[$Connectors.get_node(c),"exited"])
 		_error = $Connectors.get_node(c).connect("input_event",self,"card_event",[$Connectors.get_node(c)])
-
+	connectors = available_connectors
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -113,6 +114,7 @@ func card_input(object,event):
 			break
 		if "startpoint" in overlap.get_groups():
 			covered = true
+			
 			break
 	
 	if is_flipped == true and WayFinder.players[WayFinder.turn -1].turnSteps["build"] == false and covered == false:
@@ -230,35 +232,31 @@ func check_doors():
 								if card_type.get_door(1) == "closed":
 									card_type.door(1,"open")
 									$Audio/AudioStreamPlayer.play()
-							#else:
-							#	available_connectors.append({"card":self,"connector":1})
-								
+									connectors.erase("Connector1")
+									
 						"Connector2":
 							if area.get_parent().card_aligned(self.get_node("Area")):
 								if card_type.get_door(0) == "closed":
 									card_type.door(0,"open")
 									$Audio/AudioStreamPlayer.play()
-							#else:
-							#	available_connectors.append({"card":self,"connector":0})
+									connectors.erase("Connector2")
 									
 						"Connector3":
 							if area.get_parent().card_aligned(self.get_node("Area")):
 								if card_type.get_door(2) == "closed":
 									card_type.door(2,"open")
 									$Audio/AudioStreamPlayer.play()
-							#else:
-							#	available_connectors.append({"card":self,"connector":2})
-									
+									connectors.erase("Connector3")
+																
 						"Connector4":
 							if area.get_parent().card_aligned(self.get_node("Area")):
 								if card_type.get_door(3) == "closed":
 									card_type.door(3,"open")
 									$Audio/AudioStreamPlayer.play()
-							#else:
-							#	available_connectors.append({"card":self,"connector":3})
+									connectors.erase("Connector4")
 									
-		#print("from ",self,", available connectors ",available_connectors)
-		
+	WayFinder.currentView.emit_signal("mapUpdate")
+										
 func on_event_changed():
 	#print(info["event"])
 	if info["event"] == 4:
@@ -323,6 +321,9 @@ func update_points(player,doing):
 
 func _on_card_placed():
 	check_doors()
+	#WayFinder.currentView.emit_signal("mapUpdate")
+	#check_connectors()
+	#available_connectors = check_connectors()
 	pass # Replace with function body.
 
 func card_aligned(overlap):
@@ -342,11 +343,11 @@ func card_aligned(overlap):
 	if len(connector_list) > 0:
 		for connector in connector_list:
 			#print(connector.get_overlapping_areas())
-			if str(connector) != "[Object:null]":
-				if overlap in connector.get_overlapping_areas():
-					#print(connector.name)
-					is_aligned = true
-					break
+			#if str(connector) != "[Object:null]":
+			if overlap in connector.get_overlapping_areas():
+				#connectors.pop_at(connectors.find(connector.name))
+				is_aligned = true
+				break
 					
 	return is_aligned
 
@@ -355,7 +356,7 @@ func get_paths(ignore):
 	var card_type = find_card()
 	var connector_list = []
 	var pathlists = []
-	check_doors()
+	
 	match card_type.name:
 		"card_line":
 			connector_list = [$Connectors/Connector1,$Connectors/Connector2]
@@ -373,44 +374,26 @@ func get_paths(ignore):
 				if "card" in area.get_groups():
 					match check.name:
 						"Connector1":
-							#print("Connector1 Aligned: ",area.get_parent().card_aligned(self.get_node("Area")))
-							#print("Door ",card_type.get_door(1))
+
 							if area.get_parent().card_aligned(self.get_node("Area")) and card_type.get_door(1) == "opened":
-								#if area.get_parent() != ignore:
 								pathlists.append({"connector":1,"card":area.get_parent(),"parent":self})
-							#else:
-								#if area.get_parent() != ignore:
-							#	pathlists.append({"connector":1,"card":null,"parent":self})
-								
+															
 						"Connector2":
-							#print("Connector2 Aligned: ",area.get_parent().card_aligned(self.get_node("Area")))
-							#print("Door ",card_type.get_door(0))
+
 							if area.get_parent().card_aligned(self.get_node("Area")):
-								#if area.get_parent() != ignore:
 								pathlists.append({"connector":2,"card":area.get_parent(),"parent":self})
-							#else:
-								#if area.get_parent() != ignore:
-							#	pathlists.append({"connector":1,"card":null,"parent":self})
-								
+									
 						"Connector3":
-							#print("Connector3 Aligned: ",area.get_parent().card_aligned(self.get_node("Area")))
-							#print("Door ",card_type.get_door(2))
+
 							if area.get_parent().card_aligned(self.get_node("Area")) and card_type.get_door(2) == "opened":
-								#if area.get_parent() != ignore:
 								pathlists.append({"connector":3,"card":area.get_parent(),"parent":self})
-							#else:
-								#if area.get_parent() != ignore:
-							#	pathlists.append({"connector":1,"card":null,"parent":self})
 								
 						"Connector4":
-							#print("Connector4 Aligned: ",area.get_parent().card_aligned(self.get_node("Area")))
-							#print("Door ",card_type.get_door(3))
+
 							if area.get_parent().card_aligned(self.get_node("Area")) and card_type.get_door(3) == "opened":
-								#if area.get_parent() != ignore:
 								pathlists.append({"connector":4,"card":area.get_parent(),"parent":self})
-							#else:
-								#if area.get_parent() != ignore:
-							#	pathlists.append({"connector":1,"card":null,"parent":self})
+	check_doors()
+	
 	return pathlists
 
 
@@ -425,11 +408,18 @@ func _on_Area_body_shape_exited(_body_id, body, _body_shape, _area_shape):
 	update_points(body,"leaving")
 	pass # Replace with function body.
 
-func check_connectors():
-	var connectors = []
-	for c in available_connectors:
-		var overlap = self.get_node("Connectors/"+c).get_overlapping_areas()
-		if overlap == []:
-			connectors.append(c)
-
-	return(connectors)
+#func check_connectors():
+	
+#	for c in available_connectors:
+#		var overlap = self.get_node("Connectors/"+c).get_overlapping_areas()
+#		if overlap == []:
+#			if !c in connectors:
+#				connectors.append(c)
+#		else:
+#			if c in connectors:
+#				connectors.pop_at(connectors.find(c))
+			#if "card" in overlap.get_groups():
+			#	covered = true
+			#if "startpoint" in overlap.get_groups():
+			#	covered = true
+#	return(connectors)

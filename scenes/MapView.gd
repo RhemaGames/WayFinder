@@ -9,6 +9,7 @@ var PlayerPositions = []
 var marker = preload("res://scenes/mapInfoMaker.tscn")
 var event_texture = preload("res://assets/Tex_skill_13.PNG")
 var cp_texture = preload("res://assets/Tex_skill_21.PNG")
+var path_texture = preload("res://assets/Arrow.png")
 #signal skipped()
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,9 @@ func _ready():
 	self.rect_size = OS.window_size
 	
 	pass # Replace with function body.
+
+#func _physics_process(_delta):
+#	fill_map()
 
 func fill_map():
 	
@@ -26,19 +30,35 @@ func fill_map():
 	
 	for c in WayFinder.map:
 		#var mkr = marker.instance()
-		#var doors = WayFinder.currentView.get_node("boardBacking/FullBoard").unproject_position(c["card"].get_node("Connectors/Connectors1").get_global_transform().origin)
-		#m["marker"].rect_position = cp_cardPos
-		
+		#c["card"].check_connectors()
+		if c["card"].connectors == []:
+			for p in open_paths_marked:
+				if p["card"] == c["card"]:
+					#$markers.get_node(p["marker"]).queue_free()
+					$pathways.remove_child(p["marker"])
+					open_paths_marked.pop_at(open_paths_marked.find(p))
+		else:
+			var subset = []
+			for i in open_paths_marked:
+				if i["card"] == c["card"]:
+					subset.append(i)
+					
+			for s in subset: 
+				if !s in c["card"].connectors:
+					$pathways.remove_child(s["marker"])
+					open_paths_marked.pop_at(open_paths_marked.find(s))
+
 		if !str(c["card"]) in str(open_paths_marked):
-			var themark = marker.instance()
-			var connectors =  c["card"].check_connectors()
-			if !connectors == []:
-				print(connectors)
-			#if c["card"].info["event"] == 4:
-			#	themark.set_info("")
-			#	themark.set_icon(event_texture)
-			#	$markers.add_child(themark)
-			#	main_event_marked.append({"marker":themark,"card":c["card"]})
+			if !c["card"].connectors == []:
+				for con in c["card"].connectors:
+					var themark = marker.instance()
+					themark.set_info("")
+					themark.set_icon(path_texture)
+					themark.rect_scale = Vector2(0.4,0.4)
+					$pathways.add_child(themark)
+					open_paths_marked.append({"marker":themark,"card":c["card"],"position":con})
+		#else:
+		#	print(open_paths_marked[open_paths_marked.find(c["card"])])
 
 		if !str(c["card"]) in str(main_event_marked):
 			var themark = marker.instance()
@@ -53,6 +73,7 @@ func fill_map():
 			if c["card"].info["cp"] == true:
 				themark.set_info("")
 				themark.set_icon(cp_texture)
+				themark.rect_scale = Vector2(0.5,0.5)
 				$markers.add_child(themark)
 				cp_marked.append({"marker":themark,"card":c["card"]})
 				
@@ -70,7 +91,20 @@ func fill_map():
 		var cp_cardPos
 		if m["card"].info["cp"]:
 			cp_cardPos = WayFinder.currentView.get_node("boardBacking/FullBoard").unproject_position(m["card"].get_global_transform().origin)
-			m["marker"].rect_position = cp_cardPos - Vector2(40,-40)
+			m["marker"].rect_position = cp_cardPos - Vector2(20,-20)
+			
+	for m in open_paths_marked:
+		var door_pos = WayFinder.currentView.get_node("boardBacking/FullBoard").unproject_position(m["card"].get_node("Connectors/"+m["position"]).get_global_transform().origin)
+		m["marker"].rect_position = door_pos
+		match m["position"]:
+			"Connector2":
+				m["marker"].rect_rotation = 180 
+			"Connector3":
+				m["marker"].rect_rotation = 90
+			"Connector4":
+				m["marker"].rect_rotation = -90
+			_:
+				pass
 
 func set_task(_line):
 	#$WFpanel/PlayerControls/CurrentTask/Label.text = line	
@@ -119,6 +153,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$Notification/VBoxContainer/info.text = build_msg
 		$Notification/AnimationPlayer.play("Grow")
 		$WFpanel/MapControls/Hint.text = build_msg
+		$pathways.show()
+		$markers.hide()
 		
 
 
@@ -135,6 +171,8 @@ func on_step_completed(step):
 		$WFpanel/MapControls/MapControlsButton.text = "  Hold  "
 		$Notification/AnimationPlayer.play("Grow")
 		$WFpanel/MapControls/Hint.text = movement_msg
+		$markers.show()
+		$pathways.hide()
 
 func _on_MapControlsButton_pressed():
 	skip_step()

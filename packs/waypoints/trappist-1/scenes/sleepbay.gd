@@ -25,7 +25,7 @@ var rotated = 0
 var flipped = 0
 export var SPEED = 400
 var available_connectors = ["Connector1","Connector2","Connector3","Connector4"]
-
+var connectors = []
 var inConflict = false
 
 var points = []
@@ -48,7 +48,7 @@ func _ready():
 		_error = $Connectors.get_node(c).connect("mouse_entered",self,"card_input",[$Connectors.get_node(c),"entered"])
 		_error = $Connectors.get_node(c).connect("mouse_exited",self,"card_input",[$Connectors.get_node(c),"exited"])
 		_error = $Connectors.get_node(c).connect("input_event",self,"card_event",[$Connectors.get_node(c)])
-
+	connectors = available_connectors
 
 func card_input(object,event):
 	var covered = false 
@@ -110,7 +110,7 @@ func _on_Start_placed():
 	#$HyperSleepChamber/door001/InnerDoor001.hide()
 
 func check_doors():
-	print("Checking doors")
+	#print("Checking doors")
 	$Audio/AudioStreamPlayer.play()
 	var connector_list = [$Connectors/Connector1,$Connectors/Connector2,$Connectors/Connector3,$Connectors/Connector4]
 	for check in connector_list:
@@ -122,18 +122,23 @@ func check_doors():
 								if area.get_parent().card_aligned(self.get_node("Area")) and $Sleepchambers/door/InnerDoor.visible:
 									$Sleepchambers/door/InnerDoor.hide()
 									$Audio/AudioStreamPlayer.play()
+									connectors.pop_at(connectors.find("Connector1"))
 						"Connector2":
 								if area.get_parent().card_aligned(self.get_node("Area")) and $Sleepchambers/door4/InnerDoor002.visible:
 									$Sleepchambers/door4/InnerDoor002.hide()
 									$Audio/AudioStreamPlayer.play()
+									connectors.pop_at(connectors.find("Connector2"))
 						"Connector3":
 								if area.get_parent().card_aligned(self.get_node("Area")) and $Sleepchambers/door3/InnerDoor003.visible:
 									$Sleepchambers/door3/InnerDoor003.hide()
 									$Audio/AudioStreamPlayer.play()
+									connectors.pop_at(connectors.find("Connector3"))
 						"Connector4":
 								if area.get_parent().card_aligned(self.get_node("Area")) and $Sleepchambers/door2/InnerDoor001.visible:
 									$Sleepchambers/door2/InnerDoor001.hide()
 									$Audio/AudioStreamPlayer.play()
+									connectors.pop_at(connectors.find("Connector4"))
+	WayFinder.currentView.emit_signal("mapUpdate")
 	#if power:		
 	#	for check in connector_list:
 	#		var areas = check.get_overlapping_areas()
@@ -190,6 +195,7 @@ func _on_sleepbay_place(_location, _parent):
 
 func _on_card_placed(_object):
 	check_doors()
+	#WayFinder.currentView.emit_signal("mapUpdate")
 	pass # Replace with function body.
 
 func card_aligned(overlap):
@@ -258,14 +264,18 @@ func available_point():
 		else:
 			return {"position":len(points)+1,"location":$standardMovement.get_node("point"+str(len(points)+1)).translation}
 
-func check_connectors():
-	var connectors = []
-	for c in available_connectors:
-		var overlap = self.get_node("Connectors/"+c).get_overlapping_areas()
-		if overlap == []:
-			connectors.append(c)
+#func check_connectors():
+	
+#	for c in available_connectors:
+#		var overlap = self.get_node("Connectors/"+c).get_overlapping_areas()
+#		if overlap == []:
+#			if !c in connectors:
+#				connectors.append(c)
+#		else:
+#			if c in connectors:
+#				connectors.pop_at(connectors.find(c))
 			#if "card" in overlap.get_groups():
 			#	covered = true
 			#if "startpoint" in overlap.get_groups():
 			#	covered = true
-	return(connectors)
+#	return(connectors)
