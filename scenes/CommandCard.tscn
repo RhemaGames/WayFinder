@@ -21,16 +21,16 @@ corner_radius_bottom_left = 10
 resource_name = "display"
 
 [node name="CommandCard" type="Control"]
-anchor_right = 0.292826
-anchor_bottom = 0.520833
-margin_right = -300.0
+anchor_right = 0.183
+anchor_bottom = 0.521
+margin_right = 0.0445862
+margin_bottom = -0.256531
 rect_min_size = Vector2( 500, 800 )
 rect_pivot_offset = Vector2( 250, 384 )
 rect_clip_content = true
 theme = ExtResource( 4 )
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
@@ -47,27 +47,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0.0784314 )
-light_mask = 2048
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -384.0
-margin_right = 200.0
-margin_bottom = 384.0
-rect_min_size = Vector2( 400, 768 )
-mouse_filter = 2
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
-
 [node name="WFpanel" parent="." instance=ExtResource( 1 )]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -79,6 +58,26 @@ margin_right = 250.0
 margin_bottom = 384.0
 rect_min_size = Vector2( 500, 768 )
 border_color = Color( 1, 0.654902, 0, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.121569 )
+light_mask = 2048
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = -11.0
+margin_right = -8.00061
+margin_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 400, 768 )
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_left = 0.5
@@ -195,6 +194,7 @@ position = Vector2( 225.773, 500.447 )
 scale = Vector2( 2.60835, 37.5352 )
 texture = ExtResource( 7 )
 offset = Vector2( 8.78882, -2.60926 )
+energy = 0.7
 __meta__ = {
 "_edit_lock_": true
 }
@@ -224,5 +224,3 @@ text = " CP:"
 [connection signal="display" from="." to="." method="_on_CommandCard_display"]
 [connection signal="finished" from="." to="." method="_on_CommandCard_finished"]
 [connection signal="gui_input" from="." to="." method="_on_CommandCard_gui_input"]
-[connection signal="mouse_entered" from="." to="." method="_on_CommandCard_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_CommandCard_mouse_exited"]

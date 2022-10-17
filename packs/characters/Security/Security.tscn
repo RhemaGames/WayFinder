@@ -14,10 +14,10 @@ script = ExtResource( 2 )
 transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0.0858809, 0 )
 
 [node name="BoneAttachment" parent="Security/Armature007/Skeleton" index="0"]
-transform = Transform( 0.316745, -0.08084, -0.94506, 0.334112, -0.922992, 0.190933, -0.887717, -0.376233, -0.265344, -36.6717, -31.3694, -28.7506 )
+transform = Transform( 4.85452e-08, -1, -4.47035e-08, -5.96047e-08, -2.98023e-08, 1, -1, -1.87429e-08, -1.49012e-08, -86.6651, 16.3073, -6.26881e-07 )
 
 [node name="BoneAttachment 2" parent="Security/Armature007/Skeleton" index="1"]
-transform = Transform( -0.987204, 0.159463, 1.75834e-07, 1.7381e-07, 2.94447e-08, 1, 0.159463, 0.987204, -4.32643e-08, -1.11062e-06, 60.3677, 2.72553e-06 )
+transform = Transform( -1, -1.06581e-14, 8.74228e-08, 8.74228e-08, -1.96943e-08, 1, -8.93641e-15, 1, 1.96943e-08, -3.76022e-07, 60.3677, 2.20803e-06 )
 
 [node name="AnimationPlayer" parent="Security" index="2"]
 anims/block = ExtResource( 6 )

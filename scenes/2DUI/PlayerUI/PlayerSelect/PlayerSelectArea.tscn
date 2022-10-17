@@ -197,5 +197,6 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="resized" from="WFpanel/MarginContainer/interface/ScrollContainer" to="." method="_on_ScrollContainer_resized"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

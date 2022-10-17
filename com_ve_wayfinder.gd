@@ -68,10 +68,10 @@ func _combat_mode(_Player,_Enemy):
 func _on_battle_over(_combatant1,_combatant2):
 	$View.get_child(0).show()
 	$View.get_child(1).hide()
-	if _combatant2 in currentView.enemies:
-		print("Enemy Lost!")
-	if _combatant1 in currentView.enemies:
-		print("Enemy Won!")
+	#if _combatant2 in currentView.enemies:
+	#	print("Enemy Lost!")
+	#if _combatant1 in currentView.enemies:
+	#	print("Enemy Won!")
 	WayFinder.step_complete("combat")
 
 func first_load():

@@ -1065,7 +1065,7 @@ anchor_left = 0.125183
 anchor_top = 0.384252
 anchor_right = 0.874817
 anchor_bottom = 0.384252
-margin_bottom = 60.0
+margin_right = -1024.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 0.750122, 1.07355 )
@@ -1079,32 +1079,39 @@ __meta__ = {
 anims/Grow = SubResource( 15 )
 
 [node name="WFpanel" parent="PlayerChange" instance=ExtResource( 10 )]
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerChange"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 custom_constants/separation = 20
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Name" type="Label" parent="PlayerChange/VBoxContainer"]
-margin_right = 2048.0
+margin_right = 1024.0
 margin_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
 custom_fonts/font = ExtResource( 1 )
 text = "Character Name"
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="PlayerChange/VBoxContainer"]
 margin_top = 81.0
-margin_right = 2048.0
+margin_right = 1024.0
 margin_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="playerNum" type="Label" parent="PlayerChange/VBoxContainer"]
 margin_top = 105.0
-margin_right = 2048.0
+margin_right = 1024.0
 margin_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Player 1"
 align = 1
 

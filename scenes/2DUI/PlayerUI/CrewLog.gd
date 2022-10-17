@@ -8,6 +8,8 @@ signal finished(data)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = false
+	$AnimationPlayer.stop(true)
 	#WayFinder.connect("turn_start",self,"_on_turn_start")
 	pass # Replace with function body.
 
@@ -16,7 +18,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func _on_CrewLogContinue_pressed():
+func close_dialog():
 	$AnimationPlayer.play_backwards("Show")
 	var player = WayFinder.turn -1
 	if WayFinder.players[player].turnSteps["build"] == false:
@@ -24,6 +26,9 @@ func _on_CrewLogContinue_pressed():
 			WayFinder.emit_signal("place_cards",WayFinder.roll_dice())
 	else:
 		WayFinder.emit_signal("turn_ended")
+
+func _on_CrewLogContinue_pressed():
+	close_dialog()
 
 func player_log(playerClass):
 	var thelog = WayFinder.currentMission.get_crew_comment(playerClass,WayFinder.mainEvent)
@@ -45,5 +50,5 @@ func _on_CrewLog_visibility_changed():
 	var player = WayFinder.turn -1
 	if visible:
 		player_log(WayFinder.players[player].info["class"])
-	else:
-		$WFpanel/MC/VBoxContainer/RichTextLabel.clear()
+	#else:
+	#	$WFpanel/MC/VBoxContainer/RichTextLabel.clear()

@@ -12,12 +12,17 @@ var model
 var placementOffset = Vector3(0,0,0)
 var charactername
 var playernum
+
 var commands
+var command_index = -1
+var general_commands = []
+
 var thepath = []
 var pathcords = []
 var moving = false
 var oncard = "start"
 var map = []
+
 
 var movement = 0
 var cardinfo = {
@@ -86,7 +91,7 @@ func load_commands():
 	var OffSet = 2
 	
 	for c in commands:
-		if c["type"] == "general":
+		if c["type"] == "general" and c["unlock"] == "":
 			var theCard = UITemplate.instance()
 			theCard.UI = card
 			theCard.handle_input = true
@@ -97,6 +102,8 @@ func load_commands():
 			$Commands.add_child(theCard)
 			theCard.translate_object_local(Vector3(2.5*cardNum-OffSet,0,0))
 			cardNum += 1
+			if !c in general_commands:
+				general_commands.append(c)
 	pass
 
 func on_card_ready(_data,theCard,c):
@@ -339,6 +346,7 @@ func _on_CommandsCancelButton_pressed():
 	Root.get_node("Menu/Click").play()
 	
 func on_command_execute(data):
+	print(data)
 	emit_signal("command",data)
 	$Commands.hide()
 	$Commands/Control.hide()
@@ -347,7 +355,7 @@ func on_command_execute(data):
 			print("Doing the thing!")
 			get_parent().players[WayFinder.turn -1].get_node(data["effect"]["view"]).make_current()
 	Root.get_node("Menu/Click").play()
-	$Command.show()
+	#$Command.show()
 	$Puzzle.show()
 	if $Puzzle.get_child_count() > 0:
 		$Puzzle.get_child(0).new_puzzle()
@@ -367,7 +375,7 @@ func on_unlock(_crewClass,unlocked):
 			emit_signal("ability_check")
 			
 func _on_Repair_success():
-	$Command.hide()
+	#$Command.hide()
 	$Puzzle.hide()
 	oncard.command("fixed")
 	WayFinder.step_complete("command")
@@ -448,28 +456,45 @@ func toggle_UI(display):
 func _on_turn_start(turn):
 
 	if playernum+1 == turn:
-		print("showing Log for ",info.class)
+		#print("showing Log for ",info.class)
 		$SpeechBox.show()
+		command_index = -1
 	#else:
 	#	$SpeechBox.hide()
-	pass
 
-func _unhandled_key_input(event):
-	
-	if event.is_pressed() and $SpeechBox.visible and event.as_text() == "Escape":
-		$SpeechBox.hide()
-		if WayFinder.players[WayFinder.turn-1].turnSteps["build"] == false:
-			if WayFinder.placing == 0:
-				WayFinder.emit_signal("place_cards",WayFinder.roll_dice())
-		else:
-			WayFinder.emit_signal("turn_ended")
-		Root.get_node("Menu/Click").play()
-	
-	elif event.is_pressed() and $Commands.visible and event.as_text() == "Escape":
-		$Commands.hide()
-		$Commands/Control.hide()
-		WayFinder.step_complete("command")
-		Root.get_node("Menu/Click").play()
+
+func _input(event):
+	if $SpeechBox.visible:
 		
+		if event.is_action_pressed("ui_cancel"):
+			if WayFinder.players[WayFinder.turn-1].turnSteps["build"] == false:
+				if WayFinder.placing == 0:
+					WayFinder.emit_signal("place_cards",WayFinder.roll_dice())
+			else:
+				WayFinder.emit_signal("turn_ended")
+			Root.get_node("Menu/Click").play()
+			$SpeechBox.hide()
+			
+		if event.is_action_pressed("ui_accept"):
+			## Need to add a generic signal relay to Wayfinder to make passing signals easier.
+			pass
 	
-	pass
+	if $Commands.visible: 
+		if event.is_action_pressed("ui_cancel"):
+			$Commands.hide()
+			$Commands/Control.hide()
+			WayFinder.step_complete("command")
+			Root.get_node("Menu/Click").play()
+		if event.is_action_pressed("ui_left"):
+			## Switch to the left
+			if command_index > 0:
+				command_index -= 1
+				WayFinder.emit_signal("relay",{"type":"command","index":command_index})
+		if event.is_action_pressed("ui_right"):
+			## Switch to the right
+			if command_index < general_commands.size()-1:
+				command_index += 1
+				WayFinder.emit_signal("relay",{"type":"command","index":command_index})
+		if event.is_action_pressed("ui_accept"):
+			#print(general_commands[command_index])
+			on_command_execute(general_commands[command_index])

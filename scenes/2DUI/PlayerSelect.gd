@@ -69,53 +69,77 @@ func player_check():
 		$WFpanel/fullbox/hint.text ="2 or more players needed to begin the game"
 		
 		
-func _unhandled_key_input(event):
-	if visible and event.is_pressed():
+func _input(event):
+	if visible:
+		print(event.as_text())
 		
-		match event.get_scancode_with_modifiers():
-			KEY_SPACE:
-				if len(players) < 4:
-					if len(playersReady) == len(players):
-						$WFpanel/fullbox/Control.get_child(len(players)).select()
-						players.append({"input":"keyboard"})
-						selecting = true
-					else:
-						print("player ",len(players)," Not locked in")
-					
-			KEY_ENTER:
-				if len(players) <= 4 and len(players) > len(playersReady):
+		if !selecting: 
+			if event.is_action_pressed("ui_accept") and len(players) < 4:
+				if len(playersReady) == len(players):
+					$WFpanel/fullbox/Control.get_child(len(players)).select()
+					players.append({"input":"keyboard"})
+					selecting = true
+				else:
+					print("player ",len(players)," Not locked in")
+		else:
+			if len(players) <= 4 and len(players) > len(playersReady):
 					$WFpanel/fullbox/Control.get_child(len(playersReady)).lock_in()
 					playersReady.append({"player":len(players)})
 					player_add("nobody",availableClasses[classShown])
 					player_check()
 					selecting = false
-				else:
-					if !holding:
-						$holdcount.start()
-						holding = true
-			
-			KEY_LEFT:
-				if selecting == true:
-					if classShown > 0:
-						classShown -= 1
-						emit_signal("change",len(players),availableClasses[classShown])
-					else:
-						classShown = len(availableClasses)-1
-						emit_signal("change",len(players),availableClasses[classShown])
-			KEY_RIGHT:
-				if selecting == true:
-					if classShown < len(availableClasses)-1:
-						classShown += 1
-						emit_signal("change",len(players),availableClasses[classShown])
-					else:
-						classShown = 0
-						emit_signal("change",len(players),availableClasses[classShown])
+			else:
+				if !holding:
+					$holdcount.start()
+					holding = true
+				
+#	if visible and event.is_pressed():
+#		
+#		match event.get_scancode_with_modifiers():
+#			KEY_SPACE:
+#				if len(players) < 4:
+#					if len(playersReady) == len(players):
+#						$WFpanel/fullbox/Control.get_child(len(players)).select()
+#						players.append({"input":"keyboard"})
+#						selecting = true
+#					else:
+#						print("player ",len(players)," Not locked in")
+#					
+#			KEY_ENTER:
+#				if len(players) <= 4 and len(players) > len(playersReady):
+#					$WFpanel/fullbox/Control.get_child(len(playersReady)).lock_in()
+#					playersReady.append({"player":len(players)})
+#					player_add("nobody",availableClasses[classShown])
+#					player_check()
+#					selecting = false
+#				else:
+#					if !holding:
+#						$holdcount.start()
+#						holding = true
+#			
+#			KEY_LEFT:
+#				if selecting == true:
+#					if classShown > 0:
+#						classShown -= 1
+#						emit_signal("change",len(players),availableClasses[classShown])
+#					else:
+#						classShown = len(availableClasses)-1
+#						emit_signal("change",len(players),availableClasses[classShown])
+#			KEY_RIGHT:
+#				if selecting == true:
+#					if classShown < len(availableClasses)-1:
+#						classShown += 1
+#						emit_signal("change",len(players),availableClasses[classShown])
+#					else:
+#						classShown = 0
+#						emit_signal("change",len(players),availableClasses[classShown])
 					
-	else:
-		holding = false
-		held = 0
-		player_check()
-		$holdcount.stop()
+#	else:
+#		holding = false
+#		held = 0
+#		player_check()
+#		$holdcount.stop()
+	pass
 
 func _on_PlayerSelect_resized():
 	$Timer.start()

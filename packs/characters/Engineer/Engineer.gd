@@ -20,6 +20,7 @@ var commands = [{
 	"name":"Reroute",
 	"type":"special",
 	"cost":1,
+	"unlock":"",
 	"discription":"Damaged system is restored for one round",
 	"effect":{"target":"card","when":"command","view":"Targetting","eventtype":"engineering","event":"paused","duration":1},
 	"icon": command1
@@ -27,6 +28,7 @@ var commands = [{
 	"name": "Repair",
 	"type":"general",
 	"cost":2,
+	"unlock":"",
 	"discription": "Fixes damaged system for good.",
 	"effect":{"target":"card","when":"command","view":"","eventtype":"engineering","event":"fixed","duration":99},
 	"icon": command2
@@ -34,6 +36,7 @@ var commands = [{
 	"name": "Sabotage",
 	"type":"general",
 	"cost":3,
+	"unlock":"",
 	"discription":"The engineer purposely breaks something to impeed the progress of everyone on the board",
 	"effect":{"target":"card","when":"command","view":"","eventtype":"engineering","event":"new","duration":99},
 	"icon": command3

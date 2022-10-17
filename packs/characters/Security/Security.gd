@@ -20,6 +20,7 @@ var commands = [{
 	"name":"Take Aim",
 	"type":"general",
 	"cost":2,
+	"unlock":"",
 	"discription":"Increases range by two cards in a straight line.",
 	"effect":{"target":"enemy","view":"Targetting","when":"command","range":3,"duration":1},
 	"icon": command1
@@ -27,6 +28,7 @@ var commands = [{
 	"name": "Rapid Fire",
 	"type":"combat",
 	"cost":1,
+	"unlock":"",
 	"discription": "Gives one extra attack roll",
 	"effect":{"target":"enemy","view":"special","when":"combat","attackRoll":2,"duration":1},
 	"icon": command2
@@ -34,6 +36,7 @@ var commands = [{
 	"name": "Tactical Retreat",
 	"type":"special",
 	"cost":4,
+	"unlock":"",
 	"discription":"During combat all players in combat can make a one card retreat outside of turn order",
 	"effect":{"target":["ally","all"],"view":"ActionView","when":"command","movement":-1,"duration":1},
 	"icon": command3

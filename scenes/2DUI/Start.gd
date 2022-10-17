@@ -22,7 +22,7 @@ func _on_Timer_timeout():
 
 
 func _on_Start_gui_input(event):
-	if event.is_pressed():
+	if visible and event.is_pressed():
 		$AudioStreamPlayer.play()
 		emit_signal("finished",[name])
 
@@ -34,7 +34,6 @@ func _on_Start_finished(_name):
 	pass # Replace with function body.
 
 func _input(event):
-	if visible and event is InputEventKey:
-		if event.get_scancode_with_modifiers() == KEY_ENTER and event.is_pressed():
+	if visible and event.is_action_pressed("ui_accept"):
 			$AudioStreamPlayer.play()
 			emit_signal("finished",[name])

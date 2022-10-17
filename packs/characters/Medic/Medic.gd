@@ -22,6 +22,7 @@ var shield = preload("res://packs/characters/Effects/sfx/zapsplat_science_fictio
 var commands = [{
 	"name":"Stabilize",
 	"type":"general",
+	"unlock":"",
 	"cost":2,
 	"discription":"Heal one player by one hp to get them moving again",
 	"effect":{"target":["ally","self"],"view":"Targetting","when":"command","hp":1,"duration":1,"canMove":true,"canAttack":true,"down":false},
@@ -29,6 +30,7 @@ var commands = [{
 },{
 	"name": "Tranquilize",
 	"type":"combat",
+	"unlock":"",
 	"cost":1,
 	"discription": "Enemy combatants can no longer attack or move for 2 rounds",
 	"effect":{"target":"enemy","view":"special","when":"combat","canMove":false,"canAttack":false,"duration":2},

@@ -34,6 +34,9 @@ signal movementType(change)
 
 signal enviroment_turn()
 
+# warning-ignore:unused_signal
+signal relay(data)
+
 var mType = "Standard"
 
 var currentMission = "none"
@@ -339,7 +342,7 @@ func game_check():
 	
 	for p in board.players:
 		if !p.info["canMove"] and !p.info["canAttack"]:
-			print(p.info["class"]," is down")
+			#print(p.info["class"]," is down")
 			down += 1
 	
 	if len(board.players) == down:

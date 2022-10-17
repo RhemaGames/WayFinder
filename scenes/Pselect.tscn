@@ -73,5 +73,6 @@ anims/powerup = SubResource( 3 )
 [node name="Location" type="Position3D" parent="."]
 
 [node name="holdcount" type="Timer" parent="."]
+
 [connection signal="visibility_changed" from="." to="." method="_on_Pselect_visibility_changed"]
 [connection signal="timeout" from="holdcount" to="." method="_on_holdcount_timeout"]

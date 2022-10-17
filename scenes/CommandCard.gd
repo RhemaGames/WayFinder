@@ -22,6 +22,7 @@ var playerRoot = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#playerRoot = get_parent().get_parent().get_parent()
+	var _error = WayFinder.connect("relay",self,"on_relay")
 	pass # Replace with function body.
 
 
@@ -62,13 +63,14 @@ func load_card(data):
 		cnum +=1
 
 func _on_CommandCard_gui_input(event):
-	if event.is_pressed() and event.get_button_index() == 1:
-		if get_parent().get_parent().get_parent().get_parent().info["cp"] >= cost:
-			get_parent().get_parent().get_parent().get_parent().info["cp"] -= cost
-			emit_signal("execute",fullEffect)
-		else:
-			print("not Enough CP for this Card")
-
+#	if event.is_pressed() and event.get_button_index() == 1:
+#		if get_parent().get_parent().get_parent().get_parent().info["cp"] >= cost:
+#			get_parent().get_parent().get_parent().get_parent().info["cp"] -= cost
+#			emit_signal("execute",fullEffect)
+#		else:
+#			print("not Enough CP for this Card")
+	pass
+	
 func _on_check_abilities():
 	if locked:
 		if skill in playerRoot.info["unlocks"]:
@@ -83,14 +85,14 @@ func _on_CommandCard_display():
 		$AnimationPlayer.play("display")
 
 
-func _on_CommandCard_mouse_entered():
-	self.rect_scale = Vector2(1.01,1.01)
-	get_parent().set("custom_constants/seperation",50)
+#func _on_CommandCard_mouse_entered():
+#	self.rect_scale = Vector2(1.01,1.01)
+#	get_parent().set("custom_constants/seperation",50)
 
 
-func _on_CommandCard_mouse_exited():
-	self.rect_scale = Vector2(1,1)
-	get_parent().set("custom_constants/seperation",40)
+#func _on_CommandCard_mouse_exited():
+#	self.rect_scale = Vector2(1,1)
+#	get_parent().set("custom_constants/seperation",40)
 
 
 func _on_CommandCard_finished(_data):
@@ -105,3 +107,10 @@ func _on_CommandCard_arrow_focus():
 func _on_CommandCard_arrow_lose_focus():
 	rect_scale = Vector2(1,1)
 	pass # Replace with function body.
+
+func on_relay(data):
+	if data["index"]+1 == get_parent().get_parent().get_index():
+		rect_scale = Vector2(1.01,1.01)
+	else:
+		rect_scale = Vector2(1,1)
+	

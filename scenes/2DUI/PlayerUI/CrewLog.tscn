@@ -57,12 +57,14 @@ theme = ExtResource( 4 )
 script = ExtResource( 1 )
 
 [node name="WFpanel" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 6.0
 margin_top = 10.0
 margin_right = 2726.0
 margin_bottom = 213.0
+rect_scale = Vector2( 0.01, 0.01 )
 rect_pivot_offset = Vector2( 707, 114 )
 border_color = Color( 1, 0.654902, 0, 1 )
 
@@ -103,6 +105,7 @@ grow_vertical = 2
 rect_min_size = Vector2( 50, 50 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="WFpanel/MC/VBoxContainer"]
+visible = false
 margin_top = 51.0
 margin_right = 2594.0
 margin_bottom = 109.0

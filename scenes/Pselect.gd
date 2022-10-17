@@ -37,11 +37,10 @@ func _process(_delta):
 	#$CharacterSelect.rotate_y(0.01)
 	pass
 
-func _unhandled_key_input(event):
-	if visible and event.is_pressed():
-		
-		match event.get_scancode_with_modifiers():
-			KEY_SPACE:
+func _input(event):
+	if visible:
+		if event.is_action_pressed("ui_accept"):
+			if !selecting:
 				if !$Camera/Name/Viewport.get_child(0).get_node("NameArea/Name").has_focus() and len(players) < 4:
 					if len(playersReady) == len(players):
 						fullname = WayFinder.generate_name()
@@ -59,8 +58,22 @@ func _unhandled_key_input(event):
 						player_location.add_child(availableClasses[classShown]["data"].instance())
 					else:
 						print("player ",len(players)," Not locked in")
-			KEY_LEFT:
-				if selecting == true:
+			else:
+				if !$Camera/Name/Viewport.get_child(0).get_node("NameArea/Name").has_focus() and len(players) <= 4 and len(players) > len(playersReady):
+					$Camera/CharacterSelect/AnimationPlayer.play_backwards("powerup")
+					#$WFpanel/fullbox/Control.get_child(len(playersReady)).lock_in()
+					playersReady.append({"player":len(players)})
+					player_add("nobody",availableClasses[classShown])
+					selecting = false
+					classShown = 0
+					player_check()
+			#	else:
+			#		if !holding:
+			#			$holdcount.start()
+			#			holding = true
+						
+		if event.is_action_pressed("ui_left"):
+			if selecting == true:
 					var player_location = $Location.get_child(0).get_node("Players/Player"+str(len(players)))
 					if classShown > 0:
 						classShown -= 1
@@ -71,8 +84,8 @@ func _unhandled_key_input(event):
 					if player_location.get_child_count() > 1:
 						player_location.get_child(1).queue_free()
 					player_location.add_child(availableClasses[classShown]["data"].instance())
-			KEY_RIGHT:
-				if selecting == true:
+		if event.is_action_pressed("ui_right"):
+			if selecting == true:
 					var player_location = $Location.get_child(0).get_node("Players/Player"+str(len(players)))
 					if classShown < len(availableClasses)-1:
 						classShown += 1
@@ -83,31 +96,19 @@ func _unhandled_key_input(event):
 					if player_location.get_child_count() > 1:
 						player_location.get_child(1).queue_free()
 					player_location.add_child(availableClasses[classShown]["data"].instance())
-					
-			KEY_ENTER:
-				if !$Camera/Name/Viewport.get_child(0).get_node("NameArea/Name").has_focus() and len(players) <= 4 and len(players) > len(playersReady):
-					$Camera/CharacterSelect/AnimationPlayer.play_backwards("powerup")
-					#$WFpanel/fullbox/Control.get_child(len(playersReady)).lock_in()
-					playersReady.append({"player":len(players)})
-					player_add("nobody",availableClasses[classShown])
-					selecting = false
-					classShown = 0
-					player_check()
-				else:
-					if !holding:
-						$holdcount.start()
-						holding = true
-						
-			KEY_TAB:
-				if !$Camera/Name/Viewport.get_child(0).get_node("NameArea/Name").has_focus():
-					$Camera/Name/Viewport.get_child(0).get_node("NameArea/Name").grab_focus()
-				else:
-					$Camera/Name/Viewport.get_child(0).get_node("NameArea/Name").release_focus()
-					
-	elif visible:
-		$holdcount.stop()
-		holding = false
-		held = 0
+							
+#		match event.get_scancode_with_modifiers():
+#						
+#			KEY_TAB:
+#				if !$Camera/Name/Viewport.get_child(0).get_node("NameArea/Name").has_focus():
+#					$Camera/Name/Viewport.get_child(0).get_node("NameArea/Name").grab_focus()
+#				else:
+#					$Camera/Name/Viewport.get_child(0).get_node("NameArea/Name").release_focus()
+#					
+	#elif visible:
+	#	$holdcount.stop()
+	#	holding = false
+	#	held = 0
 			
 func player_add(_characterName,CharacterData):
 	

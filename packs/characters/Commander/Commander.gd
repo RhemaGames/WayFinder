@@ -20,6 +20,7 @@ var commands = [{
 	"name":"Double Time",
 	"type":"general",
 	"cost":2,
+	"unlock":"",
 	"discription":"All alleys get a 2x multiplier to their movement rolls",
 	"effect":{"target":["game","allies"],"view":"ActionView","when":"command","movement":"x2","duration":1},
 	"icon": command1
@@ -27,6 +28,7 @@ var commands = [{
 	"name": "Rally",
 	"type":"general",
 	"cost":3,
+	"unlock":"",
 	"discription": "Gives all alleys double damage during combat",
 	"effect":{"target":["game","allies"],"view":"ActionView","when":"command","combatRoll":2,"duration":1},
 	"icon": command2
