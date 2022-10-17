@@ -427,7 +427,7 @@ margin_bottom = 1506.0
 custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="Main/Control/MainMenu"]
-margin_right = 1322.0
+margin_right = 2688.0
 margin_bottom = 61.0
 custom_fonts/font = ExtResource( 1 )
 text = "Main Menu"
@@ -436,7 +436,7 @@ autowrap = true
 
 [node name="HSeparator" type="HSeparator" parent="Main/Control/MainMenu"]
 margin_top = 81.0
-margin_right = 1322.0
+margin_right = 2688.0
 margin_bottom = 85.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -444,20 +444,20 @@ __meta__ = {
 
 [node name="New Game" type="Button" parent="Main/Control/MainMenu"]
 margin_top = 105.0
-margin_right = 1322.0
+margin_right = 2688.0
 margin_bottom = 163.0
 text = "New Game"
 
 [node name="Continue" type="Button" parent="Main/Control/MainMenu"]
 margin_top = 183.0
-margin_right = 1322.0
+margin_right = 2688.0
 margin_bottom = 241.0
 disabled = true
 text = "Continue"
 
 [node name="HSeparator2" type="HSeparator" parent="Main/Control/MainMenu"]
 margin_top = 261.0
-margin_right = 1322.0
+margin_right = 2688.0
 margin_bottom = 265.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -465,19 +465,19 @@ __meta__ = {
 
 [node name="Store" type="Button" parent="Main/Control/MainMenu"]
 margin_top = 285.0
-margin_right = 1322.0
+margin_right = 2688.0
 margin_bottom = 343.0
 text = "Store"
 
 [node name="Extras" type="Button" parent="Main/Control/MainMenu"]
 margin_top = 363.0
-margin_right = 1322.0
+margin_right = 2688.0
 margin_bottom = 421.0
 text = "Extras"
 
 [node name="HSeparator3" type="HSeparator" parent="Main/Control/MainMenu"]
 margin_top = 441.0
-margin_right = 1322.0
+margin_right = 2688.0
 margin_bottom = 445.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -485,25 +485,25 @@ __meta__ = {
 
 [node name="spacer2" type="Control" parent="Main/Control/MainMenu"]
 margin_top = 465.0
-margin_right = 1322.0
+margin_right = 2688.0
 margin_bottom = 485.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="spacer" type="Control" parent="Main/Control/MainMenu"]
 margin_top = 505.0
-margin_right = 1322.0
+margin_right = 2688.0
 margin_bottom = 525.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Settings" type="Button" parent="Main/Control/MainMenu"]
 margin_top = 545.0
-margin_right = 1322.0
+margin_right = 2688.0
 margin_bottom = 603.0
 text = "Settings"
 
 [node name="Quit" type="Button" parent="Main/Control/MainMenu"]
 margin_top = 623.0
-margin_right = 1322.0
+margin_right = 2688.0
 margin_bottom = 681.0
 text = "Quit"
 
@@ -771,7 +771,7 @@ __meta__ = {
 }
 
 [node name="Player" type="Label" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
-margin_right = 518.0
+margin_right = 1076.0
 margin_bottom = 61.0
 custom_fonts/font = ExtResource( 1 )
 text = "Player"
@@ -779,12 +779,12 @@ align = 1
 
 [node name="HSeparator" type="HSeparator" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
 margin_top = 86.0
-margin_right = 518.0
+margin_right = 1076.0
 margin_bottom = 90.0
 
 [node name="CharacterName" type="LineEdit" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
 margin_top = 115.0
-margin_right = 518.0
+margin_right = 1076.0
 margin_bottom = 173.0
 text = "Character Name"
 
@@ -816,7 +816,7 @@ __meta__ = {
 
 [node name="Class" type="Label" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
 margin_top = 198.0
-margin_right = 518.0
+margin_right = 1076.0
 margin_bottom = 232.0
 text = "Class Name"
 
@@ -832,7 +832,7 @@ __meta__ = {
 
 [node name="HSeparator2" type="HSeparator" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
 margin_top = 257.0
-margin_right = 518.0
+margin_right = 1076.0
 margin_bottom = 261.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -840,14 +840,14 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
 margin_top = 286.0
-margin_right = 518.0
+margin_right = 1076.0
 margin_bottom = 311.0
 custom_fonts/font = ExtResource( 6 )
 text = "Commands:"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
 margin_top = 336.0
-margin_right = 518.0
+margin_right = 1076.0
 margin_bottom = 616.0
 rect_min_size = Vector2( 0, 280 )
 
@@ -855,13 +855,13 @@ rect_min_size = Vector2( 0, 280 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CharacterSelect/WFpanel/MC/VBoxContainer"]
 margin_top = 641.0
-margin_right = 518.0
+margin_right = 1076.0
 margin_bottom = 699.0
 alignment = 2
 
 [node name="CharacterSelectAccept" type="Button" parent="CharacterSelect/WFpanel/MC/VBoxContainer/HBoxContainer"]
-margin_left = 428.0
-margin_right = 518.0
+margin_left = 986.0
+margin_right = 1076.0
 margin_bottom = 58.0
 text = "Accept"
 
@@ -874,12 +874,12 @@ margin_left = -8.36401
 margin_top = -27.0
 margin_right = 60.512
 margin_bottom = 27.0
+custom_fonts/font = ExtResource( 1 )
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 10 )
 custom_styles/focus = SubResource( 10 )
 custom_styles/disabled = SubResource( 10 )
 custom_styles/normal = SubResource( 10 )
-custom_fonts/font = ExtResource( 1 )
 text = "<"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -895,12 +895,12 @@ margin_top = -27.0
 margin_right = -62.3628
 margin_bottom = 27.0
 grow_horizontal = 0
+custom_fonts/font = ExtResource( 1 )
 custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 11 )
 custom_styles/focus = SubResource( 11 )
 custom_styles/disabled = SubResource( 11 )
 custom_styles/normal = SubResource( 11 )
-custom_fonts/font = ExtResource( 1 )
 text = ">"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1040,21 +1040,22 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="Rolls/VBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 61.0
+margin_top = 30.0
+margin_right = 2048.0
+margin_bottom = 91.0
 custom_fonts/font = ExtResource( 1 )
 text = "Character Name"
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="Rolls/VBoxContainer"]
-margin_top = 81.0
-margin_right = 1024.0
-margin_bottom = 85.0
+margin_top = 111.0
+margin_right = 2048.0
+margin_bottom = 115.0
 
 [node name="info" type="Label" parent="Rolls/VBoxContainer"]
-margin_top = 105.0
-margin_right = 1024.0
-margin_bottom = 139.0
+margin_top = 135.0
+margin_right = 2048.0
+margin_bottom = 169.0
 text = "Player 1"
 align = 1
 
@@ -1089,7 +1090,7 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="PlayerChange/VBoxContainer"]
-margin_right = 1024.0
+margin_right = 2048.0
 margin_bottom = 61.0
 custom_fonts/font = ExtResource( 1 )
 text = "Character Name"
@@ -1097,12 +1098,12 @@ align = 1
 
 [node name="HSeparator" type="HSeparator" parent="PlayerChange/VBoxContainer"]
 margin_top = 81.0
-margin_right = 1024.0
+margin_right = 2048.0
 margin_bottom = 85.0
 
 [node name="playerNum" type="Label" parent="PlayerChange/VBoxContainer"]
 margin_top = 105.0
-margin_right = 1024.0
+margin_right = 2048.0
 margin_bottom = 139.0
 text = "Player 1"
 align = 1
@@ -1156,7 +1157,7 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="MainEvent/WFpanel/MC/VBoxContainer"]
-margin_right = 1276.0
+margin_right = 2642.0
 margin_bottom = 61.0
 custom_fonts/font = ExtResource( 1 )
 align = 1
@@ -1164,12 +1165,12 @@ autowrap = true
 
 [node name="HSeparator" type="HSeparator" parent="MainEvent/WFpanel/MC/VBoxContainer"]
 margin_top = 81.0
-margin_right = 1276.0
+margin_right = 2642.0
 margin_bottom = 85.0
 
 [node name="Discription" type="RichTextLabel" parent="MainEvent/WFpanel/MC/VBoxContainer"]
 margin_top = 105.0
-margin_right = 1276.0
+margin_right = 2642.0
 margin_bottom = 655.0
 rect_min_size = Vector2( 0, 550 )
 
@@ -1226,6 +1227,7 @@ rect_pivot_offset = Vector2( 278.931, 198.685 )
 stream = ExtResource( 7 )
 volume_db = -11.0
 bus = "sfx"
+
 [connection signal="onLoad" from="." to="." method="_on_Menu_onLoad"]
 [connection signal="resized" from="." to="." method="_on_Menu_resized"]
 [connection signal="pressed" from="Main/Control/MainMenu/New Game" to="." method="_on_MainMenu_New_Game_pressed"]

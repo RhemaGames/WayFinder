@@ -85,7 +85,7 @@ func place_card(location,parent,type = "card"):
 		if len(WayFinder.deck) > 0 and WayFinder.placing > 0:
 			var card = WayFinder.deck[0]
 			new_card.type = card["type"]
-			if card["event"] == 4 or card["event"] == 2:
+			if card["event"] in [2,3,4]:
 				if WayFinder.check_event_map(WayFinder.mainEvent):
 					if WayFinder.check_event_location("card",WayFinder.mainEvent):
 						var _error = WayFinder.connect("event_changed",new_card,"on_event_changed")

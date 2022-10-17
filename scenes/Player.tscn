@@ -38,9 +38,7 @@ extents = Vector3( 0.4218, 0.48194, 1.17389 )
 
 [sub_resource type="BoxShape" id=3]
 
-[node name="Player" type="RigidBody" groups=[
-"player",
-]]
+[node name="Player" type="RigidBody" groups=["player"]]
 mode = 2
 script = ExtResource( 1 )
 SPEED = 0.018
@@ -98,9 +96,7 @@ visible = false
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.134078, 1.07401, 0.0301063 )
 shape = SubResource( 2 )
 
-[node name="PlayerArea" type="Area" parent="." groups=[
-"player",
-]]
+[node name="PlayerArea" type="Area" parent="." groups=["player"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.135183, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="PlayerArea"]
@@ -123,8 +119,15 @@ out_of_range_mode = 1
 bus = "bgm"
 emission_angle_enabled = true
 
+[node name="SpeechBox" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.779622, -0.100115, 0.618196, 0, 0.987139, 0.159864, -0.62625, -0.124633, 0.769596, 1.112, 1.979, 0.302 )
+visible = false
+UI = "res://scenes/2DUI/PlayerUI/CrewLog.tscn"
+resolution = Vector2( 1366, 768 )
+ratio = 8
+
 [node name="Commands" type="Spatial" parent="."]
-transform = Transform( 0.779622, -0.100115, 0.618196, 0, 0.987139, 0.159864, -0.62625, -0.124634, 0.769595, 1.104, 1.699, 0.273 )
+transform = Transform( 0.779622, -0.100115, 0.618196, 0, 0.987139, 0.159864, -0.62625, -0.124633, 0.769596, 1.138, 1.7, -0.666 )
 visible = false
 
 [node name="Control" type="Control" parent="Commands"]
@@ -132,9 +135,6 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Commands/Control"]
 anchor_left = 0.5
@@ -154,12 +154,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpeechBox" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.779622, -0.100115, 0.618196, 0, 0.987139, 0.159864, -0.62625, -0.124633, 0.769596, 1.112, 1.979, 0.302 )
-visible = false
-UI = "res://scenes/2DUI/PlayerUI/CrewLog.tscn"
-resolution = Vector2( 1366, 768 )
-ratio = 8
 [connection signal="body_shape_entered" from="." to="." method="_on_Player_body_shape_entered"]
 [connection signal="loadup" from="." to="." method="_on_Player_loadup"]
 [connection signal="area_shape_entered" from="PlayerArea" to="." method="_on_PlayerArea_area_shape_entered"]

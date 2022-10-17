@@ -14,13 +14,13 @@ script = ExtResource( 2 )
 transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, -0.00986075, 0 )
 
 [node name="BoneAttachment" parent="Medic/Armature008/Skeleton" index="0"]
-transform = Transform( 0.316745, -0.08084, -0.94506, 0.334112, -0.922992, 0.190933, -0.887717, -0.376233, -0.265344, -36.6717, -33.9507, -28.7506 )
+transform = Transform( 4.65661e-08, -1, -4.47035e-08, -4.47035e-08, 1.77636e-15, 1, -1, -1.86265e-08, 2.22045e-15, -86.6651, 16.3073, -2.88986e-06 )
 
 [node name="BoneAttachment 2" parent="Medic/Armature008/Skeleton" index="1"]
-transform = Transform( -0.987204, 0.159463, 1.75834e-07, 1.7381e-07, 2.94447e-08, 1, 0.159463, 0.987204, -4.32643e-08, -1.39033e-06, 57.7864, 8.94929e-07 )
+transform = Transform( -1, -1.25628e-29, 8.74228e-08, 8.74228e-08, -1.96943e-08, 1, 1.72173e-15, 1, 1.96943e-08, 1.06962e-06, 60.3677, 1.3165e-06 )
 
 [node name="BoneAttachment 3" parent="Medic/Armature008/Skeleton" index="2"]
-transform = Transform( 0.961758, -2.1993e-08, -0.2739, -8.24847e-09, 1, -1.09259e-07, 0.2739, 1.0734e-07, 0.961758, -2.33505e-07, -34.2109, -5.93757e-06 )
+transform = Transform( 1, -4.23516e-22, 2.10731e-29, 4.23516e-22, 1, -9.9515e-08, 2.10731e-29, 9.9515e-08, 1, 3.5654e-07, -31.6296, -3.97228e-06 )
 
 [node name="AnimationPlayer" parent="Medic" index="2"]
 autoplay = "onBaseMedic"

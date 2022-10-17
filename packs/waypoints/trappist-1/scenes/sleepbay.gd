@@ -82,7 +82,7 @@ func card_event(_camera, event, _click_position, _click_normal, _shape_idx,objec
 		if "startpoint" in overlap.get_groups():
 			covered = true
 			break
-	if event.is_pressed() and event.get_button_index() == 1 and covered == false and is_flipped == true:
+	if event.is_pressed() and covered == false and is_flipped == true:
 		#print("Avaialble Connectors",check_connectors())
 		#var core_rot = object.get_parent().get_parent().rotation_degrees
 		object.set_rotation_degrees(Vector3(object.rotation_degrees.x,object.rotation_degrees.y,0))

@@ -7,7 +7,6 @@
 [ext_resource path="res://scenes/2DUI/PlayerSelect.gd" type="Script" id=5]
 [ext_resource path="res://packs/waypoints/trappist-1/graphics/HyperSleepChamber.glb" type="PackedScene" id=6]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "Show"
 
@@ -56,8 +55,7 @@ anchor_bottom = 1.03516
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 1407.32, 787.64 )
-bg_opacity = 0.2
-border_color = Color( 0.109804, 0.780392, 0.780392, 1 )
+border_color = Color( 1, 0.654902, 0, 1 )
 
 [node name="fullbox" type="Control" parent="WFpanel"]
 margin_right = 2828.0
@@ -102,8 +100,6 @@ anchor_left = 0.0282885
 anchor_top = 0.0321384
 anchor_right = 0.0983027
 anchor_bottom = 0.0741656
-margin_left = 1.90735e-06
-margin_bottom = 3.8147e-06
 text = "a2fadra"
 uppercase = true
 __meta__ = {
@@ -115,7 +111,6 @@ anchor_left = 0.0763791
 anchor_top = 0.911001
 anchor_right = 0.0820368
 anchor_bottom = 0.953028
-margin_right = -7.62939e-06
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )
 __meta__ = {
@@ -130,6 +125,7 @@ wait_time = 0.2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Show = SubResource( 1 )
+
 [connection signal="resized" from="." to="." method="_on_PlayerSelect_resized"]
 [connection signal="visibility_changed" from="." to="." method="_on_PlayerSelect_visibility_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

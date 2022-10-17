@@ -140,7 +140,7 @@ func card_event(_camera, event, _click_position, _click_normal, _shape_idx,objec
 			covered = true
 			break
 	
-	if event.is_pressed() and event.get_button_index() == 1 and covered == false and is_flipped == true:
+	if event.is_pressed() and covered == false and is_flipped == true:
 		#var core_rot = object.get_parent().get_parent().rotation_degrees
 		object.set_rotation_degrees(Vector3(object.rotation_degrees.x,object.rotation_degrees.y,0))
 		if power:
@@ -155,7 +155,6 @@ func _on_Timer_timeout():
 
 func check_event():
 	match info["event"]:
-		
 		0: 
 			$Lights/OmniLight.show()
 			$Lights/OmniLight2.show()
@@ -176,7 +175,7 @@ func check_event():
 		#2:
 		#	if WayFinder.check_event_map(WayFinder.mainEvent):
 		#		if WayFinder.check_event_location(info["location"],WayFinder.mainEvent):
-		#			$Marker.add_child(get_parent().marker.instance())
+		#			$Marker.add_child(get_parent().get_parent().marker.instance())
 					#WayFinder.mainEventFound = true
 				
 

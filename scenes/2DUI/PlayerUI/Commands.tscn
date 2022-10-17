@@ -76,4 +76,5 @@ stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="gui_input" from="." to="." method="_on_Commands_gui_input"]

@@ -55,24 +55,20 @@ margin_top = -223.0
 rect_pivot_offset = Vector2( 360, 629 )
 theme = ExtResource( 4 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="WFpanel" parent="." instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 2725.0
-margin_bottom = 216.0
+margin_left = 6.0
+margin_top = 10.0
+margin_right = 2726.0
+margin_bottom = 213.0
 rect_pivot_offset = Vector2( 707, 114 )
-bg_opacity = 0.5
-border_color = Color( 0.109804, 0.780392, 0.780392, 1 )
+border_color = Color( 1, 0.654902, 0, 1 )
 
 [node name="MC" type="MarginContainer" parent="WFpanel"]
-margin_right = 2718.0
-margin_bottom = 209.0
+margin_right = 2720.0
+margin_bottom = 203.0
 mouse_filter = 2
 custom_constants/margin_right = 63
 custom_constants/margin_top = 20
@@ -82,22 +78,22 @@ custom_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="WFpanel/MC"]
 margin_left = 63.0
 margin_top = 20.0
-margin_right = 2655.0
-margin_bottom = 189.0
+margin_right = 2657.0
+margin_bottom = 183.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="WFpanel/MC/VBoxContainer"]
-margin_right = 2592.0
-margin_bottom = 31.0
+margin_right = 2594.0
+margin_bottom = 39.0
 custom_fonts/font = ExtResource( 2 )
 autowrap = true
 
 [node name="HSeparator" type="HSeparator" parent="WFpanel/MC/VBoxContainer"]
-margin_top = 35.0
-margin_right = 2592.0
-margin_bottom = 39.0
+margin_top = 43.0
+margin_right = 2594.0
+margin_bottom = 47.0
 
 [node name="RichTextLabel" parent="WFpanel/MC/VBoxContainer" instance=ExtResource( 5 )]
 margin_top = 51.0
@@ -107,15 +103,15 @@ grow_vertical = 2
 rect_min_size = Vector2( 50, 50 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="WFpanel/MC/VBoxContainer"]
-margin_top = 43.0
-margin_right = 2592.0
-margin_bottom = 98.0
+margin_top = 51.0
+margin_right = 2594.0
+margin_bottom = 109.0
 alignment = 2
 
 [node name="CrewLogContinue" type="Button" parent="WFpanel/MC/VBoxContainer/HBoxContainer"]
-margin_left = 2392.0
-margin_right = 2592.0
-margin_bottom = 55.0
+margin_left = 2394.0
+margin_right = 2594.0
+margin_bottom = 58.0
 grow_horizontal = 2
 rect_min_size = Vector2( 200, 55 )
 text = "Dismiss"
@@ -125,6 +121,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Show = SubResource( 1 )
+
 [connection signal="visibility_changed" from="." to="." method="_on_CrewLog_visibility_changed"]
 [connection signal="pressed" from="WFpanel/MC/VBoxContainer/HBoxContainer/CrewLogContinue" to="." method="_on_CrewLogContinue_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="WFpanel/MC/VBoxContainer/RichTextLabel" method="_on_AnimationPlayer_animation_finished"]

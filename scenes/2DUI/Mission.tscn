@@ -13,9 +13,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 4 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -33,6 +30,7 @@ anchor_right = 0.36164
 anchor_bottom = 1.03385
 margin_right = 3.05176e-05
 border = false
+border_color = Color( 1, 0.654902, 0, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MissionSelect"]
 margin_right = 988.0
@@ -72,6 +70,7 @@ anchor_top = 0.0598958
 anchor_right = 1.00073
 anchor_bottom = 0.88151
 border = false
+border_color = Color( 1, 0.654902, 0, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="WFpanel"]
 margin_right = 1773.0
@@ -134,6 +133,7 @@ bus = "sfx"
 stream = ExtResource( 6 )
 volume_db = -10.0
 pitch_scale = 1.28
+
 [connection signal="finished" from="." to="." method="_on_Mission_finished"]
 [connection signal="visibility_changed" from="." to="." method="_on_Mission_visibility_changed"]
 [connection signal="pressed" from="Control/BackButton" to="." method="_on_BackButton_pressed"]

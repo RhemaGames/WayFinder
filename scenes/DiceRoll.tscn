@@ -236,4 +236,5 @@ __meta__ = {
 anims/Pulse = SubResource( 1 )
 anims/zoomIn = SubResource( 2 )
 anims/zoomOut = SubResource( 3 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

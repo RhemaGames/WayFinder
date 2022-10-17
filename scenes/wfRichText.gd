@@ -24,6 +24,7 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 
 func clear():
 	percentShown = 0
+	$AnimationPlayer.stop(true)
 	hide()
 
 func sayit():

@@ -102,7 +102,6 @@ tracks/2/keys = {
 }
 
 [node name="MapView" type="Control"]
-modulate = Color( 1, 1, 1, 0.982486 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -157,7 +156,7 @@ margin_top = -15.0
 margin_right = 23.0
 margin_bottom = 24.0
 bg_opacity = 0.5
-border_color = Color( 0.0392157, 0.419608, 0.564706, 1 )
+border_color = Color( 1, 0.654902, 0, 1 )
 cover = true
 
 [node name="MapControls" type="Control" parent="WFpanel"]
@@ -388,10 +387,12 @@ stretch_mode = 1
 flip_v = true
 
 [node name="markers" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0.588235 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
@@ -400,10 +401,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
 [node name="PlayerMarker" parent="." instance=ExtResource( 9 )]
+modulate = Color( 1, 1, 1, 0.694118 )
 margin_top = -0.5
 margin_bottom = 24.5
 
@@ -424,6 +427,7 @@ anims/Hide = SubResource( 4 )
 anims/Show = SubResource( 5 )
 
 [node name="Notification" parent="." instance=ExtResource( 6 )]
+visible = true
 modulate = Color( 1, 1, 1, 1 )
 
 [connection signal="visibility_changed" from="." to="." method="_on_MapView_visibility_changed"]

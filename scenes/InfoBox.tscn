@@ -13,9 +13,6 @@ grow_horizontal = 0
 rect_min_size = Vector2( 400, 580 )
 rect_clip_content = true
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Texts" type="RichTextLabel" parent="."]
 anchor_right = 1.0
@@ -28,4 +25,5 @@ bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="showInfo" from="." to="." method="_on_InfoBox_showInfo"]

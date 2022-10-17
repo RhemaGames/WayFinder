@@ -29,14 +29,12 @@ func fill_map():
 	$PlayerMarker.set_info(current_player.info["class"])
 	
 	for c in WayFinder.map:
-		#var mkr = marker.instance()
-		#c["card"].check_connectors()
 		if c["card"].connectors == []:
 			for p in open_paths_marked:
 				if p["card"] == c["card"]:
-					#$markers.get_node(p["marker"]).queue_free()
 					$pathways.remove_child(p["marker"])
-					open_paths_marked.pop_at(open_paths_marked.find(p))
+					p["marker"].queue_free()
+					open_paths_marked.remove(open_paths_marked.find(p))
 		else:
 			var subset = []
 			for i in open_paths_marked:
@@ -46,7 +44,8 @@ func fill_map():
 			for s in subset: 
 				if !s in c["card"].connectors:
 					$pathways.remove_child(s["marker"])
-					open_paths_marked.pop_at(open_paths_marked.find(s))
+					s["marker"].queue_free()
+					open_paths_marked.remove(open_paths_marked.find(s))
 
 		if !str(c["card"]) in str(open_paths_marked):
 			if !c["card"].connectors == []:
@@ -57,20 +56,18 @@ func fill_map():
 					themark.rect_scale = Vector2(0.4,0.4)
 					$pathways.add_child(themark)
 					open_paths_marked.append({"marker":themark,"card":c["card"],"position":con})
-		#else:
-		#	print(open_paths_marked[open_paths_marked.find(c["card"])])
 
 		if !str(c["card"]) in str(main_event_marked):
-			var themark = marker.instance()
 			if c["card"].info["event"] == 4:
+				var themark = marker.instance()
 				themark.set_info("")
 				themark.set_icon(event_texture)
 				$markers.add_child(themark)
 				main_event_marked.append({"marker":themark,"card":c["card"]})
 				
 		if !str(c["card"]) in str(cp_marked):
-			var themark = marker.instance()	
 			if c["card"].info["cp"] == true:
+				var themark = marker.instance()	
 				themark.set_info("")
 				themark.set_icon(cp_texture)
 				themark.rect_scale = Vector2(0.5,0.5)
@@ -84,6 +81,7 @@ func fill_map():
 			cardPos = WayFinder.currentView.get_node("boardBacking/FullBoard").unproject_position(m["card"].get_global_transform().origin)
 			m["marker"].rect_position = cardPos
 		elif m["card"].info["event"] == 0:
+			$markers.remove_child(m["marker"])
 			m["marker"].queue_free()
 			main_event_marked.remove(main_event_marked.find(m))
 	

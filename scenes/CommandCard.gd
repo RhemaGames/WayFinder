@@ -15,6 +15,8 @@ signal execute(data)
 # warning-ignore:unused_signal
 signal display()
 signal finished(data)
+signal arrow_focus()
+signal arrow_lose_focus()
 
 var playerRoot = ""
 # Called when the node enters the scene tree for the first time.
@@ -61,8 +63,8 @@ func load_card(data):
 
 func _on_CommandCard_gui_input(event):
 	if event.is_pressed() and event.get_button_index() == 1:
-		if get_parent().get_parent().get_parent().info["cp"] >= cost:
-			get_parent().get_parent().get_parent().info["cp"] -= cost
+		if get_parent().get_parent().get_parent().get_parent().info["cp"] >= cost:
+			get_parent().get_parent().get_parent().get_parent().info["cp"] -= cost
 			emit_signal("execute",fullEffect)
 		else:
 			print("not Enough CP for this Card")
@@ -79,20 +81,27 @@ func _on_check_abilities():
 func _on_CommandCard_display():
 	if get_parent().get_parent().get_parent().info["cp"] < cost:
 		$AnimationPlayer.play("display")
-	pass # Replace with function body.
 
 
 func _on_CommandCard_mouse_entered():
-	self.rect_scale = Vector2(1.1,1.1)
+	self.rect_scale = Vector2(1.01,1.01)
 	get_parent().set("custom_constants/seperation",50)
-	pass # Replace with function body.
 
 
 func _on_CommandCard_mouse_exited():
 	self.rect_scale = Vector2(1,1)
 	get_parent().set("custom_constants/seperation",40)
-	pass # Replace with function body.
 
 
 func _on_CommandCard_finished(_data):
+	pass # Replace with function body.
+
+
+func _on_CommandCard_arrow_focus():
+	rect_scale = Vector2(1.01,1.01)
+	pass # Replace with function body.
+
+
+func _on_CommandCard_arrow_lose_focus():
+	rect_scale = Vector2(1,1)
 	pass # Replace with function body.

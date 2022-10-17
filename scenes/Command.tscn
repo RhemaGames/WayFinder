@@ -78,6 +78,7 @@ and this
 fit_content_height = true
 
 [node name="Timer" type="Timer" parent="."]
+
 [connection signal="resized" from="." to="." method="_on_Command_resized"]
 [connection signal="visibility_changed" from="Highlight" to="." method="_on_Highlight_visibility_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

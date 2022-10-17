@@ -62,10 +62,22 @@ visible = false
 [node name="Light002_Orientation" parent="Light002" index="0"]
 light_energy = 0.5
 
+[node name="Light003" parent="." index="11"]
+visible = false
+
 [node name="Light004" parent="." index="12"]
 visible = false
 
+[node name="Light005" parent="." index="13"]
+visible = false
+
 [node name="Light006" parent="." index="14"]
+visible = false
+
+[node name="Light007" parent="." index="15"]
+visible = false
+
+[node name="Light008" parent="." index="16"]
 visible = false
 
 [node name="Pilot" parent="." index="27"]

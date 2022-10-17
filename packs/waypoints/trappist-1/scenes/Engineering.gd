@@ -1,6 +1,7 @@
 extends Spatial
 var path = []
 var available_connectors = []
+var connectors = ["Connector1"]
 var is_flipped = false
 var rotated = 0
 var flipped = 0

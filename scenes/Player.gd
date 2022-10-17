@@ -56,6 +56,8 @@ signal command()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Root = get_tree().get_root().get_node("com_ve_wayfinder")
+	$Commands.hide()
+	$SpeechBox.hide()
 	if Root != null:
 		board = Root.currentView
 	
@@ -64,7 +66,7 @@ func _ready():
 	_error = WayFinder.connect("unlocked",self,"on_unlock")
 	_error = connect("command",WayFinder,"parse_command")
 	_error = WayFinder.connect("movementType",self,"on_movementType_change")
-	WayFinder.connect("turn_start",self,"_on_turn_start")
+	_error = WayFinder.connect("turn_start",self,"_on_turn_start")
 	on_movementType_change(WayFinder.mType)
 	
 	$CameraBoom/Movement/CP.update_internal({"type":"background","value":Color(0.07451, 0.239216, 0.305882,0.5)})
@@ -87,11 +89,11 @@ func load_commands():
 		if c["type"] == "general":
 			var theCard = UITemplate.instance()
 			theCard.UI = card
-			theCard.handle_input = false
+			theCard.handle_input = true
 			theCard.connect("relay",self,"on_card_ready",[theCard,c])
 			theCard.resolution = Vector2(500,800)
 			theCard.ratio = 4
-			theCard.scale = Vector3(0.6,0.7,0.6)
+			#theCard.scale = Vector3(0.6,0.7,0.6)
 			$Commands.add_child(theCard)
 			theCard.translate_object_local(Vector3(2.5*cardNum-OffSet,0,0))
 			cardNum += 1
@@ -102,6 +104,7 @@ func on_card_ready(_data,theCard,c):
 	theCard.get_node("Viewport").get_child(0).load_card(c)
 	theCard.get_node("Viewport").get_child(0).connect("execute",self,"on_command_execute")
 	var _error = connect("ability_check",theCard.get_node("Viewport").get_child(0),"_on_check_abilities")
+	
 
 func _on_Player_loadup(data):
 	model = WayFinder.get_character_class(data.info["class"])
@@ -341,6 +344,7 @@ func on_command_execute(data):
 	$Commands/Control.hide()
 	if data["effect"].has("view"):
 		if data["effect"]["view"] != "":
+			print("Doing the thing!")
 			get_parent().players[WayFinder.turn -1].get_node(data["effect"]["view"]).make_current()
 	Root.get_node("Menu/Click").play()
 	$Command.show()
@@ -442,8 +446,12 @@ func toggle_UI(display):
 		$CameraBoom/Movement/CP.hide()
 
 func _on_turn_start(turn):
+
 	if playernum+1 == turn:
+		print("showing Log for ",info.class)
 		$SpeechBox.show()
+	#else:
+	#	$SpeechBox.hide()
 	pass
 
 func _unhandled_key_input(event):

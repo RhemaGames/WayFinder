@@ -115,5 +115,6 @@ bus = "bgm"
 [node name="ComputerSounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 bus = "bgm"
+
 [connection signal="camera_Position" from="." to="." method="_on_Board_camera_Position"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

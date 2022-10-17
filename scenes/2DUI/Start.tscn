@@ -16,6 +16,7 @@ __meta__ = {
 }
 
 [node name="WFpanel" parent="." instance=ExtResource( 1 )]
+border_color = Color( 1, 0.654902, 0, 1 )
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
